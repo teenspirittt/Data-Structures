@@ -54,13 +54,13 @@ public:
   //badblues
   int getIndex(T value);
   //teenspirit
-  void addValue(T value);
+  bool addValue(T value);
   //badblues
-  void insertValue(int index, T value);
+  bool insertValue(int index, T value);
   //teenspirit
-  void removeValue(T value);
+  bool removeValue(T value);
   //badblues
-  void removeValue(int index, T values);
+  bool removeValue(int index, T values);
   //teenspirit
   int getLookedElemCount();
   //badblues

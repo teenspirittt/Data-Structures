@@ -1,11 +1,27 @@
 #include "CycList.h"
 #include <exception>
 
-template<type T>
+//badblues
+template<typename T>
 CycList<T>::CycList() {
-  
+  size = 0;
+  head = null;
 }
 
+//badblues
+template<typename T>
+int CycList<T>::getSize() {
+  return size;
+}
+
+//badblues
+template<typename T>
+bool CycList<T>::isEmpty() {
+  return (size == 0) ? true : false;
+}
+
+//badblues
+template<typename>
 
 template
 class CycList<int>;
