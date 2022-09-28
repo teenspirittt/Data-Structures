@@ -20,6 +20,8 @@ template <typename T>
 class CycList
 {
 public:
+
+  //badblues
   class Iterator {
     T &operator*();
     Iterator &operator++();
@@ -33,22 +35,37 @@ public:
   iterator end();
 
 
+  //badblues
   CycList();
+  //teenspirit
   CycList(const List &copy);
+  //badblues
   int getSize();
+  //teenspirit
   void clear();
+  //badblues
   bool isEmpty();
+  //teenspirit
   bool isExistValue(T value);
+  //badblues
   int getByIndex(int index);
+  //teenspirit
   void editValue(int index, T value);
+  //badblues
   int getIndex(T value);
+  //teenspirit
   void addValue(T value);
+  //badblues
   void insertValue(int index, T value);
+  //teenspirit
   void removeValue(T value);
+  //badblues
   void removeValue(int index, T values);
+  //teenspirit
   int getLookedElemCount();
+  //badblues
   string toString();
-
+  //teenspirit
   ~CycList();
 
 private:
