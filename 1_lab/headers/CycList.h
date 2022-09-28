@@ -70,10 +70,8 @@ public:
 
 private:
 
-unsigned int size;
-Node<T>* head;
-
-
+  unsigned int size;
+  Node<T>* head;
 };
 
 #endif //_HEADERS_LIST_H_
