@@ -17,12 +17,27 @@ uint GetChoice(uint l_gap, uint h_gap, const char* msg) {
 
 void ShowMainMenu() {
   cout << "\n===================\n"
+          //temporary names, must be changed
           "MENU\n"
-          "  1 ADD ELEMENT\n"
-          "  2 INSERT ELEMENT\n"
-          "  3 REMOVE ELEMENT\n"
-          "  4 ORDERED ADD\n"
-          "  5 ORDERED INSERT\n"
+          "   ADD ELEMENT\n"
+          "   INSERT ELEMENT\n"
+          "   REMOVE ELEMENT\n"
+          "   ORDERED ADD\n"
+          "   ORDERED INSERT\n"
+          "   LIST SIZE\n"
+          "   CLEAR LIST\n"
+          "   IS EMPTY\n"
+          "   CHECK FOR VALUE\n"
+          "   ORDERED INSERT\n"
+          "   READ BY INDEX\n"
+          "   UPDATE BY INTEX\n"
+          "   GET INDEX OF VALUE\n"
+          "   ADD VALUE\n"
+          "   ADD VALUE BY INDEX\n"
+          "   REMOVE VALUE\n"
+          "   RENOVE VALUE BY INDEX\n"
+          //"запрос числа элементов списка просмотренных предыдущей операцией"
+          "   GET NUMBER OF ELEMENTS LOOKED\n"
           "  0 EXIT\n"
           "===================\n";
 }

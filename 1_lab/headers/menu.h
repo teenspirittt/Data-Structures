@@ -2,9 +2,7 @@
 #include <fstream>
 #include <string>
 #include <exception>
-#include "TLList.h"
 
-//text output file
-#define textpath "tllist.txt"
+#define unsigned int uint
 
-void MainMenu(TLList<string> &object);
+void MainMenu(CycList<int> &object);
