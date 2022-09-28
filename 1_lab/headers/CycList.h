@@ -70,6 +70,8 @@ public:
 
 private:
 
+unsigned int size;
+Node<T>* head;
 
 
 };

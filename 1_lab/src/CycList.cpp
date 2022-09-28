@@ -1,32 +1,35 @@
 #include "CycList.h"
 #include <exception>
 
-
+template<type T>
+CycList<T>::CycList() {
+  
+}
 
 
 template
-class List<int>;
+class CycList<int>;
 
 template
-class List<float>;
+class CycList<float>;
 
 template
-class List<double>;
+class CycList<double>;
 
 template
-class List<char>;
+class CycList<char>;
 
 template
-class List<unsigned int>;
+class CycList<unsigned int>;
 
 template
-class List<long>;
+class CycList<long>;
 
 template
-class List<long long>;
+class CycList<long long>;
 
 template
-class List<short>;
+class CycList<short>;
 
 template
-class List<string>;
+class CycList<string>;
