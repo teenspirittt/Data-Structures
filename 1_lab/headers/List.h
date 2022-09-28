@@ -32,7 +32,6 @@ class List {
 
  private:
 
-  Node<T> *get_node(unsigned int num);
 };
 
 
