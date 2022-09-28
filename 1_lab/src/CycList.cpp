@@ -1,4 +1,4 @@
-#include "../headers/List.h"
+#include "CycList.h"
 #include <exception>
 
 template<typename T>
