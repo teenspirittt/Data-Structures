@@ -2,18 +2,17 @@
 #define _HEADERS_LIST_H_
 
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <cstring>
-
 
 using namespace std;
 
 template <typename T>
 struct Node
 {
-  T *field;
+  T *value;
   Node *next;
+  Node(T value) {
+    this.value = value;
+  }
 };
 
 template <typename T>
@@ -56,22 +55,14 @@ public:
   //teenspirit
   bool addValue(T value);
   //badblues
-<<<<<<< HEAD
   bool insertValue(int index, T value);
+
   //teenspirit
   bool removeValue(T value);
-  //badblues
+
+  //teenspirit
   bool removeValue(int index, T values);
-=======
-  void insertValue(int index, T value);
 
-  //teenspirit
-  void removeValue(T value);
-
-  //teenspirit
-  void removeValue(int index, T values);
-
->>>>>>> vshabunin
   //teenspirit
   int getLookedElemCount();
   //badblues
@@ -83,6 +74,7 @@ private:
 
   unsigned int size;
   Node<T>* head;
+  Node<T>* tail;
 };
 
 #endif //_HEADERS_LIST_H_
