@@ -38,7 +38,7 @@ public:
   //badblues
   CycList();
   //teenspirit
-  CycList(const List &copy);
+  CycList(const CycList &copy);
   //badblues
   int getSize();
   //teenspirit
@@ -56,11 +56,22 @@ public:
   //teenspirit
   bool addValue(T value);
   //badblues
+<<<<<<< HEAD
   bool insertValue(int index, T value);
   //teenspirit
   bool removeValue(T value);
   //badblues
   bool removeValue(int index, T values);
+=======
+  void insertValue(int index, T value);
+
+  //teenspirit
+  void removeValue(T value);
+
+  //teenspirit
+  void removeValue(int index, T values);
+
+>>>>>>> vshabunin
   //teenspirit
   int getLookedElemCount();
   //badblues
