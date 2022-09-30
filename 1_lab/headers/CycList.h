@@ -74,7 +74,6 @@ private:
 
   unsigned int size;
   Node<T>* head;
-  Node<T>* tail;
 };
 
 #endif //_HEADERS_LIST_H_
