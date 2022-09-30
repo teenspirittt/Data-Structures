@@ -21,7 +21,16 @@ bool CycList<T>::isEmpty() {
 }
 
 //badblues
-template<typename>
+template<typename T>
+int getByIndex(int index) {
+  Node<T> temp = jead;
+  for (int i = 0; i < index; i++) {
+    temp = temp.next;
+  }
+  return temp;
+}
+
+
 
 template
 class CycList<int>;
