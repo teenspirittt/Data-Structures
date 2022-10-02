@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/teenspirit/NSTU/AADS/1_lab/src/CycList.cpp" "CMakeFiles/CycListTests.dir/src/CycList.cpp.o" "gcc" "CMakeFiles/CycListTests.dir/src/CycList.cpp.o.d"
+  "/home/teenspirit/NSTU/AADS/1_lab/src/menu.cpp" "CMakeFiles/CycListTests.dir/src/menu.cpp.o" "gcc" "CMakeFiles/CycListTests.dir/src/menu.cpp.o.d"
   "/home/teenspirit/NSTU/AADS/1_lab/tests/CycListTests.cpp" "CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o" "gcc" "CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o.d"
   )
 

@@ -1,28 +1,26 @@
 #ifndef _HEADERS_LIST_H_
 #define _HEADERS_LIST_H_
 
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <cstring>
-
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 template <typename T>
-struct Node
-{
+struct Node {
   T *field;
   Node *next;
 };
 
 template <typename T>
-class CycList
-{
-public:
+class CycList {
+ public:
+  Node
 
-  //badblues
-  class Iterator {
+      // badblues
+      class Iterator {
     T &operator*();
     Iterator &operator++();
     Iterator &operator--();
@@ -34,47 +32,43 @@ public:
   iterator begin();
   iterator end();
 
-
-  //badblues
+  // badblues
   CycList();
-  //teenspirit
+  // teenspirit
   CycList(const CycList &copy);
-  //badblues
+  // badblues
   int getSize();
-  //teenspirit
+  // teenspirit
   void clear();
-  //badblues
+  // badblues
   bool isEmpty();
-  //teenspirit
+  // teenspirit
   bool isExistValue(T value);
-  //badblues
+  // badblues
   int getByIndex(int index);
-  //teenspirit
+  // teenspirit
   void editValue(int index, T value);
-  //badblues
+  // badblues
   int getIndex(T value);
-  //teenspirit
+  // teenspirit
   void addValue(T value);
-  //badblues
+  // badblues
   void insertValue(int index, T value);
 
-  //teenspirit
+  // teenspirit
   void removeValue(T value);
 
-  //teenspirit
+  // teenspirit
   void removeValue(int index, T values);
 
-  //teenspirit
+  // teenspirit
   int getLookedElemCount();
-  //badblues
+  // badblues
   string toString();
-  //teenspirit
+  // teenspirit
   ~CycList();
 
-private:
-
-
-
+ private:
 };
 
-#endif //_HEADERS_LIST_H_
+#endif  //_HEADERS_LIST_H_

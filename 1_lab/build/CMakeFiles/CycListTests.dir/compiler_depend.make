@@ -340,22 +340,8 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
   /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest-test-part.h \
   /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest-typed-test.h \
   /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest_pred_impl.h \
-  /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest_prod.h \
-  /home/teenspirit/NSTU/AADS/1_lab/headers/CycList.h \
-  /usr/include/c++/12/fstream \
-  /usr/include/c++/12/x86_64-redhat-linux/bits/basic_file.h \
-  /usr/include/c++/12/x86_64-redhat-linux/bits/c++io.h \
-  /usr/include/c++/12/bits/fstream.tcc \
-  /usr/include/c++/12/cstring
+  /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest_prod.h
 
-
-/usr/include/c++/12/bits/fstream.tcc:
-
-/usr/include/c++/12/x86_64-redhat-linux/bits/c++io.h:
-
-/usr/include/c++/12/x86_64-redhat-linux/bits/basic_file.h:
-
-/usr/include/c++/12/fstream:
 
 /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest_pred_impl.h:
 
@@ -811,8 +797,6 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/asm/posix_types.h:
 
-/home/teenspirit/NSTU/AADS/1_lab/headers/CycList.h:
-
 /usr/include/c++/12/ext/alloc_traits.h:
 
 /usr/include/bits/libc-header-start.h:
@@ -854,8 +838,6 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest-message.h:
 
 /usr/include/bits/locale.h:
-
-/usr/include/c++/12/cstring:
 
 /usr/include/ctype.h:
 

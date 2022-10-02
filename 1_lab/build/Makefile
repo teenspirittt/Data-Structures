@@ -226,6 +226,54 @@ gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+src/CycList.o: src/CycList.cpp.o
+.PHONY : src/CycList.o
+
+# target to build an object file
+src/CycList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/CycList.cpp.o
+.PHONY : src/CycList.cpp.o
+
+src/CycList.i: src/CycList.cpp.i
+.PHONY : src/CycList.i
+
+# target to preprocess a source file
+src/CycList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/CycList.cpp.i
+.PHONY : src/CycList.cpp.i
+
+src/CycList.s: src/CycList.cpp.s
+.PHONY : src/CycList.s
+
+# target to generate assembly for a file
+src/CycList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/CycList.cpp.s
+.PHONY : src/CycList.cpp.s
+
+src/menu.o: src/menu.cpp.o
+.PHONY : src/menu.o
+
+# target to build an object file
+src/menu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/menu.cpp.o
+.PHONY : src/menu.cpp.o
+
+src/menu.i: src/menu.cpp.i
+.PHONY : src/menu.i
+
+# target to preprocess a source file
+src/menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/menu.cpp.i
+.PHONY : src/menu.cpp.i
+
+src/menu.s: src/menu.cpp.s
+.PHONY : src/menu.s
+
+# target to generate assembly for a file
+src/menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/menu.cpp.s
+.PHONY : src/menu.cpp.s
+
 tests/CycListTests.o: tests/CycListTests.cpp.o
 .PHONY : tests/CycListTests.o
 
@@ -267,6 +315,12 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... src/CycList.o"
+	@echo "... src/CycList.i"
+	@echo "... src/CycList.s"
+	@echo "... src/menu.o"
+	@echo "... src/menu.i"
+	@echo "... src/menu.s"
 	@echo "... tests/CycListTests.o"
 	@echo "... tests/CycListTests.i"
 	@echo "... tests/CycListTests.s"
