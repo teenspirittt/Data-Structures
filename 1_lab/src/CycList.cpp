@@ -1,32 +1,34 @@
-#include "CycList.h"
+#include "../headers/CycList.h"
+
 #include <exception>
 
+template <typename T>
+CycList<T>::CycList(const CycList &copy) {}
 
+template <typename T>
+void CycList<T>::addValue(T value) {
+  Node *tmp = tail;
+  Node *p = new Node;
+  p = next;
+  next = tmp;
+  tmp->field = value;
+  tmp->next = p;
+}
 
+template class CycList<int>;
 
-template
-class List<int>;
+template class CycList<float>;
 
-template
-class List<float>;
+template class CycList<double>;
 
-template
-class List<double>;
+template class CycList<char>;
 
-template
-class List<char>;
+template class CycList<unsigned int>;
 
-template
-class List<unsigned int>;
+template class CycList<long>;
 
-template
-class List<long>;
+template class CycList<long long>;
 
-template
-class List<long long>;
+template class CycList<short>;
 
-template
-class List<short>;
-
-template
-class List<string>;
+template class CycList<string>;
