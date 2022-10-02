@@ -1,26 +1,22 @@
 #ifndef _HEADERS_LIST_H_
 #define _HEADERS_LIST_H_
 
-#include <cstring>
-#include <fstream>
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 template <typename T>
 struct Node {
-  T *field;
+  T *value;
   Node *next;
+  Node(T value) { this.value = value; }
 };
 
 template <typename T>
 class CycList {
  public:
-  Node
-
-      // badblues
-      class Iterator {
+  // badblues
+  class Iterator {
     T &operator*();
     Iterator &operator++();
     Iterator &operator--();
