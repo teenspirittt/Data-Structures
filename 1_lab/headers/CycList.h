@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+typedef unsigned int uint;
+
 using namespace std;
 
 template <typename T>
@@ -47,15 +49,15 @@ class CycList {
   // badblues
   int getIndex(T value);
   // teenspirit
-  void addValue(T value);
+  bool addValue(T value);
   // badblues
-  void insertValue(int index, T value);
+  bool insertValue(int index, T value);
 
   // teenspirit
-  void removeValue(T value);
+  bool removeValue(T value);
 
   // teenspirit
-  void removeValue(int index, T values);
+  bool removeValue(int index, T values);
 
   // teenspirit
   int getLookedElemCount();
@@ -65,6 +67,9 @@ class CycList {
   ~CycList();
 
  private:
+  uint size;
+  Node* head;
+
 };
 
 #endif  //_HEADERS_LIST_H_

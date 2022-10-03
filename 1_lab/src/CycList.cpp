@@ -76,6 +76,6 @@ template class CycList<long>;
 
 template class CycList<long long>;
 
-template class CycCycList<short>;
+template class CycList<short>;
 
 template class CycList<string>;
