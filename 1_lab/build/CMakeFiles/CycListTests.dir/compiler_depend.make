@@ -4,7 +4,7 @@
 CMakeFiles/CycListTests.dir/src/CycList.cpp.o: /home/teenspirit/NSTU/AADS/1_lab/src/CycList.cpp \
   /usr/include/stdc-predef.h \
   /home/teenspirit/NSTU/AADS/1_lab/headers/CycList.h \
-  /usr/include/c++/12/cstring \
+  /usr/include/c++/12/iostream \
   /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h \
   /usr/include/bits/wordsize.h \
   /usr/include/c++/12/x86_64-redhat-linux/bits/os_defines.h \
@@ -17,14 +17,7 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: /home/teenspirit/NSTU/AADS/1_lab/
   /usr/include/gnu/stubs-64.h \
   /usr/include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h \
   /usr/include/c++/12/pstl/pstl_config.h \
-  /usr/include/string.h \
-  /usr/include/bits/libc-header-start.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/include/bits/types/locale_t.h \
-  /usr/include/bits/types/__locale_t.h \
-  /usr/include/strings.h \
-  /usr/include/c++/12/fstream \
-  /usr/include/c++/12/istream \
+  /usr/include/c++/12/ostream \
   /usr/include/c++/12/ios \
   /usr/include/c++/12/iosfwd \
   /usr/include/c++/12/bits/stringfwd.h \
@@ -32,8 +25,10 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: /home/teenspirit/NSTU/AADS/1_lab/
   /usr/include/c++/12/bits/postypes.h \
   /usr/include/c++/12/cwchar \
   /usr/include/wchar.h \
+  /usr/include/bits/libc-header-start.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
   /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/types/wint_t.h \
@@ -41,6 +36,8 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: /home/teenspirit/NSTU/AADS/1_lab/
   /usr/include/bits/types/__mbstate_t.h \
   /usr/include/bits/types/__FILE.h \
   /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
   /usr/include/c++/12/exception \
   /usr/include/c++/12/bits/exception.h \
   /usr/include/c++/12/bits/exception_ptr.h \
@@ -185,14 +182,9 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: /home/teenspirit/NSTU/AADS/1_lab/
   /usr/include/c++/12/x86_64-redhat-linux/bits/ctype_inline.h \
   /usr/include/c++/12/bits/locale_facets.tcc \
   /usr/include/c++/12/bits/basic_ios.tcc \
-  /usr/include/c++/12/ostream \
   /usr/include/c++/12/bits/ostream.tcc \
-  /usr/include/c++/12/bits/istream.tcc \
-  /usr/include/c++/12/bits/codecvt.h \
-  /usr/include/c++/12/x86_64-redhat-linux/bits/basic_file.h \
-  /usr/include/c++/12/x86_64-redhat-linux/bits/c++io.h \
-  /usr/include/c++/12/bits/fstream.tcc \
-  /usr/include/c++/12/iostream
+  /usr/include/c++/12/istream \
+  /usr/include/c++/12/bits/istream.tcc
 
 CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS/1_lab/tests/CycListTests.cpp \
   /usr/include/stdc-predef.h \
@@ -644,12 +636,6 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/linux/close_range.h:
 
-/usr/include/bits/unistd_ext.h:
-
-/usr/include/bits/getopt_core.h:
-
-/usr/include/bits/confname.h:
-
 /usr/include/c++/12/bits/stl_set.h:
 
 /usr/include/c++/12/bits/functexcept.h:
@@ -663,6 +649,8 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 /usr/include/c++/12/iomanip:
 
 /usr/include/c++/12/debug/debug.h:
+
+/usr/include/c++/12/bits/ostream_insert.h:
 
 /usr/include/c++/12/bits/allocator.h:
 
@@ -678,11 +666,11 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/c++/12/cstdlib:
 
+/usr/include/bits/types/timer_t.h:
+
+/usr/include/linux/stat.h:
+
 /usr/include/bits/atomic_wide_counter.h:
-
-/usr/include/bits/types/clock_t.h:
-
-/usr/include/c++/12/bits/shared_ptr_base.h:
 
 /usr/include/c++/12/bits/basic_string.tcc:
 
@@ -724,9 +712,15 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/gnu/stubs-64.h:
 
+/usr/include/bits/struct_mutex.h:
+
+/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/internal/gtest-port-arch.h:
+
 /usr/include/c++/12/bits/stl_algobase.h:
 
 /usr/include/bits/types/__locale_t.h:
+
+/usr/include/ctype.h:
 
 /usr/include/c++/12/stdlib.h:
 
@@ -734,53 +728,33 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/c++/12/cctype:
 
-/usr/include/c++/12/istream:
-
 /usr/include/c++/12/stdexcept:
+
+/usr/include/c++/12/istream:
 
 /usr/include/c++/12/bits/atomic_base.h:
 
 /usr/include/bits/locale.h:
 
-/usr/include/c++/12/x86_64-redhat-linux/bits/c++locale.h:
+/usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h:
 
-/usr/include/c++/12/bits/localefwd.h:
+/usr/include/asm/posix_types_64.h:
 
-/usr/include/c++/12/bits/streambuf_iterator.h:
+/usr/include/bits/libc-header-start.h:
 
-/usr/include/c++/12/vector:
+/usr/include/wchar.h:
 
-/usr/include/c++/12/bits/node_handle.h:
+/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest.h:
 
-/usr/include/c++/12/ext/atomicity.h:
+/usr/include/c++/12/x86_64-redhat-linux/bits/atomic_word.h:
 
-/usr/include/signal.h:
+/usr/include/bits/types/struct_sched_param.h:
 
-/usr/include/strings.h:
+/usr/include/c++/12/cwchar:
 
-/usr/include/c++/12/string:
+/usr/include/c++/12/ratio:
 
-/usr/include/c++/12/x86_64-redhat-linux/bits/gthr.h:
-
-/usr/include/c++/12/type_traits:
-
-/usr/include/c++/12/bits/stringfwd.h:
-
-/home/teenspirit/NSTU/AADS/1_lab/src/CycList.cpp:
-
-/usr/include/bits/pthreadtypes.h:
-
-/usr/include/c++/12/map:
-
-/usr/include/c++/12/bits/charconv.h:
-
-/usr/include/bits/types/locale_t.h:
-
-/usr/include/locale.h:
-
-/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest-message.h:
-
-/usr/include/bits/types/wint_t.h:
+/usr/include/bits/statx-generic.h:
 
 /usr/include/c++/12/set:
 
@@ -798,49 +772,73 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/c++/12/cstddef:
 
-/usr/include/bits/libc-header-start.h:
+/usr/include/c++/12/bits/node_handle.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h:
+/usr/include/c++/12/ext/atomicity.h:
 
-/usr/include/asm/posix_types_64.h:
+/usr/include/c++/12/string:
 
-/usr/include/c++/12/bits/ostream_insert.h:
+/usr/include/signal.h:
 
-/usr/include/c++/12/fstream:
+/usr/include/strings.h:
 
-/usr/include/bits/siginfo-consts-arch.h:
+/usr/include/bits/floatn.h:
 
-/usr/include/c++/12/debug/assertions.h:
+/usr/include/c++/12/x86_64-redhat-linux/bits/gthr.h:
 
-/usr/include/c++/12/bits/std_abs.h:
+/usr/include/c++/12/type_traits:
 
-/usr/include/bits/sigaction.h:
+/usr/include/c++/12/bits/stringfwd.h:
 
-/usr/include/c++/12/x86_64-redhat-linux/bits/error_constants.h:
+/home/teenspirit/NSTU/AADS/1_lab/src/CycList.cpp:
 
-/usr/include/c++/12/exception:
+/usr/include/bits/pthreadtypes.h:
 
-/usr/include/bits/cpu-set.h:
+/usr/include/c++/12/map:
 
-/usr/include/c++/12/typeinfo:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/bits/types/sig_atomic_t.h:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/c++/12/cstdint:
-
-/usr/include/bits/stdlib-float.h:
-
-/usr/include/sys/cdefs.h:
+/usr/include/c++/12/bits/charconv.h:
 
 /usr/include/pthread.h:
 
 /usr/include/c++/12/bits/stl_iterator_base_funcs.h:
 
+/usr/include/sys/cdefs.h:
+
 /usr/include/c++/12/bits/uses_allocator.h:
+
+/usr/include/bits/floatn-common.h:
+
+/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest_prod.h:
+
+/usr/include/c++/12/bits/invoke.h:
+
+/usr/include/c++/12/bits/utility.h:
+
+/usr/include/c++/12/bits/stl_iterator.h:
+
+/usr/include/bits/signal_ext.h:
+
+/usr/include/c++/12/bits/stl_function.h:
+
+/usr/include/bits/types/mbstate_t.h:
+
+/usr/include/c++/12/backward/binders.h:
+
+/usr/include/c++/12/bits/chrono.h:
+
+/usr/include/c++/12/clocale:
+
+/usr/include/c++/12/bits/stl_tree.h:
+
+/usr/include/bits/types/__fpos64_t.h:
+
+/usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h:
+
+/usr/include/bits/getopt_posix.h:
+
+/usr/include/errno.h:
+
+/usr/include/bits/stdlib-float.h:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
@@ -876,43 +874,45 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/c++/12/iosfwd:
 
-/usr/include/wctype.h:
-
-/usr/include/sched.h:
-
-/usr/include/c++/12/iostream:
-
-/usr/include/c++/12/backward/auto_ptr.h:
-
 /usr/include/c++/12/bits/allocated_ptr.h:
 
 /usr/include/c++/12/bits/nested_exception.h:
 
-/usr/include/bits/types/__FILE.h:
+/usr/include/bits/types/clock_t.h:
 
-/usr/include/bits/sched.h:
+/usr/include/bits/types/sig_atomic_t.h:
 
-/usr/include/c++/12/new:
+/usr/include/c++/12/cstdint:
 
-/usr/include/features.h:
+/usr/include/bits/types/__fpos_t.h:
 
-/usr/include/bits/struct_mutex.h:
+/usr/include/c++/12/bits/shared_ptr_base.h:
 
-/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/internal/gtest-port-arch.h:
+/usr/include/c++/12/iostream:
 
-/usr/include/ctype.h:
+/usr/include/wctype.h:
 
-/usr/include/c++/12/cstring:
+/usr/include/sched.h:
 
-/usr/include/bits/types/timer_t.h:
+/usr/include/c++/12/backward/auto_ptr.h:
 
-/usr/include/linux/stat.h:
+/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/internal/custom/gtest-printers.h:
+
+/usr/include/c++/12/initializer_list:
+
+/usr/include/c++/12/bits/shared_ptr.h:
 
 /usr/include/bits/types/clockid_t.h:
 
 /usr/include/bits/stdint-intn.h:
 
 /usr/include/c++/12/memory:
+
+/usr/include/c++/12/exception:
+
+/usr/include/c++/12/ostream:
+
+/usr/include/bits/long-double.h:
 
 /usr/include/bits/types/sigevent_t.h:
 
@@ -924,57 +924,29 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h:
 
-/usr/include/bits/long-double.h:
+/usr/include/c++/12/typeinfo:
 
-/usr/include/c++/12/x86_64-redhat-linux/bits/atomic_word.h:
+/usr/include/bits/cpu-set.h:
 
-/usr/include/bits/types/struct_sched_param.h:
+/usr/include/locale.h:
 
-/usr/include/c++/12/bits/fstream.tcc:
+/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest-message.h:
 
-/usr/include/c++/12/cwchar:
+/usr/include/bits/types/wint_t.h:
 
-/usr/include/c++/12/ratio:
+/usr/include/bits/types/locale_t.h:
 
-/usr/include/bits/statx-generic.h:
+/usr/include/bits/siginfo-consts-arch.h:
 
-/usr/include/wchar.h:
+/usr/include/c++/12/debug/assertions.h:
 
-/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest.h:
+/usr/include/c++/12/bits/std_abs.h:
 
-/usr/include/bits/floatn.h:
+/usr/include/bits/sigaction.h:
 
-/usr/include/bits/floatn-common.h:
+/usr/include/c++/12/x86_64-redhat-linux/bits/error_constants.h:
 
-/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest_prod.h:
-
-/usr/include/c++/12/bits/invoke.h:
-
-/usr/include/c++/12/bits/utility.h:
-
-/usr/include/c++/12/bits/stl_iterator.h:
-
-/usr/include/bits/signal_ext.h:
-
-/usr/include/c++/12/bits/stl_function.h:
-
-/usr/include/bits/types/mbstate_t.h:
-
-/usr/include/c++/12/backward/binders.h:
-
-/usr/include/c++/12/bits/chrono.h:
-
-/usr/include/c++/12/clocale:
-
-/usr/include/c++/12/bits/stl_tree.h:
-
-/usr/include/bits/types/__fpos64_t.h:
-
-/usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h:
-
-/usr/include/bits/getopt_posix.h:
-
-/usr/include/errno.h:
+/usr/include/bits/typesizes.h:
 
 /usr/include/c++/12/bits/locale_classes.tcc:
 
@@ -1004,11 +976,21 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/bits/types.h:
 
-/home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/internal/custom/gtest-printers.h:
+/usr/include/bits/types/__FILE.h:
 
-/usr/include/c++/12/initializer_list:
+/usr/include/features.h:
 
-/usr/include/c++/12/bits/shared_ptr.h:
+/usr/include/c++/12/new:
+
+/usr/include/bits/sched.h:
+
+/usr/include/c++/12/bits/streambuf_iterator.h:
+
+/usr/include/c++/12/vector:
+
+/usr/include/c++/12/bits/localefwd.h:
+
+/usr/include/c++/12/x86_64-redhat-linux/bits/c++locale.h:
 
 /home/teenspirit/NSTU/AADS/1_lab/headers/CycList.h:
 
@@ -1063,10 +1045,6 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 /usr/include/bits/types/sigset_t.h:
 
 /usr/include/alloca.h:
-
-/usr/include/bits/environments.h:
-
-/usr/include/bits/types/struct_FILE.h:
 
 /usr/include/sys/stat.h:
 
@@ -1128,23 +1106,11 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/c++/12/ctime:
 
-/usr/include/c++/12/ostream:
-
-/usr/include/c++/12/bits/cpp_type_traits.h:
-
-/usr/include/bits/select.h:
-
-/usr/include/c++/12/bits/codecvt.h:
-
-/usr/include/c++/12/x86_64-redhat-linux/bits/basic_file.h:
-
-/usr/include/c++/12/x86_64-redhat-linux/bits/c++io.h:
-
-/usr/include/string.h:
+/usr/include/c++/12/limits:
 
 /home/teenspirit/NSTU/AADS/1_lab/tests/CycListTests.cpp:
 
-/usr/include/c++/12/limits:
+/usr/include/string.h:
 
 /usr/include/c++/12/bits/stl_tempbuf.h:
 
@@ -1188,6 +1154,12 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 
 /usr/include/libintl.h:
 
+/usr/include/c++/12/bits/cpp_type_traits.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/c++/12/bits/codecvt.h:
+
 /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/gtest-param-test.h:
 
 /usr/include/c++/12/cxxabi.h:
@@ -1229,3 +1201,13 @@ CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o: /home/teenspirit/NSTU/AADS
 /home/teenspirit/NSTU/AADS/1_lab/googletest/googletest/include/gtest/internal/custom/gtest-port.h:
 
 /usr/include/unistd.h:
+
+/usr/include/bits/types/struct_FILE.h:
+
+/usr/include/bits/environments.h:
+
+/usr/include/bits/confname.h:
+
+/usr/include/bits/getopt_core.h:
+
+/usr/include/bits/unistd_ext.h:

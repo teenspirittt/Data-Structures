@@ -49,10 +49,10 @@ class CycList {
   // teenspirit
   void addValue(T value);
   // badblues
-  void insertValue(int index, T value);
-
+  bool insertValue(int index, T value);
+  void show(int size);
   // teenspirit
-  void removeValue(T value);
+  bool removeValue(T value);
 
   // teenspirit
   void removeValue(int index, T values);
@@ -65,6 +65,8 @@ class CycList {
   ~CycList();
 
  private:
+  unsigned int size;
+  Node<T> head;
 };
 
 #endif  //_HEADERS_LIST_H_

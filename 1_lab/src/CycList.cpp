@@ -62,6 +62,67 @@ bool CycList<T>::insertValue(int index, T val) {
   return true;
 }
 
+template <typename T>
+void CycList<T>::addValue(T value) {
+  Node tmp = new Node(value);
+  Node tail = head;
+  while (tail.next != head) {
+    tail = tail.next;
+  }
+  if (head == null) {
+    head = tmp;
+    tail = node;
+    tail.next = head;
+  } else {
+    node.next = head;
+    tail.next = tmp;
+    tail = tmp;
+  }
+  size++;
+}
+
+template <typename T>
+bool CycList<T>::removeValue(T value) {
+  Node current = head;
+  Node previous = nullptr;
+
+  if (isEmpty()) return false;
+  do {
+    if (current.value == value) {
+      if (previous != null) {
+        previous.next = current.next;
+
+        if (current == tail) tail = previous;
+      } else {
+        if (size == 1) {
+          head = tail = null;
+        } else {
+          head = current.Next;
+          tail.Next = current.Next;
+        }
+      }
+      size--;
+      return true;
+    }
+
+    previous = current;
+    current = current.Next;
+  } while (current != head);
+
+  return false
+}
+
+template <typename T>
+void CycList<T>::show(int size) {
+  Node tmpHead = head;
+  int tmp = size;
+  while (tmp != 0) {
+    std::cout << tmpHead.value << " ";
+    tmpHead = tmpHead.next;
+    tmp--;
+  }
+}
+
 template class CycList<int>;
 
 template class CycList<double>;
@@ -76,6 +137,6 @@ template class CycList<long>;
 
 template class CycList<long long>;
 
-template class CycCycList<short>;
+template class CycList<short>;
 
 template class CycList<string>;

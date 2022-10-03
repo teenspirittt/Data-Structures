@@ -2,7 +2,7 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: \
  /home/teenspirit/NSTU/AADS/1_lab/src/CycList.cpp \
  /usr/include/stdc-predef.h \
  /home/teenspirit/NSTU/AADS/1_lab/src/../headers/CycList.h \
- /usr/include/c++/12/cstring \
+ /usr/include/c++/12/iostream \
  /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/os_defines.h \
@@ -11,21 +11,20 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h \
- /usr/include/c++/12/pstl/pstl_config.h /usr/include/string.h \
- /usr/include/bits/libc-header-start.h \
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
- /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/strings.h /usr/include/c++/12/fstream \
- /usr/include/c++/12/istream /usr/include/c++/12/ios \
- /usr/include/c++/12/iosfwd /usr/include/c++/12/bits/stringfwd.h \
+ /usr/include/c++/12/pstl/pstl_config.h /usr/include/c++/12/ostream \
+ /usr/include/c++/12/ios /usr/include/c++/12/iosfwd \
+ /usr/include/c++/12/bits/stringfwd.h \
  /usr/include/c++/12/bits/memoryfwd.h /usr/include/c++/12/bits/postypes.h \
  /usr/include/c++/12/cwchar /usr/include/wchar.h \
- /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
+ /usr/include/bits/libc-header-start.h /usr/include/bits/floatn.h \
+ /usr/include/bits/floatn-common.h \
+ /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
  /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
  /usr/include/bits/types/mbstate_t.h \
  /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
- /usr/include/bits/types/FILE.h /usr/include/c++/12/exception \
+ /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
+ /usr/include/bits/types/__locale_t.h /usr/include/c++/12/exception \
  /usr/include/c++/12/bits/exception.h \
  /usr/include/c++/12/bits/exception_ptr.h \
  /usr/include/c++/12/bits/exception_defines.h \
@@ -127,9 +126,6 @@ CMakeFiles/CycListTests.dir/src/CycList.cpp.o: \
  /usr/include/c++/12/bits/streambuf_iterator.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/ctype_inline.h \
  /usr/include/c++/12/bits/locale_facets.tcc \
- /usr/include/c++/12/bits/basic_ios.tcc /usr/include/c++/12/ostream \
- /usr/include/c++/12/bits/ostream.tcc \
- /usr/include/c++/12/bits/istream.tcc /usr/include/c++/12/bits/codecvt.h \
- /usr/include/c++/12/x86_64-redhat-linux/bits/basic_file.h \
- /usr/include/c++/12/x86_64-redhat-linux/bits/c++io.h \
- /usr/include/c++/12/bits/fstream.tcc /usr/include/c++/12/iostream
+ /usr/include/c++/12/bits/basic_ios.tcc \
+ /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
+ /usr/include/c++/12/bits/istream.tcc
