@@ -71,7 +71,7 @@ class CycList {
   // badblues
   int getIndex(T value);
   // teenspirit
-  bool addValue(T value);
+  void addValue(T value);
   // badblues
   bool insertValue(int index, T value);
   void show(int size);
