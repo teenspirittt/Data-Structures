@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "../headers/menu.h"
 
 #ifdef __linux__
 #define clear_console_ "clear"
@@ -42,7 +42,7 @@ void ShowMainMenu() {
           "===================\n";
 }
 
-void MainMenu( &object) {
+void MainMenu(CycList<int> &object) {
   int choice;
   uint selected_elem;
   bool flag = true;

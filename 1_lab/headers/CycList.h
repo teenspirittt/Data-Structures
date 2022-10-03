@@ -3,13 +3,15 @@
 
 #include <iostream>
 
+typedef unsigned int uint;
+
 using namespace std;
 
 template <typename T>
 struct Node {
-  T *value;
-  Node *next;
-  Node(T value) { this.value = value; }
+  T value;
+  Node* next;
+  Node(T value) { this->value = value; }
 };
 
 template <typename T>
@@ -17,21 +19,43 @@ class CycList {
  public:
   // badblues
   class Iterator {
-    T &operator*();
-    Iterator &operator++();
-    Iterator &operator--();
-    bool operator==(const Iterator &);
-    bool operator!=(const Iterator &);
-  };
+   public:
+    Iterator(CycList* list) { currNode = list->head; }
 
-  friend class Iterator;
-  iterator begin();
-  iterator end();
+    Iterator& operator=(Node<T>* pNode) {
+      this->currNode = pNode;
+      return *this;
+    }
+
+    Iterator& operator++() {
+      if (currNode) currNode = currNode->next;
+      return *this;
+    }
+
+    Iterator operator++(int) {
+      Iterator iterator = *this;
+      ++*this;
+      return iterator;
+    }
+
+    bool operator!=(const Iterator& iterator) {
+      return this->currNode != iterator.currNode;
+    }
+
+    bool operator==(const Iterator& iterator) {
+      return this->currNode == iterator.currNode;
+    }
+
+    T operator*() { return this->currNode->value; }
+
+   private:
+    Node<T>* currNode;
+  };
 
   // badblues
   CycList();
   // teenspirit
-  CycList(const CycList &copy);
+  CycList(const CycList& copy);
   // badblues
   int getSize();
   // teenspirit
@@ -41,13 +65,13 @@ class CycList {
   // teenspirit
   bool isExistValue(T value);
   // badblues
-  int getByIndex(int index);
+  T getByIndex(int index);
   // teenspirit
   void editValue(int index, T value);
   // badblues
   int getIndex(T value);
   // teenspirit
-  void addValue(T value);
+  bool addValue(T value);
   // badblues
   bool insertValue(int index, T value);
   void show(int size);
@@ -55,18 +79,18 @@ class CycList {
   bool removeValue(T value);
 
   // teenspirit
-  void removeValue(int index, T values);
+  bool removeValue(int index, T values);
 
   // teenspirit
   int getLookedElemCount();
   // badblues
   string toString();
   // teenspirit
-  ~CycList();
+  ~CycList() {}
 
  private:
-  unsigned int size;
-  Node<T> head;
+  uint size;
+  Node<T>* head;
 };
 
 #endif  //_HEADERS_LIST_H_

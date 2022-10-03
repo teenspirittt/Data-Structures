@@ -1,8 +1,4 @@
-#pragma once
-#include <fstream>
-#include <string>
-#include <exception>
-
-#define unsigned int uint
+#include <iostream>
+#include "CycList.h"
 
 void MainMenu(CycList<int> &object); 
