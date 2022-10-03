@@ -21,16 +21,6 @@
 /home/teenspirit/NSTU/AADS/1_lab/build/googletest/googlemock/CMakeFiles/install/strip.dir
 /home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/gtest.dir
 /home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/gtest_main.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample1_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample2_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample3_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample4_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample5_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample6_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample7_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample8_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample9_unittest.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/sample10_unittest.dir
 /home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/edit_cache.dir
 /home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/rebuild_cache.dir
 /home/teenspirit/NSTU/AADS/1_lab/build/googletest/googletest/CMakeFiles/list_install_components.dir

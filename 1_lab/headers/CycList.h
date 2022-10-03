@@ -74,23 +74,29 @@ class CycList {
   void addValue(T value);
   // badblues
   bool insertValue(int index, T value);
-  void show(int size);
+  void show();
   // teenspirit
   bool removeValue(T value);
-
   // teenspirit
   bool removeValue(int index, T values);
-
   // teenspirit
   int getLookedElemCount();
   // badblues
   string toString();
   // teenspirit
-  ~CycList() {}
+  ~CycList() {
+    while (size != 0) {
+      Node<T>* tmp = head->next;
+      delete head;
+      head = tmp;
+      size--;
+    }
+  }
 
  private:
   uint size;
   Node<T>* head;
+  Node<T>* tail;
 };
 
 #endif  //_HEADERS_LIST_H_

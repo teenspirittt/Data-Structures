@@ -7,6 +7,16 @@ template <typename T>
 CycList<T>::CycList() {
   this->size = 0;
   this->head = NULL;
+  this->tail = NULL;
+}
+
+// teenspirit
+template <typename T>
+CycList<T>::CycList(const CycList& copy) {
+  // copy.size = this->size;
+  // copy.head = this->head;
+  // copy.tail = this->tail;
+  // todo
 }
 
 // badblues
@@ -25,7 +35,8 @@ bool CycList<T>::isEmpty() {
 template <typename T>
 T CycList<T>::getByIndex(int index) {
   Node<T>* tmp = head;
-  for (int i = 0; i < index, tmp != head; i++, tmp = tmp->next);
+  for (int i = 0; i < index, tmp != head; i++, tmp = tmp->next)
+    ;
   return tmp->value;
 }
 
@@ -61,43 +72,41 @@ bool CycList<T>::insertValue(int index, T val) {
   return true;
 }
 
+// teenspirit
 template <typename T>
 void CycList<T>::addValue(T value) {
-  Node tmp = new Node(value);
-  Node tail = head;
-  while (tail.next != head) {
-    tail = tail.next;
-  }
-  if (head == null) {
+  Node<T>* tmp = new Node(value);
+
+  if (head == nullptr) {
     head = tmp;
-    tail = node;
-    tail.next = head;
+    tail = tmp;
+    tail->next = head;
   } else {
-    node.next = head;
-    tail.next = tmp;
+    tmp->next = head;
+    tail->next = tmp;
     tail = tmp;
   }
   size++;
 }
 
+// teenspirit
 template <typename T>
 bool CycList<T>::removeValue(T value) {
-  Node current = head;
-  Node previous = nullptr;
-
+  Node<T>* current = head;
+  Node<T>* previous = nullptr;
   if (isEmpty()) return false;
   do {
-    if (current.value == value) {
-      if (previous != null) {
-        previous.next = current.next;
+    if (current->value == value) {
+      if (previous != nullptr) {
+        previous->next = current->next;
 
         if (current == tail) tail = previous;
       } else {
         if (size == 1) {
-          head = tail = null;
+          head = tail = nullptr;
         } else {
-          head = current.Next;
-          tail.Next = current.Next;
+          head = current->next;
+          tail = current->next;
         }
       }
       size--;
@@ -105,21 +114,44 @@ bool CycList<T>::removeValue(T value) {
     }
 
     previous = current;
-    current = current.Next;
+    current = current->next;
   } while (current != head);
 
-  return false
+  return false;
 }
 
+// teenspirit
 template <typename T>
-void CycList<T>::show(int size) {
-  Node tmpHead = head;
+void CycList<T>::show() {
+  Node<T>* tmpHead = head;
   int tmp = size;
   while (tmp != 0) {
-    std::cout << tmpHead.value << " ";
-    tmpHead = tmpHead.next;
+    std::cout << tmpHead->value << " ";
+    tmpHead = tmpHead->next;
     tmp--;
   }
+  std::cout << std::endl;
+}
+
+// teenspirit
+template <typename T>
+void CycList<T>::clear() {
+  head = NULL;
+  tail = NULL;
+  size = 0;
+}
+
+// teenspirit
+template <typename T>
+bool CycList<T>::isExistValue(T value) {
+  Node<T>* tmpHead = head;
+  int tmp = size;
+  while (tmp != 0) {
+    if (value == tmpHead->value) return true;
+    tmpHead = tmpHead->next;
+    tmp--;
+  }
+  return false;
 }
 
 template class CycList<int>;
