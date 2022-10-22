@@ -20,6 +20,10 @@ CycList<T>::CycList(const CycList& copy) {
   // todo
 }
 
+// teenspirit
+template <typename T>
+void CycList<T>::editValue(int index, T value) {}
+
 // badblues
 template <typename T>
 int CycList<T>::getSize() {
@@ -108,6 +112,37 @@ void CycList<T>::addValue(T value) {
 // teenspirit
 template <typename T>
 bool CycList<T>::removeValue(T value) {
+  Node<T>* current = head;
+  Node<T>* previous = nullptr;
+  if (isEmpty()) return false;
+  do {
+    if (current->value == value) {
+      if (previous != nullptr) {
+        previous->next = current->next;
+
+        if (current == tail) tail = previous;
+      } else {
+        if (size == 1) {
+          head = tail = nullptr;
+        } else {
+          head = current->next;
+          tail = current->next;
+        }
+      }
+      size--;
+      return true;
+    }
+
+    previous = current;
+    current = current->next;
+  } while (current != head);
+
+  return false;
+}
+
+// teenspirit
+template <typename T>
+bool CycList<T>::removeValue(int index, T value) {
   Node<T>* current = head;
   Node<T>* previous = nullptr;
   if (isEmpty()) return false;

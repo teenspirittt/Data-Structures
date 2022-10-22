@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++ -rdynamic CMakeFiles/Kaif.dir/src/CycList.cpp.o CMakeFiles/Kaif.dir/src/menu.cpp.o CMakeFiles/Kaif.dir/src/main.cpp.o -o Kaif 

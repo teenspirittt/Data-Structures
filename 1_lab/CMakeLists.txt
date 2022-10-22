@@ -2,10 +2,5 @@ cmake_minimum_required(VERSION 3.0) # version can be different
 
 project(1_lab) #name of your project
 
-add_subdirectory(googletest) # add googletest subdirectory
+add_executable(Kaif src/CycList.cpp src/menu.cpp src/main.cpp) # add this executable
 
-include_directories(googletest/include) # this is so we can #include <gtest/gtest.h>
-
-add_executable(CycListTests tests/CycListTests.cpp src/CycList.cpp src/menu.cpp) # add this executable
-
-target_link_libraries(CycListTests PRIVATE gtest) # link google test to this executable
