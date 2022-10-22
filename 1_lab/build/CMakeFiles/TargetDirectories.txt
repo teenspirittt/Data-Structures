@@ -1,3 +1,0 @@
-/home/teenspirit/NSTU/AADS/1_lab/build/CMakeFiles/Kaif.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/CMakeFiles/edit_cache.dir
-/home/teenspirit/NSTU/AADS/1_lab/build/CMakeFiles/rebuild_cache.dir

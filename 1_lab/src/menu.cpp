@@ -70,14 +70,14 @@ void MainMenu() {
 
   
   
-  if (isTypeInt)
+/*  if (isTypeInt)
    CycList<int> intObject = new CycList<int>();
   else
-    CycList<string> stringObject = new CycList<string>();
+    CycList<string> stringObject = new CycList<string>();*/
 
   while (flag) {
     system(clear_console_);
-    ShowList(&object);
+   // ShowList(&object);
     ShowMainMenu();
     choice = GetChoice(0, 12, "");
     switch (choice) {

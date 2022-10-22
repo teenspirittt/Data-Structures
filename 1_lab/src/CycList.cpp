@@ -3,52 +3,55 @@
 #include <exception>
 
 // badblues
-template <typename T>
+template<typename T>
 CycList<T>::CycList() {
   std::cout << "calling constructor\n";
   this->size = 0;
-  this->head = NULL;
-  this->tail = NULL;
+  this->head = nullptr;
+  this->tail = nullptr;
 }
 
 // teenspirit
-template <typename T>
-CycList<T>::CycList(const CycList& copy) {
-  // copy.size = this->size;
-  // copy.head = this->head;
-  // copy.tail = this->tail;
-  // todo
-}
+/*template<typename T>
+CycList<T>::CycList(const CycList<T> &copy) {
+  copy.head = head;
+
+  while (current != head) {
+
+  }
+
+}*/
 
 // teenspirit
-template <typename T>
-void CycList<T>::editValue(int index, T value) {}
+template<typename T>
+void CycList<T>::editValue(int index, T value) {
+
+}
 
 // badblues
-template <typename T>
+template<typename T>
 int CycList<T>::getSize() {
   return size;
 }
 
 // badblues
-template <typename T>
+template<typename T>
 bool CycList<T>::isEmpty() {
   return (size == 0);
 }
 
 // badblues
-template <typename T>
+template<typename T>
 T CycList<T>::getByIndex(int index) {
-  Node<T>* tmp = head;
-  for (int i = 0; i < index, tmp != head; i++, tmp = tmp->next)
-    ;
+  Node<T> *tmp = head;
+  for (int i = 0; i < index, tmp != head; i++, tmp = tmp->next);
   return tmp->value;
 }
 
 // badblues
-template <typename T>
+template<typename T>
 int CycList<T>::getIndex(T val) {
-  Node<T>* tmp = head;
+  Node<T> *tmp = head;
   if (tmp->value == val) return 0;
   tmp = tmp->next;
   for (int i = 1; tmp != head; i++, tmp = tmp->next) {
@@ -58,19 +61,18 @@ int CycList<T>::getIndex(T val) {
 }
 
 // badblues
-template <typename T>
+template<typename T>
 bool CycList<T>::insertValue(int index, T val) {
   if (index == 0) {
-    Node<T>* tail = head;
-    for (; tail->next != head; tail = tail->next)
-      ;
-    Node<T>* newNode = new Node(val);
+    Node<T> *tail = head;
+    for (; tail->next != head; tail = tail->next);
+    Node<T> *newNode = new Node(val);
     tail->next = newNode;
     newNode->next = head;
     head = newNode;
     return true;
   }
-  Node<T>* tmp = head;
+  Node<T> *tmp = head;
   for (int i = 1; i < index; i++, tmp = tmp->next) {
     // TODO
   }
@@ -80,22 +82,21 @@ bool CycList<T>::insertValue(int index, T val) {
 //badblues
 template<typename T>
 string CycList<T>::toString() {
-  stringstream* sstr = new stringstream;
-  Node<T>* tmp = head;
+  stringstream *sstr = new stringstream;
+  Node<T> *tmp = head;
   do {
     if (tmp) {
       *sstr << tmp->value;
       tmp = tmp->next;
     }
-  }
-  while(tmp != head);
+  } while (tmp != head);
   return sstr->str();
 }
 
 // teenspirit
-template <typename T>
+template<typename T>
 void CycList<T>::addValue(T value) {
-  Node<T>* tmp = new Node(value);
+  Node<T> *tmp = new Node(value);
 
   if (head == nullptr) {
     head = tmp;
@@ -110,10 +111,11 @@ void CycList<T>::addValue(T value) {
 }
 
 // teenspirit
-template <typename T>
+template<typename T>
 bool CycList<T>::removeValue(T value) {
-  Node<T>* current = head;
-  Node<T>* previous = nullptr;
+  int startSize = size;
+  Node<T> *current = head;
+  Node<T> *previous = nullptr;
   if (isEmpty()) return false;
   do {
     if (current->value == value) {
@@ -130,51 +132,21 @@ bool CycList<T>::removeValue(T value) {
         }
       }
       size--;
-      return true;
     }
-
     previous = current;
     current = current->next;
   } while (current != head);
 
-  return false;
+  if (size < startSize)
+    return true;
+  else
+    return false;
 }
 
 // teenspirit
-template <typename T>
-bool CycList<T>::removeValue(int index, T value) {
-  Node<T>* current = head;
-  Node<T>* previous = nullptr;
-  if (isEmpty()) return false;
-  do {
-    if (current->value == value) {
-      if (previous != nullptr) {
-        previous->next = current->next;
-
-        if (current == tail) tail = previous;
-      } else {
-        if (size == 1) {
-          head = tail = nullptr;
-        } else {
-          head = current->next;
-          tail = current->next;
-        }
-      }
-      size--;
-      return true;
-    }
-
-    previous = current;
-    current = current->next;
-  } while (current != head);
-
-  return false;
-}
-
-// teenspirit
-template <typename T>
+template<typename T>
 void CycList<T>::show() {
-  Node<T>* tmpHead = head;
+  Node<T> *tmpHead = head;
   int tmp = size;
   while (tmp != 0) {
     std::cout << tmpHead->value << " ";
@@ -185,17 +157,17 @@ void CycList<T>::show() {
 }
 
 // teenspirit
-template <typename T>
+template<typename T>
 void CycList<T>::clear() {
-  head = NULL;
-  tail = NULL;
+  head = nullptr;
+  tail = nullptr;
   size = 0;
 }
 
 // teenspirit
-template <typename T>
+template<typename T>
 bool CycList<T>::isExistValue(T value) {
-  Node<T>* tmpHead = head;
+  Node<T> *tmpHead = head;
   int tmp = size;
   while (tmp != 0) {
     if (value == tmpHead->value) return true;
@@ -205,18 +177,26 @@ bool CycList<T>::isExistValue(T value) {
   return false;
 }
 
-template class CycList<int>;
+template
+class CycList<int>;
 
-template class CycList<double>;
+template
+class CycList<double>;
 
-template class CycList<char>;
+template
+class CycList<char>;
 
-template class CycList<unsigned int>;
+template
+class CycList<unsigned int>;
 
-template class CycList<long>;
+template
+class CycList<long>;
 
-template class CycList<long long>;
+template
+class CycList<long long>;
 
-template class CycList<short>;
+template
+class CycList<short>;
 
-template class CycList<string>;
+template
+class CycList<string>;

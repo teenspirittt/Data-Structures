@@ -1,5 +1,4 @@
-#ifndef _HEADERS_LIST_H_
-#define _HEADERS_LIST_H_
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -79,7 +78,7 @@ class CycList {
   // teenspirit
   bool removeValue(T value);
   // teenspirit
-  bool removeValue(int index, T values);
+  bool removeValueByIndex(int index);
   // teenspirit
   int getLookedElemCount();
   // badblues
@@ -88,6 +87,7 @@ class CycList {
   friend istream &operator>>(istream &is, CycList<V> &list);
   template<class V>
   friend ostream &operator<<(ostream &os, CycList<V> &list);
+  //operator=(const CycList& copy);
   // teenspirit
   ~CycList() {
     while (size != 0) {
@@ -119,4 +119,4 @@ ostream &operator<<(ostream &os, CycList<V> &list) {
   return os;
 }
 
-#endif  //_HEADERS_LIST_H_
+
