@@ -6,13 +6,21 @@
 #define clear_console_ "cls"
 #endif
 
-uint GetChoice(uint l_gap, uint h_gap, const char* msg) {
-  uint num;
-  do {
+int GetNumber(int l_gap, int h_gap, const char* msg) {
+    int number;
     cout << msg;
-    cin >> num;
-  } while ((num < l_gap) || (num > h_gap));
-  return num;
+    while (true) {
+        cin >> number;
+        if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n')) 
+            break;
+        else {
+            cout << "ENTER VALID VALUE\n";
+            cin.clear();
+            while (cin.get() != '\n') {
+            }
+        }
+    }
+    return number;
 }
 
 void ShowMainMenu() {
@@ -44,13 +52,13 @@ void ShowMainMenu() {
 
 template<typename T>
 void ShowList(CycList<T>* obj) {
-  std::cout << "\n" << *obj;
+  cout << "\n" << *obj;
 }
 
 bool AskForDataType(bool &isTypeInt) {
-  std::cout << "DO YOU WANT DATA TYPE AS INT? Y/N (OTHERWISE IT WILL BE STRING)\n";
+  cout << "DO YOU WANT DATA TYPE AS INT? Y/N (OTHERWISE IT WILL BE STRING)\n";
   char c;
-  std::cin >> c;
+  cin >> c;
   if (c == 'N')
     isTypeInt = false;
   else if (c != 'Y')
@@ -63,35 +71,36 @@ void MainMenu() {
   uint selected_elem;
   bool flag = true;
   string* str;
-  bool isTypeInt;
+  bool isTypeInt = true;
   
   if (!AskForDataType(isTypeInt))
     flag = false;
 
-  
-  
-  if (isTypeInt)
-   CycList<int> intObject = new CycList<int>();
-  else
-    CycList<string> stringObject = new CycList<string>();
+  CycList<int> intObject;
+  CycList<string> stringObject;
 
   while (flag) {
     system(clear_console_);
-    ShowList(&object);
+    if (isTypeInt)
+      ShowList(&intObject);
+    else
+      ShowList(&stringObject);
     ShowMainMenu();
-    choice = GetChoice(0, 12, "");
+    choice = GetNumber(0, 12, "");
     switch (choice) {
       case 0:
         flag = false;
         break;
       case 1:
         system(clear_console_);
-        std::cout << "ENTER VALUE\n";
         if (isTypeInt) {
-          
+          int val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE\n");
+          intObject.addValue(val);
+        } else {
+          string str;
+          cin >> str;
+          stringObject.addValue(str);
         }
-        //object.addValue();
-
       break;
         case 2:
       break;

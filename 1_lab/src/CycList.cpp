@@ -5,7 +5,6 @@
 // badblues
 template <typename T>
 CycList<T>::CycList() {
-  std::cout << "calling constructor\n";
   this->size = 0;
   this->head = NULL;
   this->tail = NULL;
@@ -84,7 +83,7 @@ string CycList<T>::toString() {
   Node<T>* tmp = head;
   do {
     if (tmp) {
-      *sstr << tmp->value;
+      *sstr << tmp->value << " ";
       tmp = tmp->next;
     }
   }
