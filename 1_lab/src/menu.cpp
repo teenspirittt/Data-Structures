@@ -76,6 +76,7 @@ void MainMenu() {
   if (!AskForDataType(isTypeInt))
     flag = false;
 
+<<<<<<< HEAD
   CycList<int> intObject;
   CycList<string> stringObject;
 
@@ -85,6 +86,18 @@ void MainMenu() {
       ShowList(&intObject);
     else
       ShowList(&stringObject);
+=======
+  
+  
+/*  if (isTypeInt)
+   CycList<int> intObject = new CycList<int>();
+  else
+    CycList<string> stringObject = new CycList<string>();*/
+
+  while (flag) {
+    system(clear_console_);
+   // ShowList(&object);
+>>>>>>> vshabunin
     ShowMainMenu();
     choice = GetNumber(0, 12, "");
     switch (choice) {
