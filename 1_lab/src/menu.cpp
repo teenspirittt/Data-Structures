@@ -91,39 +91,55 @@ void MainMenu() {
       case 0:
         flag = false;
         break;
-      case 1:
-        system(clear_console_);
+      case 1: // add
         if (isTypeInt) {
-          int val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE\n");
+          int val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.addValue(val);
         } else {
           string str;
           cin >> str;
           stringObject.addValue(str);
         }
-      break;
-        case 2:
-      break;
-        case 3:
-      break;
-        case 4:
-      break;
-        case 5:
-      break;
-        case 6:
-      break;
-        case 7:
-      break;
-        case 8:
-      break;
-        case 9:
-      break;
-        case 10:
-      break;
-        case 11:
-      break;
-        case 12:
-      break;
+        break;
+      case 2: { // insert
+        system(clear_console_);
+        int list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        int pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        if (isTypeInt) {
+          int val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          intObject.insertValue(pos, val);
+        } else {
+          string str;
+          cin >> str;
+          stringObject.insertValue(pos, str);
+        }
+        break;
+      }
+      case 3: { // remove
+        system(clear_console_);
+        int list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        int pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        isTypeInt ? intObject.removeValue(pos) : stringObject.removeValue(pos);
+        break;
+      }
+      case 4:
+        break;
+      case 5:
+        break;
+      case 6:
+        break;
+      case 7:
+        break;
+      case 8:
+        break;
+      case 9:
+        break;
+      case 10:
+        break;
+      case 11:
+        break;
+      case 12:
+        break;
     }
   }
 }
