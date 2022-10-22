@@ -6,7 +6,8 @@
     getLookedElemCount();
     editValue();
     CycList(copy);
-
+    removeVal(by index)
+    remove()
 
   badblues list:
  */
@@ -16,14 +17,11 @@ int main() {
   obj.addValue(1);
   obj.addValue(2);
   obj.addValue(3);
-  obj.addValue(4);
-  std::cout << obj.isExistValue(3);
-  std::cout << obj.isExistValue(99);
+
   // ask about remove
   obj.addValue(5);
   obj.removeValue(4);
   obj.show();
-  // obj.show();
   // MainMenu(obj);
   return 0;
 }

@@ -85,51 +85,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/teenspirit/NSTU/AADS/1_lab/build/CMakeFiles /home/teenspirit/NSTU/AADS/1_lab/build//CMakeFiles/progress.marks
@@ -162,76 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named CycListTests
+# Target rules for targets named Kaif
 
 # Build rule for target.
-CycListTests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CycListTests
-.PHONY : CycListTests
+Kaif: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Kaif
+.PHONY : Kaif
 
 # fast build rule for target.
-CycListTests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/build
-.PHONY : CycListTests/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock.dir/build.make googletest/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock_main.dir/build.make googletest/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+Kaif/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/build
+.PHONY : Kaif/fast
 
 src/CycList.o: src/CycList.cpp.o
 .PHONY : src/CycList.o
 
 # target to build an object file
 src/CycList.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/CycList.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/CycList.cpp.o
 .PHONY : src/CycList.cpp.o
 
 src/CycList.i: src/CycList.cpp.i
@@ -239,7 +142,7 @@ src/CycList.i: src/CycList.cpp.i
 
 # target to preprocess a source file
 src/CycList.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/CycList.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/CycList.cpp.i
 .PHONY : src/CycList.cpp.i
 
 src/CycList.s: src/CycList.cpp.s
@@ -247,15 +150,39 @@ src/CycList.s: src/CycList.cpp.s
 
 # target to generate assembly for a file
 src/CycList.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/CycList.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/CycList.cpp.s
 .PHONY : src/CycList.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 src/menu.o: src/menu.cpp.o
 .PHONY : src/menu.o
 
 # target to build an object file
 src/menu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/menu.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/menu.cpp.o
 .PHONY : src/menu.cpp.o
 
 src/menu.i: src/menu.cpp.i
@@ -263,7 +190,7 @@ src/menu.i: src/menu.cpp.i
 
 # target to preprocess a source file
 src/menu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/menu.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/menu.cpp.i
 .PHONY : src/menu.cpp.i
 
 src/menu.s: src/menu.cpp.s
@@ -271,32 +198,8 @@ src/menu.s: src/menu.cpp.s
 
 # target to generate assembly for a file
 src/menu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/src/menu.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kaif.dir/build.make CMakeFiles/Kaif.dir/src/menu.cpp.s
 .PHONY : src/menu.cpp.s
-
-tests/CycListTests.o: tests/CycListTests.cpp.o
-.PHONY : tests/CycListTests.o
-
-# target to build an object file
-tests/CycListTests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.o
-.PHONY : tests/CycListTests.cpp.o
-
-tests/CycListTests.i: tests/CycListTests.cpp.i
-.PHONY : tests/CycListTests.i
-
-# target to preprocess a source file
-tests/CycListTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.i
-.PHONY : tests/CycListTests.cpp.i
-
-tests/CycListTests.s: tests/CycListTests.cpp.s
-.PHONY : tests/CycListTests.s
-
-# target to generate assembly for a file
-tests/CycListTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CycListTests.dir/build.make CMakeFiles/CycListTests.dir/tests/CycListTests.cpp.s
-.PHONY : tests/CycListTests.cpp.s
 
 # Help Target
 help:
@@ -305,25 +208,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... CycListTests"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_main"
+	@echo "... Kaif"
 	@echo "... src/CycList.o"
 	@echo "... src/CycList.i"
 	@echo "... src/CycList.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/menu.o"
 	@echo "... src/menu.i"
 	@echo "... src/menu.s"
-	@echo "... tests/CycListTests.o"
-	@echo "... tests/CycListTests.i"
-	@echo "... tests/CycListTests.s"
 .PHONY : help
 
 
