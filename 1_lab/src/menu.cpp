@@ -69,13 +69,11 @@ void MainMenu() {
     flag = false;
 
   
-  // if (isTypeInt)
-  //  CycList<int> object = new CycList<int>();
-  // else
-  //   CycList<string> object = new CycList<string>();
-
-//тут поменять
-  CycList<int> object;
+  
+  if (isTypeInt)
+   CycList<int> intObject = new CycList<int>();
+  else
+    CycList<string> stringObject = new CycList<string>();
 
   while (flag) {
     system(clear_console_);
@@ -87,9 +85,11 @@ void MainMenu() {
         flag = false;
         break;
       case 1:
-        //system(clear_console_);
+        system(clear_console_);
         std::cout << "ENTER VALUE\n";
-
+        if (isTypeInt) {
+          
+        }
         //object.addValue();
 
       break;
