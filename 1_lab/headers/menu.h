@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "CycList.h"
 
-void MainMenu(CycList<int> &object); 
+void MainMenu(); 

@@ -2,6 +2,7 @@
 #define _HEADERS_LIST_H_
 
 #include <iostream>
+#include <sstream>
 
 typedef unsigned int uint;
 
@@ -83,6 +84,10 @@ class CycList {
   int getLookedElemCount();
   // badblues
   string toString();
+  template<class V>
+  friend istream &operator>>(istream &is, CycList<V> &list);
+  template<class V>
+  friend ostream &operator<<(ostream &os, CycList<V> &list);
   // teenspirit
   ~CycList() {
     while (size != 0) {
@@ -98,5 +103,20 @@ class CycList {
   Node<T>* head;
   Node<T>* tail;
 };
+
+template<class V>
+istream &operator>>(istream &is, CycList<V> &list) {
+  V* obj = new V;
+  is >> *obj;
+  list.add(obj);
+  delete obj;
+  return is;
+}
+
+template<class V>
+ostream &operator<<(ostream &os, CycList<V> &list) {
+  os << list.toString() << "\n";
+  return os;
+}
 
 #endif  //_HEADERS_LIST_H_

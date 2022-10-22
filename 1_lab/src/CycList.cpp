@@ -5,6 +5,7 @@
 // badblues
 template <typename T>
 CycList<T>::CycList() {
+  std::cout << "calling constructor\n";
   this->size = 0;
   this->head = NULL;
   this->tail = NULL;
@@ -28,7 +29,7 @@ int CycList<T>::getSize() {
 // badblues
 template <typename T>
 bool CycList<T>::isEmpty() {
-  return (size == 0) ? true : false;
+  return (size == 0);
 }
 
 // badblues
@@ -70,6 +71,21 @@ bool CycList<T>::insertValue(int index, T val) {
     // TODO
   }
   return true;
+}
+
+//badblues
+template<typename T>
+string CycList<T>::toString() {
+  stringstream* sstr = new stringstream;
+  Node<T>* tmp = head;
+  do {
+    if (tmp) {
+      *sstr << tmp->value;
+      tmp = tmp->next;
+    }
+  }
+  while(tmp != head);
+  return sstr->str();
 }
 
 // teenspirit

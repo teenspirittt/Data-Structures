@@ -19,41 +19,101 @@ void ShowMainMenu() {
   cout << "\n===================\n"
           //temporary names, must be changed
           "MENU\n"
-          "   ADD ELEMENT\n"
-          "   INSERT ELEMENT\n"
-          "   REMOVE ELEMENT\n"
-          "   ORDERED ADD\n"
-          "   ORDERED INSERT\n"
-          "   LIST SIZE\n"
-          "   CLEAR LIST\n"
-          "   IS EMPTY\n"
-          "   CHECK FOR VALUE\n"
-          "   ORDERED INSERT\n"
-          "   READ BY INDEX\n"
-          "   UPDATE BY INTEX\n"
-          "   GET INDEX OF VALUE\n"
-          "   ADD VALUE\n"
-          "   ADD VALUE BY INDEX\n"
-          "   REMOVE VALUE\n"
-          "   RENOVE VALUE BY INDEX\n"
-          //"запрос числа элементов списка просмотренных предыдущей операцией"
-          "   GET NUMBER OF ELEMENTS LOOKED\n"
+          " 1 ADD ELEMENT\n"
+          " 2 INSERT ELEMENT\n"
+          " 3 REMOVE ELEMENT\n"
+          " 4 ORDERED ADD\n"
+          " 5 ORDERED INSERT\n"
+          " 6 LIST SIZE\n"
+          " 7 CLEAR LIST\n"
+          " 8 IS EMPTY\n"
+          //опрос наличия заданного значения
+          " 9 CHECK FOR VALUE\n"
+          " 10 READ BY INDEX\n"
+          " 11 UPDATE BY INDEX\n"
+          " 12 GET INDEX OF VALUE\n"
+          // "   ADD VALUE\n"
+          // "   ADD VALUE BY INDEX\n"
+          // "   REMOVE VALUE\n"
+          // "   RENOVE VALUE BY INDEX\n"
+          // //"запрос числа элементов списка просмотренных предыдущей операцией"
+          // "   GET NUMBER OF ELEMENTS LOOKED\n"
           "  0 EXIT\n"
           "===================\n";
 }
 
-void MainMenu(CycList<int> &object) {
+template<typename T>
+void ShowList(CycList<T>* obj) {
+  std::cout << "\n" << *obj;
+}
+
+bool AskForDataType(bool &isTypeInt) {
+  std::cout << "DO YOU WANT DATA TYPE AS INT? Y/N (OTHERWISE IT WILL BE STRING)\n";
+  char c;
+  std::cin >> c;
+  if (c == 'N')
+    isTypeInt = false;
+  else if (c != 'Y')
+    return false;
+  return true;
+}
+
+void MainMenu() {
   int choice;
   uint selected_elem;
   bool flag = true;
   string* str;
+  bool isTypeInt;
+  
+  if (!AskForDataType(isTypeInt))
+    flag = false;
+
+  
+  // if (isTypeInt)
+  //  CycList<int> object = new CycList<int>();
+  // else
+  //   CycList<string> object = new CycList<string>();
+
+//тут поменять
+  CycList<int> object;
+
   while (flag) {
     system(clear_console_);
+    ShowList(&object);
     ShowMainMenu();
-    choice = GetChoice(0, 15, "");
+    choice = GetChoice(0, 12, "");
     switch (choice) {
       case 0:
-      flag = false;
+        flag = false;
+        break;
+      case 1:
+        //system(clear_console_);
+        std::cout << "ENTER VALUE\n";
+
+        //object.addValue();
+
+      break;
+        case 2:
+      break;
+        case 3:
+      break;
+        case 4:
+      break;
+        case 5:
+      break;
+        case 6:
+      break;
+        case 7:
+      break;
+        case 8:
+      break;
+        case 9:
+      break;
+        case 10:
+      break;
+        case 11:
+      break;
+        case 12:
       break;
     }
   }
