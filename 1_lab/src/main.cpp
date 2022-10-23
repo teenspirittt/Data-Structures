@@ -9,23 +9,16 @@
     removeVal(by index)
 
   badblues list:
-    выбор типа данных в меню (при запуске программы? )
+    CycList()
+    getByIndex()
+    getIndex()
+    insertValue()
+    getLookedelemCount()
+    iteratory ебучие
  */
 
 int main() {
-  CycList<int> obj;
-  obj.addValue(1);
-  obj.addValue(2);
-  obj.addValue(4);
-  obj.addValue(3);
-  obj.addValue(5);
-  obj.addValue(4);
-  obj.addValue(4);
-  obj.addValue(4);
-
-
-  obj.removeValue(4);
-  obj.show();
+  MainMenu();
 
   return 0;
 }

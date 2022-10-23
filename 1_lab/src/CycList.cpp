@@ -92,6 +92,13 @@ string CycList<T>::toString() {
   return sstr->str();
 }
 
+
+//badblues
+template<typename T>
+int CycList<T>::getLookedElemCount() {
+  return 1234;
+}
+
 // teenspirit
 template<typename T>
 void CycList<T>::addValue(T value) {
@@ -140,6 +147,13 @@ bool CycList<T>::removeValue(T value) {
     return true;
   else
     return false;
+}
+
+//teenspirit
+template<typename T>
+bool CycList<T>::removeValueByIndex(int index) {
+  //hyu govno
+  return true;
 }
 
 // teenspirit

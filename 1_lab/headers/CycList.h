@@ -79,7 +79,7 @@ class CycList {
   bool removeValue(T value);
   // teenspirit
   bool removeValueByIndex(int index);
-  // teenspirit
+  // badblues
   int getLookedElemCount();
   // badblues
   string toString();

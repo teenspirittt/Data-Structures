@@ -25,27 +25,19 @@ int GetNumber(int l_gap, int h_gap, const char* msg) {
 
 void ShowMainMenu() {
   cout << "\n===================\n"
-          //temporary names, must be changed
-          "MENU\n"
-          " 1 ADD ELEMENT\n"
-          " 2 INSERT ELEMENT\n"
-          " 3 REMOVE ELEMENT\n"
-          " 4 ORDERED ADD\n"
-          " 5 ORDERED INSERT\n"
-          " 6 LIST SIZE\n"
-          " 7 CLEAR LIST\n"
-          " 8 IS EMPTY\n"
-          //опрос наличия заданного значения
-          " 9 CHECK FOR VALUE\n"
-          " 10 READ BY INDEX\n"
-          " 11 UPDATE BY INDEX\n"
-          " 12 GET INDEX OF VALUE\n"
-          // "   ADD VALUE\n"
-          // "   ADD VALUE BY INDEX\n"
-          // "   REMOVE VALUE\n"
-          // "   RENOVE VALUE BY INDEX\n"
-          // //"запрос числа элементов списка просмотренных предыдущей операцией"
-          // "   GET NUMBER OF ELEMENTS LOOKED\n"
+          "    MENU:\n"
+          " 1  ADD ELEMENT\n"
+          " 2  INSERT ELEMENT\n"
+          " 3  REMOVE ELEMENT\n"
+          " 4  REMOVE BY INDEX\n"
+          " 5  LIST SIZE\n"
+          " 6  CLEAR LIST\n"
+          " 7  IS EMPTY\n"
+          " 8  CHECK FOR ELEMENT\n"
+          " 9  READ BY INDEX\n"
+          " 10 UPDATE BY INDEX\n"
+          " 11 GET INDEX OF ELEMENT\n"
+          " 12 GET NUMBER OF ELEMENTS LOOKED\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -55,26 +47,26 @@ void ShowList(CycList<T>* obj) {
   cout << "\n" << *obj;
 }
 
-bool AskForDataType(bool &isTypeInt) {
-  cout << "DO YOU WANT DATA TYPE AS INT? Y/N (OTHERWISE IT WILL BE STRING)\n";
+void AskForDataType(bool &isTypeInt) {
   char c;
-  cin >> c;
-  if (c == 'N')
-    isTypeInt = false;
-  else if (c != 'Y')
-    return false;
-  return true;
+  do {
+    cout << "\nWHAT DATA TYPE TO USE (INT/STRING)? I/S\n";
+    cin >> c;
+    if (c == 'S' || c == 's')
+      isTypeInt = false;
+  } while (c != 'S' && c != 's' && c != 'I' && c != 'i');
 }
 
 void MainMenu() {
   int choice;
-  uint selected_elem;
+  int pos;
+  uint list_size;
   bool flag = true;
-  string* str;
+  string str;
+  int val;
   bool isTypeInt = true;
   
-  if (!AskForDataType(isTypeInt))
-    flag = false;
+  AskForDataType(isTypeInt);
     
   CycList<int> intObject;
   CycList<string> stringObject;
@@ -93,23 +85,21 @@ void MainMenu() {
         break;
       case 1: // add
         if (isTypeInt) {
-          int val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.addValue(val);
         } else {
-          string str;
           cin >> str;
           stringObject.addValue(str);
         }
         break;
       case 2: { // insert
         system(clear_console_);
-        int list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
-        int pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
         if (isTypeInt) {
-          int val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.insertValue(pos, val);
         } else {
-          string str;
           cin >> str;
           stringObject.insertValue(pos, str);
         }
@@ -117,29 +107,93 @@ void MainMenu() {
       }
       case 3: { // remove
         system(clear_console_);
-        int list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
-        int pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
-        isTypeInt ? intObject.removeValue(pos) : stringObject.removeValue(pos);
+        if (isTypeInt) {
+          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          intObject.removeValue(val);
+        } else {
+          cin >> str;
+          stringObject.removeValue(str);
+        }
         break;
       }
-      case 4:
+      case 4: { // remove by index
+        list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        isTypeInt ? intObject.removeValueByIndex(pos) : stringObject.removeValueByIndex(pos);
         break;
-      case 5:
+      }
+      case 5: { // list size
+        list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        cout << "SIZE = " << list_size << "\n";
         break;
-      case 6:
+      }
+      case 6: { // clear
+        isTypeInt ? intObject.clear() : stringObject.clear();
         break;
-      case 7:
+      }
+      case 7: { // isempty
+        bool isempty = isTypeInt ? intObject.isEmpty() : stringObject.isEmpty();
+        cout << "isEmpty = " << isempty << "\n"; 
         break;
-      case 8:
+      }
+      case 8: { // check for
+        bool res;
+        if (isTypeInt) {
+          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          res = intObject.isExistValue(val);
+        } else {
+          cout << "ENTER STRING:\n";
+          cin >> str;
+          res = stringObject.isExistValue(str);
+        }
+        res ? cout << "VALUE EXISTS\n" : cout << "VALUE DOESN'T EXIST\n";
+      }
+      case 9: { // read by index
+        list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        if (isTypeInt) {
+          cout << "ELEMENT: " << intObject.getByIndex(pos) << "\n";
+        } else {
+          cout << "ELEMENT: " << stringObject.getByIndex(pos) << "\n";
+        }
         break;
-      case 9:
+      }
+      case 10: { // update by index
+        system(clear_console_);
+        list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        if (isTypeInt) {
+          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          intObject.editValue(pos, val);
+        } else {
+          cout << "ENTER STRING:\n";
+          cin >> str;
+          stringObject.editValue(pos, str);
+        }
         break;
-      case 10:
+      }
+      case 11: { // get index by element
+        system(clear_console_);
+        if (isTypeInt) {
+          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          pos = intObject.getIndex(val);
+        } else {
+          cout << "ENTER STRING:\n";
+          cin >> str;
+          pos = stringObject.getIndex(str);
+        }
+        cout << "POS = " << pos << "\n";
         break;
-      case 11:
+      }
+      case 12: { // get number of looked elements
+        system(clear_console_);
+        if (isTypeInt) {
+          cout << "NUM = " << intObject.getLookedElemCount() << "\n";
+        } else {
+          cout << "NUM = " << stringObject.getLookedElemCount() << "\n";
+        }
         break;
-      case 12:
-        break;
+      }
     }
   }
 }
