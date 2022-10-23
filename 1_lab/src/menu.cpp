@@ -20,6 +20,7 @@ int GetNumber(int l_gap, int h_gap, const char* msg) {
             }
         }
     }
+    cin.get();
     return number;
 }
 
@@ -44,7 +45,7 @@ void ShowMainMenu() {
 
 template<typename T>
 void ShowList(CycList<T>* obj) {
-  cout << "\n" << *obj;
+  cout << "List: ["<< *obj << "]\n";
 }
 
 void AskForDataType(bool &isTypeInt) {
@@ -93,9 +94,9 @@ void MainMenu() {
         }
         break;
       case 2: { // insert
-        system(clear_console_);
         list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
-        pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
+        if (list_size == 0) list_size = 1;
+        pos = GetNumber(0, list_size,"ENTER POSITION:\n");
         if (isTypeInt) {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.insertValue(pos, val);
@@ -103,10 +104,10 @@ void MainMenu() {
           cin >> str;
           stringObject.insertValue(pos, str);
         }
+        cin.get();
         break;
       }
-      case 3: { // remove
-        system(clear_console_);
+      case 3: { // remove by val
         if (isTypeInt) {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.removeValue(val);
@@ -118,6 +119,10 @@ void MainMenu() {
       }
       case 4: { // remove by index
         list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        if (list_size == 0) {
+          cout << "LIST IS EMPTY\n";
+          continue;
+        }
         pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
         isTypeInt ? intObject.removeValueByIndex(pos) : stringObject.removeValueByIndex(pos);
         break;
@@ -125,6 +130,7 @@ void MainMenu() {
       case 5: { // list size
         list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
         cout << "SIZE = " << list_size << "\n";
+        cin.get();
         break;
       }
       case 6: { // clear
@@ -134,6 +140,7 @@ void MainMenu() {
       case 7: { // isempty
         bool isempty = isTypeInt ? intObject.isEmpty() : stringObject.isEmpty();
         cout << "isEmpty = " << isempty << "\n"; 
+        cin.get();
         break;
       }
       case 8: { // check for
@@ -147,20 +154,29 @@ void MainMenu() {
           res = stringObject.isExistValue(str);
         }
         res ? cout << "VALUE EXISTS\n" : cout << "VALUE DOESN'T EXIST\n";
+        cin.get();
       }
       case 9: { // read by index
         list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        if (list_size == 0) {
+          cout << "LIST IS EMPTY\n";
+          continue;
+        }
         pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
         if (isTypeInt) {
           cout << "ELEMENT: " << intObject.getByIndex(pos) << "\n";
         } else {
           cout << "ELEMENT: " << stringObject.getByIndex(pos) << "\n";
         }
+        cin.get();
         break;
       }
       case 10: { // update by index
-        system(clear_console_);
         list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();
+        if (list_size == 0) {
+          cout << "LIST IS EMPTY\n";
+          continue;
+        }
         pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
         if (isTypeInt) {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
@@ -173,7 +189,6 @@ void MainMenu() {
         break;
       }
       case 11: { // get index by element
-        system(clear_console_);
         if (isTypeInt) {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           pos = intObject.getIndex(val);
@@ -183,15 +198,16 @@ void MainMenu() {
           pos = stringObject.getIndex(str);
         }
         cout << "POS = " << pos << "\n";
+        cin.get();
         break;
       }
       case 12: { // get number of looked elements
-        system(clear_console_);
         if (isTypeInt) {
           cout << "NUM = " << intObject.getLookedElemCount() << "\n";
         } else {
           cout << "NUM = " << stringObject.getLookedElemCount() << "\n";
         }
+        cin.get();
         break;
       }
     }

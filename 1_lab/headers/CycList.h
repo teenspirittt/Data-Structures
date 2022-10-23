@@ -115,7 +115,7 @@ istream &operator>>(istream &is, CycList<V> &list) {
 
 template<class V>
 ostream &operator<<(ostream &os, CycList<V> &list) {
-  os << list.toString() << "\n";
+  os << list.toString();
   return os;
 }
 

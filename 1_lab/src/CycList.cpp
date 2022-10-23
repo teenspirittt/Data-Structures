@@ -43,7 +43,10 @@ bool CycList<T>::isEmpty() {
 template<typename T>
 T CycList<T>::getByIndex(int index) {
   Node<T> *tmp = head;
-  for (int i = 0; i < index, tmp != head; i++, tmp = tmp->next);
+  if (index == 0)
+    return tmp->value;
+  tmp = tmp->next;
+  for (int i = 1; i < index && tmp != head; i++, tmp = tmp->next);
   return tmp->value;
 }
 
@@ -62,19 +65,29 @@ int CycList<T>::getIndex(T val) {
 // badblues
 template<typename T>
 bool CycList<T>::insertValue(int index, T val) {
+  Node<T>* new_node = new Node(val);
   if (index == 0) {
-    Node<T> *tail = head;
-    for (; tail->next != head; tail = tail->next);
-    Node<T> *newNode = new Node(val);
-    tail->next = newNode;
-    newNode->next = head;
-    head = newNode;
-    return true;
+    if (head == nullptr) {
+      head = new_node;
+      tail = new_node;
+      tail->next = new_node;
+      head->next = new_node;
+    } else {
+      tail->next = new_node;
+      new_node->next = head;
+      head = new_node;
+    }
+  } else if (index == size) {
+    tail->next = new_node;
+    new_node->next = head;
+    tail = new_node;
+  } else {
+    Node<T>* tmp = head;
+    for (int i = 1; i <= index; i++, tmp = tmp->next) {}
+    new_node->next = tmp->next;
+    tmp->next = new_node;
   }
-  Node<T> *tmp = head;
-  for (int i = 1; i < index; i++, tmp = tmp->next) {
-    // TODO
-  }
+  size++;
   return true;
 }
 
@@ -85,10 +98,14 @@ string CycList<T>::toString() {
   Node<T> *tmp = head;
   do {
     if (tmp) {
-      *sstr << tmp->value << " ";
+      *sstr << tmp->value;
+      if (tmp->next != head)
+        *sstr << " ";
       tmp = tmp->next;
     }
   } while (tmp != head);
+  //убрать позже
+  if (head) *sstr << " head.v = " << head->value << " tail.v = " << tail->value;
   return sstr->str();
 }
 

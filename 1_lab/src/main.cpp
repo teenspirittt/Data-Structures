@@ -9,16 +9,11 @@
     removeVal(by index)
 
   badblues list:
-    CycList()
-    getByIndex()
-    getIndex()
-    insertValue()
     getLookedelemCount()
     iteratory ебучие
  */
 
 int main() {
   MainMenu();
-
   return 0;
 }
