@@ -103,7 +103,7 @@ void MainMenu() {
         } else {
           cin >> str;
           stringObject.insertValue(pos, str);
-        }
+        } 
         cin.get();
         break;
       }
@@ -155,6 +155,7 @@ void MainMenu() {
         }
         res ? cout << "VALUE EXISTS\n" : cout << "VALUE DOESN'T EXIST\n";
         cin.get();
+        break;
       }
       case 9: { // read by index
         list_size = isTypeInt ? intObject.getSize() : stringObject.getSize();

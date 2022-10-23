@@ -54,7 +54,8 @@ T CycList<T>::getByIndex(int index) {
 template<typename T>
 int CycList<T>::getIndex(T val) {
   Node<T> *tmp = head;
-  if (tmp->value == val) return 0;
+  if (tmp->value == val)
+    return 0;
   tmp = tmp->next;
   for (int i = 1; tmp != head; i++, tmp = tmp->next) {
     if (tmp->value == val) return i;
@@ -65,6 +66,7 @@ int CycList<T>::getIndex(T val) {
 // badblues
 template<typename T>
 bool CycList<T>::insertValue(int index, T val) {
+  l_elem_c = 1;
   Node<T>* new_node = new Node(val);
   if (index == 0) {
     if (head == nullptr) {
@@ -83,7 +85,7 @@ bool CycList<T>::insertValue(int index, T val) {
     tail = new_node;
   } else {
     Node<T>* tmp = head;
-    for (int i = 1; i <= index; i++, tmp = tmp->next) {}
+    for (int i = 1; i <= index; i++, tmp = tmp->next, l_elem_c++) {}
     new_node->next = tmp->next;
     tmp->next = new_node;
   }
@@ -113,7 +115,7 @@ string CycList<T>::toString() {
 //badblues
 template<typename T>
 int CycList<T>::getLookedElemCount() {
-  return 1234;
+  return l_elem_c;
 }
 
 // teenspirit
@@ -169,6 +171,8 @@ bool CycList<T>::removeValue(T value) {
 //teenspirit
 template<typename T>
 bool CycList<T>::removeValueByIndex(int index) {
+  l_elem_c = 1;
+  l_elem_c++;
   //hyu govno
   return true;
 }
@@ -197,13 +201,16 @@ void CycList<T>::clear() {
 // teenspirit
 template<typename T>
 bool CycList<T>::isExistValue(T value) {
+  l_elem_c = 1;
   Node<T> *tmpHead = head;
   int tmp = size;
   while (tmp != 0) {
     if (value == tmpHead->value) return true;
     tmpHead = tmpHead->next;
     tmp--;
+    l_elem_c++;
   }
+  l_elem_c--;
   return false;
 }
 

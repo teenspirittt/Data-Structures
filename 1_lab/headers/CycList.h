@@ -102,6 +102,7 @@ class CycList {
   uint size;
   Node<T>* head;
   Node<T>* tail;
+  int l_elem_c = 0;
 };
 
 template<class V>

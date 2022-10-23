@@ -3,13 +3,11 @@
 /* TODO :
   teenspirit list:
     copy constructor
-    getLookedElemCount();
     editValue();
     CycList(copy);
-    removeVal(by index)
+    removeVal(by index) + считать просмотренные элементы (l_elem_c)
 
   badblues list:
-    getLookedelemCount()
     iteratory ебучие
  */
 
