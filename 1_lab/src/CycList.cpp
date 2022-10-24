@@ -43,7 +43,7 @@ bool CycList<T>::isEmpty() {
 template<typename T>
 T CycList<T>::getByIndex(int index) {
   if (index >= size || index < 0)
-    return nullptr;
+    return NULL;
   Node<T> *tmp = head;
   if (index == 0)
     return tmp->value;
