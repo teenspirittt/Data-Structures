@@ -42,6 +42,8 @@ bool CycList<T>::isEmpty() {
 // badblues
 template<typename T>
 T CycList<T>::getByIndex(int index) {
+  if (index >= size || index < 0)
+    return nullptr;
   Node<T> *tmp = head;
   if (index == 0)
     return tmp->value;
@@ -66,6 +68,8 @@ int CycList<T>::getIndex(T val) {
 // badblues
 template<typename T>
 bool CycList<T>::insertValue(int index, T val) {
+  if (index >= size || index < 0)
+    return false;
   l_elem_c = 1;
   Node<T>* new_node = new Node(val);
   if (index == 0) {
