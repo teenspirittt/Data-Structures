@@ -6,21 +6,21 @@
 #define clear_console_ "cls"
 #endif
 
-int GetNumber(int l_gap, int h_gap, const char* msg) {
-    int number;
-    cout << msg;
-    while (true) {
-        cin >> number;
-        if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n')) 
-            break;
-        else {
-            cout << "ENTER VALID VALUE\n";
-            cin.clear();
-            while (cin.get() != '\n') {
-            }
-        }
+int GetNumber(int l_gap, int h_gap, const char *msg) {
+  int number;
+  cout << msg;
+  while (true) {
+    cin >> number;
+    if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n'))
+      break;
+    else {
+      cout << "ENTER VALID VALUE\n";
+      cin.clear();
+      while (cin.get() != '\n') {
+      }
     }
-    cin.get();
+  }
+  cin.get();
     return number;
 }
 
@@ -44,7 +44,7 @@ void ShowMainMenu() {
 }
 
 template<typename T>
-void ShowList(CycList<T>* obj) {
+void ShowList(CycList<T> *obj) {
   cout << "List: ["<< *obj << "]\n";
 }
 
@@ -63,12 +63,11 @@ void MainMenu() {
   int pos;
   uint list_size;
   bool flag = true;
-  string str;
-  int val;
+  string str;int val;
   bool isTypeInt = true;
   
   AskForDataType(isTypeInt);
-    
+
   CycList<int> intObject;
   CycList<string> stringObject;
 
@@ -86,7 +85,7 @@ void MainMenu() {
         break;
       case 1: // add
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.addValue(val);
         } else {
           cin >> str;
@@ -98,18 +97,18 @@ void MainMenu() {
         if (list_size == 0) list_size = 1;
         pos = GetNumber(0, list_size,"ENTER POSITION:\n");
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.insertValue(pos, val);
         } else {
           cin >> str;
           stringObject.insertValue(pos, str);
-        } 
+        }
         cin.get();
         break;
       }
       case 3: { // remove by val
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.removeValue(val);
         } else {
           cin >> str;
@@ -139,14 +138,14 @@ void MainMenu() {
       }
       case 7: { // isempty
         bool isempty = isTypeInt ? intObject.isEmpty() : stringObject.isEmpty();
-        cout << "isEmpty = " << isempty << "\n"; 
+        cout << "isEmpty = " << isempty << "\n";
         cin.get();
         break;
       }
       case 8: { // check for
         bool res;
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           res = intObject.isExistValue(val);
         } else {
           cout << "ENTER STRING:\n";
@@ -180,7 +179,7 @@ void MainMenu() {
         }
         pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.editValue(pos, val);
         } else {
           cout << "ENTER STRING:\n";
@@ -191,7 +190,7 @@ void MainMenu() {
       }
       case 11: { // get index by element
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           pos = intObject.getIndex(val);
         } else {
           cout << "ENTER STRING:\n";

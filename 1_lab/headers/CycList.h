@@ -67,7 +67,7 @@ class CycList {
   // badblues
   T getByIndex(int index);
   // teenspirit
-  void editValue(int index, T value);
+  bool editValue(int index, T value);
   // badblues
   int getIndex(T value);
   // teenspirit
@@ -99,9 +99,9 @@ class CycList {
   }
 
  private:
-  uint size;
-  Node<T>* head;
-  Node<T>* tail;
+  uint size{};
+  Node<T>* head{};
+  Node<T>* tail{};
   int l_elem_c = 0;
 };
 
