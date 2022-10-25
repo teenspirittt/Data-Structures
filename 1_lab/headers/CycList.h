@@ -74,7 +74,6 @@ class CycList {
   void addValue(T value);
   // badblues
   bool insertValue(int index, T value);
-  void show();
   // teenspirit
   bool removeValue(T value);
   // teenspirit

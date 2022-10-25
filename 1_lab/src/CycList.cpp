@@ -243,19 +243,6 @@ bool CycList<T>::removeValueByIndex(int index) {
 
 // teenspirit
 template<typename T>
-void CycList<T>::show() {
-  Node<T> *tmpHead = head;
-  int tmp = size;
-  while (tmp != 0) {
-    std::cout << tmpHead->value << " ";
-    tmpHead = tmpHead->next;
-    tmp--;
-  }
-  std::cout << std::endl;
-}
-
-// teenspirit
-template<typename T>
 void CycList<T>::clear() {
   head = nullptr;
   tail = nullptr;
