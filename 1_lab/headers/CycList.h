@@ -87,7 +87,6 @@ class CycList {
   friend istream &operator>>(istream &is, CycList<V> &list);
   template<class V>
   friend ostream &operator<<(ostream &os, CycList<V> &list);
-  //operator=(const CycList& copy);
   // teenspirit
   ~CycList() {
     while (size != 0) {
