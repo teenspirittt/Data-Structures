@@ -10,7 +10,7 @@
  */
 
 int main() {
-  //MainMenu();
+ // MainMenu();
   CycList<int> obj;
   obj.addValue(1);
   obj.addValue(2);
@@ -22,7 +22,10 @@ int main() {
   obj.addValue(9);
 
   obj.removeValueByIndex(5);
+  obj.removeValue(3);
+  obj.editValue(2, 99);
+
   obj.show();
-  std::cout << "\n" << obj;
+
   return 0;
 }
