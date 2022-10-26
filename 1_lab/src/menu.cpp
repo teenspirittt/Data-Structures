@@ -14,7 +14,7 @@ int GetNumber(int l_gap, int h_gap, const char* msg) {
         if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n')) 
             break;
         else {
-            cout << "ENTER VALID VALUE\n";
+            cout << "ENTER VALID POSITION\n";
             cin.clear();
             while (cin.get() != '\n') {
             }
@@ -36,9 +36,9 @@ void ShowMainMenu() {
           " 7  IS EMPTY\n"
           " 8  CHECK FOR ELEMENT\n"
           " 9  READ BY INDEX\n"
-          " 10 UPDATE BY INDEX\n"
+          " 10 EDIT BY INDEX\n"
           " 11 GET INDEX OF ELEMENT\n"
-          " 12 TEST ITERATORS (REQUIRED LIST SIZE - 3)\n"
+          " 12 TEST ITERATORS\n"
           " 13 GET NUMBER OF ELEMENTS LOOKED\n"
           "  0 EXIT\n"
           "===================\n";
@@ -64,6 +64,7 @@ void MainMenu() {
   int pos;
   uint list_size;
   bool flag = true;
+  bool iter_flag = true;
   string str;
   int val;
   bool isTypeInt = true;
@@ -90,6 +91,7 @@ void MainMenu() {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.addValue(val);
         } else {
+          cout << "ENTER STRING:\n";
           cin >> str;
           stringObject.addValue(str);
         }
@@ -102,6 +104,7 @@ void MainMenu() {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.insertValue(pos, val);
         } else {
+          cout << "ENTER STRING\n";
           cin >> str;
           stringObject.insertValue(pos, str);
         } 
@@ -113,6 +116,7 @@ void MainMenu() {
           val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
           intObject.removeValue(val);
         } else {
+          cout << "ENTER STRING\n";
           cin >> str;
           stringObject.removeValue(str);
         }
@@ -155,6 +159,7 @@ void MainMenu() {
           res = stringObject.isExistValue(str);
         }
         res ? cout << "VALUE EXISTS\n" : cout << "VALUE DOESN'T EXIST\n";
+        cin.get();
         cin.get();
         break;
       }
@@ -204,40 +209,48 @@ void MainMenu() {
         break;
       }
       case 12: { // test iterators
-        if (isTypeInt)
-          list_size = intObject.getSize();
-        else 
-          list_size = stringObject.getSize();
-        if (list_size < 3) {
-          cout << "LIST SIZE IS NOT MATCH\n";
-          cin.get();
-          continue; 
+        cout << "1 = SET ITERATOR\n2 = ++\n3 = *\n0 = EXIT\n";
+        CycList<int>::Iterator intIter = CycList<int>::Iterator(&intObject);
+        CycList<string>::Iterator stringIter = CycList<string>::Iterator(&stringObject);
+        choice = GetNumber(0, 3, "");
+        iter_flag = true;
+        while (iter_flag) {
+          if (isTypeInt) {
+            switch(choice) {
+                case 1: {
+                  intIter = intObject.begin();
+                  cout << "SET\n";
+                  break;
+                }
+                case 2: {
+                  intIter++;
+                  cout << "++\n";
+                }
+                case 3: {
+                  cout << "iter* = " << intIter*;
+                }
+                case 0: {
+                  iter_flag = false;
+                }
+            }  
+          }
+          else {
+            switch(choice) {
+                case 1: {
+
+                }
+                case 2: {
+
+                }
+                case 3: {
+
+                }
+                case 0: {
+                  iter_flag = false;
+                }
+            }  
+          }
         }
-        if (isTypeInt) {
-          CycList<int>::Iterator iter = CycList<int>::Iterator(&intObject);
-          CycList<int>::Iterator iter2 = CycList<int>::Iterator(&intObject);
-          cout << "\nITER1 = " << *iter << "\nITER2 = " << *iter2;
-          iter++;
-          cout << "\nITER1++ = " << *iter;
-          iter++;
-          cout << "\nITER1++ = " << *iter;
-          bool iseq = iter2 == iter;
-          bool isnteq = iter2 != iter;
-          cout << "\niter == iter2 " << iseq << "\niter != iter2 " << isnteq;
-        }
-        else {
-          CycList<string>::Iterator iter = CycList<string>::Iterator(&stringObject);
-          CycList<string>::Iterator iter2 = CycList<string>::Iterator(&stringObject);
-          cout << "\nITER1 = " << *iter << "\nITER2 = " << *iter2;
-          iter++;
-          cout << "\nITER1++ = " << *iter;
-          iter++;
-          cout << "\nITER1++ = " << *iter;
-          bool iseq = iter2 == iter;
-          bool isnteq = iter2 != iter;
-          cout << "\n(ITER1 == ITER2) " << iseq << "\n(ITER1 != ITER2) " << isnteq;
-        }
-        cin.get();
         break;
       }
       case 13: { // get number of looked elements

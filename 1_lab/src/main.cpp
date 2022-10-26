@@ -3,6 +3,9 @@
 /* TODO :
   teenspirit list:
   badblues list:
+    поправить пункты меню
+    добавить меню для итераторов
+    
  */
 
 int main() {
