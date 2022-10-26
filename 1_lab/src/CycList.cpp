@@ -114,8 +114,8 @@ bool CycList<T>::insertValue(int index, T val) {
     tail = new_node;
   } else {
     Node<T> *tmp = head;
-    for (int i = 1; i < index; i++, tmp = tmp->next, l_elem_c++) {cout << "i = " << i << "\n";}
-    
+    for (int i = 1; i < index; i++, tmp = tmp->next, l_elem_c++) { cout << "i = " << i << "\n"; }
+
     new_node->next = tmp->next;
     tmp->next = new_node;
   }
@@ -137,6 +137,7 @@ string CycList<T>::toString() {
     }
   } while (tmp != head);
   if (head) *sstr << " head.v = " << head->value << " tail.v = " << tail->value;
+  delete sstr;
   return sstr->str();
 }
 
@@ -159,29 +160,34 @@ void CycList<T>::addValue(T value) {
     tail->next = tmp;
     tail = tmp;
   }
+  delete tmp;
   size++;
 }
 
 // teenspirit
 template<typename T>
 bool CycList<T>::removeValue(T value) {
+  int startSize = size;
   Node<T> *current = head;
   Node<T> *previous = nullptr;
-  if (isEmpty())
-    return false;
+  if (isEmpty()) return false;
   if (current->value == value) {
-    head = head->next;
-    tail->next = head;
+    if (size == 1) {
+      head = tail = nullptr;
+    } else {
+      head = nullptr;
+      head = current->next;
+      tail->next = head;
+    }
     size--;
-    delete current;
     return true;
-  }  
+  }
   do {
     if (current->value == value) {
-      if (!previous) {
+      if (previous != nullptr) {
         previous->next = current->next;
-        if (current == tail)
-         tail = previous;
+
+        if (current == tail) tail = previous;
       } else {
         if (size == 1) {
           head = tail = nullptr;
@@ -191,12 +197,15 @@ bool CycList<T>::removeValue(T value) {
         }
       }
       size--;
-      return true;
     }
     previous = current;
     current = current->next;
   } while (current != head);
-  return false;
+
+  if (size < startSize)
+    return true;
+  else
+    return false;
 }
 
 //teenspirit
@@ -210,12 +219,15 @@ bool CycList<T>::removeValueByIndex(int index) {
   Node<T> *previous = nullptr;
 
   if (index == 0) {
-    head = head->next;
-    tail->next = head;
-    delete current;
+    if (size == 1) {
+      head = tail = nullptr;
+    } else {
+      head = head->next;
+      tail->next = head;
+    }
     size--;
     return true;
-  }  
+  }
 
   for (int i = 0; i < index; i++, l_elem_c++) {
     previous = current;

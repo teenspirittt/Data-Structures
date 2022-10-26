@@ -88,7 +88,7 @@ void MainMenu() {
         break;
       case 1: // add
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.addValue(val);
         } else {
           cout << "ENTER STRING:\n";
@@ -101,7 +101,7 @@ void MainMenu() {
         if (list_size == 0) list_size = 1;
         pos = GetNumber(0, list_size,"ENTER POSITION:\n");
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.insertValue(pos, val);
         } else {
           cout << "ENTER STRING\n";
@@ -113,7 +113,7 @@ void MainMenu() {
       }
       case 3: { // remove by val
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.removeValue(val);
         } else {
           cout << "ENTER STRING\n";
@@ -151,7 +151,7 @@ void MainMenu() {
       case 8: { // check for
         bool res;
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           res = intObject.isExistValue(val);
         } else {
           cout << "ENTER STRING:\n";
@@ -186,7 +186,7 @@ void MainMenu() {
         }
         pos = GetNumber(0, list_size - 1,"ENTER POSITION:\n");
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           intObject.editValue(pos, val);
         } else {
           cout << "ENTER STRING:\n";
@@ -197,7 +197,7 @@ void MainMenu() {
       }
       case 11: { // get index by element
         if (isTypeInt) {
-          val = GetNumber(INT_MIN, INT_MAX, "ENTER VALUE:\n");
+          val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
           pos = intObject.getIndex(val);
         } else {
           cout << "ENTER STRING:\n";
