@@ -1,6 +1,5 @@
 #include "../headers/CycList.h"
 
-#include <exception>
 
 // badblues
 template<typename T>

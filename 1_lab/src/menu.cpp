@@ -14,7 +14,7 @@ int GetNumber(int l_gap, int h_gap, const char* msg) {
         if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n')) 
             break;
         else {
-            cout << "ENTER VALID POSITION\n";
+            cout << "INVALID INPUT\n";
             cin.clear();
             while (cin.get() != '\n') {
             }
@@ -209,44 +209,57 @@ void MainMenu() {
         break;
       }
       case 12: { // test iterators
-        cout << "1 = SET ITERATOR\n2 = ++\n3 = *\n0 = EXIT\n";
         CycList<int>::Iterator intIter = CycList<int>::Iterator(&intObject);
         CycList<string>::Iterator stringIter = CycList<string>::Iterator(&stringObject);
-        choice = GetNumber(0, 3, "");
         iter_flag = true;
         while (iter_flag) {
+          system(clear_console_);
+          isTypeInt ? ShowList(&intObject) : ShowList(&stringObject);
+          cout << "1 = SET ITERATOR\n2 = ++\n3 = *\n0 = EXIT\n";
+          choice = GetNumber(0, 3, "");
           if (isTypeInt) {
             switch(choice) {
                 case 1: {
-                  intIter = intObject.begin();
+                  intIter = CycList<int>::Iterator(&intObject);
                   cout << "SET\n";
+                  cin.get();
                   break;
                 }
                 case 2: {
                   intIter++;
-                  cout << "++\n";
+                  break;
                 }
                 case 3: {
-                  cout << "iter* = " << intIter*;
+                  cout << "iter* = " << *intIter << "\n";
+                  cin.get();
+                  break;
                 }
                 case 0: {
                   iter_flag = false;
+                  break;
                 }
             }  
           }
           else {
             switch(choice) {
-                case 1: {
-
+                 case 1: {
+                  stringIter = CycList<string>::Iterator(&stringObject);
+                  cout << "SET\n";
+                  break;
                 }
                 case 2: {
-
+                  stringIter++;
+                  cout << "++\n";
+                  break;
                 }
                 case 3: {
-
+                  cout << "iter* = " << *stringIter << "\n";
+                  cin.get();
+                  break;
                 }
                 case 0: {
                   iter_flag = false;
+                  break;
                 }
             }  
           }

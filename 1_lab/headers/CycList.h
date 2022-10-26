@@ -20,7 +20,9 @@ class CycList {
   // badblues
   class Iterator {
    public:
-    Iterator(Node* node) { currNode = node; }
+    Iterator() {currNode = NULL; } 
+
+    Iterator(CycList* list) { currNode = list->head; }
 
     Iterator& operator=(Node<T>* pNode) {
       this->currNode = pNode;
@@ -51,8 +53,6 @@ class CycList {
    private:
     Node<T>* currNode;
   };
-  //badblues
-  CycList<T>::Iterator begin() { return Iterator(head); }
   // badblues
   CycList();
   // teenspirit
