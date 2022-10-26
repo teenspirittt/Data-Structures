@@ -2,11 +2,7 @@
 
 /* TODO :
   teenspirit list:
-
-    removeVal(by index)
-
   badblues list:
-    iteratory ебучие
  */
 
 int main() {
@@ -24,8 +20,6 @@ int main() {
   obj.removeValueByIndex(5);
   obj.removeValue(3);
   obj.editValue(2, 99);
-
-  obj.show();
 
   return 0;
 }

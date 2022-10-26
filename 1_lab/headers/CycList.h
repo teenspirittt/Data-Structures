@@ -74,7 +74,6 @@ class CycList {
   void addValue(T value);
   // badblues
   bool insertValue(int index, T value);
-  void show();
   // teenspirit
   bool removeValue(T value);
   // teenspirit
@@ -87,7 +86,6 @@ class CycList {
   friend istream &operator>>(istream &is, CycList<V> &list);
   template<class V>
   friend ostream &operator<<(ostream &os, CycList<V> &list);
-  //operator=(const CycList& copy);
   // teenspirit
   ~CycList() {
     while (size != 0) {
