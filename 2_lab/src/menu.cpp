@@ -34,27 +34,14 @@ void ShowMainMenu() {
 }
 
 
-void AskForDataType(bool &isTypeInt) {
-  char c;
-  do {
-    cout << "\nWHAT DATA TYPE TO USE (INT/STRING)? I/S\n";
-    cin >> c;
-    if (c == 'S' || c == 's')
-      isTypeInt = false;
-  } while (c != 'S' && c != 's' && c != 'I' && c != 'i');
-}
-
 void MainMenu() {
   int choice;
   int pos;
   uint list_size;
   bool flag = true;
-  bool iter_flag = true;
   string str;
   int val;
-  bool isTypeInt = true;
-  
-  AskForDataType(isTypeInt);
+
     
 
   while (flag) {
