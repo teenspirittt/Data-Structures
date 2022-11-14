@@ -17,7 +17,6 @@ struct Node {
 template <typename T>
 class CycList {
  public:
-  // badblues
   class Iterator {
    public:
     Iterator() {currNode = NULL; } 
@@ -53,41 +52,25 @@ class CycList {
    private:
     Node<T>* currNode;
   };
-  // badblues
   CycList();
-  // teenspirit
   CycList(const CycList& copy);
-  // badblues
   int getSize();
-  // teenspirit
   void clear();
-  // badblues
   bool isEmpty();
-  // teenspirit
   bool isExistValue(T value);
-  // badblues
   T getByIndex(int index);
-  // teenspirit
   bool editValue(int index, T value);
-  // badblues
   int getIndex(T value);
-  // teenspirit
   void addValue(T value);
-  // badblues
   bool insertValue(int index, T value);
-  // teenspirit
   bool removeValue(T value);
-  // teenspirit
   bool removeValueByIndex(int index);
-  // badblues
   int getLookedElemCount();
-  // badblues
   string toString();
   template<class V>
   friend istream &operator>>(istream &is, CycList<V> &list);
   template<class V>
   friend ostream &operator<<(ostream &os, CycList<V> &list);
-  // teenspirit
   ~CycList() {
     while (size != 0) {
       Node<T>* tmp = head->next;

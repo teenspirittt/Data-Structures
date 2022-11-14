@@ -137,7 +137,6 @@ string CycList<T>::toString() {
     }
   } while (tmp != head);
   if (head) *sstr << " head.v = " << head->value << " tail.v = " << tail->value;
-  delete sstr;
   return sstr->str();
 }
 
@@ -160,7 +159,6 @@ void CycList<T>::addValue(T value) {
     tail->next = tmp;
     tail = tmp;
   }
-  delete tmp;
   size++;
 }
 
