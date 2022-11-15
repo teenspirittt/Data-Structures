@@ -17,13 +17,14 @@
     remove
     printTree
   badblues list:
-    size
+    size ☑
     clear
-    isEmpty
-    get
-    set
+    isEmpty ☑
+    get ☑
+    set ☑
     printKeys
     итероторы :)
+    меню
  */
 
 int main() {
