@@ -35,9 +35,11 @@ class BSTree {
         bool remove(K key);
         string printKeys();
         void printTree();
+
         int getLookedElemCount();
 
     private:
+        void printPreorder(Node<K, V> *node);
         uint size;
         int l_elem_c = 0;
         Node<K, V>* root;
