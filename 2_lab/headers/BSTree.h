@@ -7,19 +7,19 @@
 typedef unsigned int uint;
 using namespace std;
 
-template <typename T>
+template <typename K, typename V>
 struct Node {
-    T value;
-    int key;
+    V value;
+    K key;
     Node* left;
     Node* right;
-    Node(T value, int key) {
+    Node(V value, K key) {
         this->value = value;
         this->key = key;
     }
 };
 
-template <typename T>
+template <typename K, typename V>
 class BSTree {
     public:
         BSTree() {}
@@ -28,15 +28,16 @@ class BSTree {
         uint getSize();
         bool clear();
         bool isEmpty();
-        T get(int key);
-        bool set(T value, int key);
-        T insert(T value, int key);
-        bool remove(int key);
+        V get(K key);
+        bool set(V value, K key);
+        V insert(V value, K key);
+        bool remove(K key);
         string printKeys();
         void printTree();
-        void makeUpTree();
-    
+        int getLookedElemCount();
+
     private:
         uint size;
-        Node<T>* root;
+        int l_elem_c = 0;
+        Node<K, V>* root;
 };

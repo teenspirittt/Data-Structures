@@ -1,24 +1,20 @@
 #include "../headers/BSTree.h"
 
-
-template <typename>
-
-
-template<typename T>
-bool BSTree<T>::isEmpty() {
+template<typename K, typename V>
+bool BSTree<K, V>::isEmpty() {
   return size == 0;
 }
 
-template<typename T>
-uint BSTree<T>::getSize() {
+template<typename K, typename V>
+uint BSTree<K, V>::getSize() {
   return size;
 }
 
-template<typename T>
-string BSTree<T>::printKeys() {
+template<typename K, typename V>
+string BSTree<K, V>::printKeys() {
   stringstream *sstr = new stringstream;
-  Node<T>* tmp = root;
-  stack<Node<T>*> st;
+  Node<K, V>* tmp = root;
+  stack<Node<K, V>*> st;
   st.push(tmp);
   while(!st.empty()) {
     tmp = st.top();
@@ -32,9 +28,9 @@ string BSTree<T>::printKeys() {
   return sstr->str();
 }
 
-template<typename T>
-T BSTree<T>::get(int key) {
-  Node<T>* tmp = root;
+template<typename K, typename V>
+V BSTree<K, V>::get(K key) {
+  Node<K, V>* tmp = root;
   while(tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
@@ -46,9 +42,9 @@ T BSTree<T>::get(int key) {
   return tmp->value;
 }
 
-template<typename T>
-bool BSTree<T>::set(T value, int key) {
-  Node<T>* tmp = root;
+template<typename K, typename V>
+bool BSTree<K, V>::set(V value, K key) {
+  Node<K, V>* tmp = root;
   while(tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
@@ -63,10 +59,10 @@ bool BSTree<T>::set(T value, int key) {
 
 
 
-template<typename T>
-bool BSTree<T>::clear() {
-  Node<T>* tmp = root;
-  stack<Node<T>*> st;
+template<typename K, typename V>
+bool BSTree<K, V>::clear() {
+  Node<K, V>* tmp = root;
+  stack<Node<K, V>*> st;
   st.push(tmp);
   while(!st.empty()) {
     tmp = st.top();
@@ -81,25 +77,25 @@ bool BSTree<T>::clear() {
 }
 
 template 
-class BSTree<int>;
+class BSTree<int, int>;
 
 template
-class BSTree<double>;
+class BSTree<int, double>;
 
 template
-class BSTree<char>;
+class BSTree<int, char>;
 
 template
-class BSTree<unsigned int>;
+class BSTree<int, unsigned int>;
 
 template
-class BSTree<long>;
+class BSTree<int, long>;
 
 template
-class BSTree<long long>;
+class BSTree<int, long long>;
 
 template
-class BSTree<short>;
+class BSTree<int, short>;
 
 template
-class BSTree<string>;
+class BSTree<int, string>;

@@ -51,7 +51,7 @@ void MainMenu() {
   int val;
   int key;
 
-  BSTree<int> tree;
+  BSTree<int, int> tree;
 
   while (flag) {
     system(clear_console_);
@@ -61,12 +61,12 @@ void MainMenu() {
       case 1: { // add element
         val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.insert(val, key);
+        //tree.insert(val, key);
         break;
       }
       case 2: { // remove element
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.remove(key);
+        //tree.remove(key);
         break;
       }
       case 3: { // get by key
@@ -76,8 +76,9 @@ void MainMenu() {
         break;
       }
       case 4: { // set by key
+        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.set(key);
+        tree.set(val, key);
         break;
       }
       case 5: { // clear
