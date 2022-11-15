@@ -7,6 +7,57 @@ bool BSTree<K, V>::isEmpty() {
 
 template<typename K, typename V>
 uint BSTree<K, V>::getSize() {
+  return 0;
+}
+
+template<typename K, typename V>
+BSTree<K, V>::BSTree() {
+root = 0;
+size++;
+}
+
+template<typename K, typename V>
+BSTree<K, V>::~BSTree() {
+
+}
+
+template<typename K, typename V>
+bool BSTree<K, V>::insert(V value, K key) {
+  Node<K, V> *tmp = nullptr;
+
+  if (isEmpty()) {
+    root = new Node(value);
+    return true;
+  }
+  tmp = root;
+  while (tmp) {
+    if (value > tmp.value) {
+      if (tmp.right) {
+        tmp = tmp.right;
+      } else {
+        tmp.right = new Node(value);
+        return true;
+      }
+    } else if (value < tmp.value) {
+      if (tmp.left) {
+        tmp = tmp.left;
+      } else {
+        tmp.left = new Node(value);
+        return true;
+      }
+    }
+  }
+
+  return false;
+
+
+template<typename K, typename V>
+bool BSTree<K, V>::isEmpty() {
+  return size == 0;
+}
+
+template<typename K, typename V>
+uint BSTree<K, V>::getSize() {
   return size;
 }
 
