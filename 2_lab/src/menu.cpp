@@ -103,6 +103,7 @@ void MainMenu() {
         cin.get();
         break;
       }
+
       case 0:
         flag = false;
         break;

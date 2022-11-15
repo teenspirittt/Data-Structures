@@ -115,13 +115,17 @@ bool BSTree<K, V>::clear() {
   return true;
 }
 template<typename K, typename V>
-bool BSTree<K, V>::printTree(Node<K, V> *node) {
-  if (isEmpty()) {
-    return false;
-  }
+void BSTree<K, V>::printTree() {
+  printPreorder(root);
+}
+
+template<typename K, typename V>
+void BSTree<K, V>::printPreorder(Node<K, V> *node) {
+  if (isEmpty())
+    return;
   cout << node->value << " ";
-  printTree(node->left);
-  printTree(node->right);
+  printPreorder(node->left);
+  printPreorder(node->right);
 }
 
 template
