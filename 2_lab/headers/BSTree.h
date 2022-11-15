@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 #include <stack>
+#include "Iterator.h"
+#include "RIterator.h"
 
 typedef unsigned int uint;
 using namespace std;
@@ -26,6 +28,10 @@ class BSTree {
         BSTree();
         BSTree(const BSTree& copy);
         ~BSTree();
+        Iterator begin();
+        RIterator rbegin();
+        Iterator end();
+        RIterator rend();
         uint getSize();
         bool clear();
         bool isEmpty();
