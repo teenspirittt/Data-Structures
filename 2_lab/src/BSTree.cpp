@@ -16,23 +16,23 @@ bool BSTree<K, V>::insert(V value, K key) {
   Node<K, V> *tmp = nullptr;
 
   if (isEmpty()) {
-    root = new Node(value);
+    root = new Node<K, V>(value, key);
     return true;
   }
   tmp = root;
   while (tmp) {
-    if (value > tmp.value) {
-      if (tmp.right) {
-        tmp = tmp.right;
+    if (value > tmp->value) {
+      if (tmp->right) {
+        tmp = tmp->right;
       } else {
-        tmp.right = new Node(value);
+        tmp->right = new Node<K, V>(value, key);
         return true;
       }
-    } else if (value < tmp.value) {
-      if (tmp.left) {
-        tmp = tmp.left;
+    } else if (value < tmp->value) {
+      if (tmp->left) {
+        tmp = tmp->left;
       } else {
-        tmp.left = new Node(value);
+        tmp->left = new Node<K, V>(value, key);
         return true;
       }
     }
@@ -40,7 +40,6 @@ bool BSTree<K, V>::insert(V value, K key) {
 
   return false;
 }
-
 
 template<typename K, typename V>
 bool BSTree<K, V>::isEmpty() {
@@ -55,10 +54,10 @@ uint BSTree<K, V>::getSize() {
 template<typename K, typename V>
 string BSTree<K, V>::printKeys() {
   stringstream *sstr = new stringstream;
-  Node<K, V>* tmp = root;
-  stack<Node<K, V>*> st;
+  Node<K, V> *tmp = root;
+  stack<Node<K, V> *> st;
   st.push(tmp);
-  while(!st.empty()) {
+  while (!st.empty()) {
     tmp = st.top();
     st.pop();
     if (tmp->left != NULL)
@@ -72,8 +71,8 @@ string BSTree<K, V>::printKeys() {
 
 template<typename K, typename V>
 V BSTree<K, V>::get(K key) {
-  Node<K, V>* tmp = root;
-  while(tmp != NULL && tmp->key != key) {
+  Node<K, V> *tmp = root;
+  while (tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
     else
@@ -86,8 +85,8 @@ V BSTree<K, V>::get(K key) {
 
 template<typename K, typename V>
 bool BSTree<K, V>::set(V value, K key) {
-  Node<K, V>* tmp = root;
-  while(tmp != NULL && tmp->key != key) {
+  Node<K, V> *tmp = root;
+  while (tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
     else
@@ -99,14 +98,12 @@ bool BSTree<K, V>::set(V value, K key) {
   return true;
 }
 
-
-
 template<typename K, typename V>
 bool BSTree<K, V>::clear() {
-  Node<K, V>* tmp = root;
-  stack<Node<K, V>*> st;
+  Node<K, V> *tmp = root;
+  stack<Node<K, V> *> st;
   st.push(tmp);
-  while(!st.empty()) {
+  while (!st.empty()) {
     tmp = st.top();
     st.pop();
     if (tmp->left != NULL)
@@ -117,8 +114,17 @@ bool BSTree<K, V>::clear() {
   }
   return true;
 }
+template<typename K, typename V>
+bool BSTree<K, V>::printTree(Node<K, V> *node) {
+  if (isEmpty()) {
+    return false;
+  }
+  cout << node->value << " ";
+  printTree(node->left);
+  printTree(node->right);
+}
 
-template 
+template
 class BSTree<int, int>;
 
 template
