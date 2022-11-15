@@ -18,9 +18,9 @@ class BSTree {
     BSTree() {}
     BSTree(const BSTree& copy);
     ~BSTree(){}
-    uint size();
+    uint getSize();
     void clear();
-    boolean isEmpty();
+    bool isEmpty();
     T get(int key);
     T set(int key);
     T insert(T value, int key);
@@ -29,6 +29,6 @@ class BSTree {
     void printTree();
     
     private:
-        uint size{};
+        uint size;
         Node<T>* root{};
 };
