@@ -23,15 +23,15 @@ struct Node {
 template <typename K, typename V>
 class BSTree {
     public:
-        BSTree() {}
+        BSTree();
         BSTree(const BSTree& copy);
-        ~BSTree(){}
+        ~BSTree();
         uint getSize();
         bool clear();
         bool isEmpty();
         V get(K key);
         bool set(V value, K key);
-        V insert(V value, K key);
+        bool insert(V value, K key);
         bool remove(K key);
         string printKeys();
         void printTree();

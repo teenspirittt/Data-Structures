@@ -1,19 +1,9 @@
 #include "../headers/BSTree.h"
 
 template<typename K, typename V>
-bool BSTree<K, V>::isEmpty() {
-  return size == 0;
-}
-
-template<typename K, typename V>
-uint BSTree<K, V>::getSize() {
-  return 0;
-}
-
-template<typename K, typename V>
 BSTree<K, V>::BSTree() {
-root = 0;
-size++;
+  root = 0;
+  size++;
 }
 
 template<typename K, typename V>
@@ -49,6 +39,7 @@ bool BSTree<K, V>::insert(V value, K key) {
   }
 
   return false;
+}
 
 
 template<typename K, typename V>
