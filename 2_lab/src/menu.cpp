@@ -41,6 +41,10 @@ void ShowMainMenu() {
           "===================\n";
 }
 
+void ShowTree(BSTree tree) {
+  tree.printTree();
+}
+
 
 void MainMenu() {
   int choice;
