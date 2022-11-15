@@ -1,34 +1,33 @@
 #pragma once
 
-
 typedef unsigned int uint;
 
-template <typename T>
+template<typename V, typename K>
 struct Node {
-    T value;
-    int key;
-    Node* left;
-    Node* right;
-    Node(T value) {this->value = value;}
+  V value;
+  int key;
+  Node *left;
+  Node *right;
+  Node(V value) { this->value = value; }
 };
 
-template <typename T>
+template<typename V, typename K>
 class BSTree {
-    public:
-    BSTree() {}
-    BSTree(const BSTree& copy);
-    ~BSTree(){}
-    uint getSize();
-    void clear();
-    bool isEmpty();
-    T get(int key);
-    T set(int key);
-    T insert(T value, int key);
-    bool remove(int key);
-    void printKeys();
-    void printTree();
-    
-    private:
-        uint size;
-        Node<T>* root{};
+ public:
+  BSTree();
+  BSTree(const BSTree &copy);
+  ~BSTree();
+  uint getSize();
+  void clear();
+  bool isEmpty();
+  V get(int key);
+  V set(int key);
+  bool insert(V value, K key);
+  bool remove(int key);
+  void printKeys();
+  void printTree();
+
+ private:
+  uint size;
+  Node<V, K> *root{};
 };
