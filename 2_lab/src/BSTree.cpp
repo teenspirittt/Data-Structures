@@ -2,8 +2,8 @@
 
 template<typename K, typename V>
 BSTree<K, V>::BSTree() {
-  root = 0;
-  size++;
+  root = NULL;
+  size = 0;
 }
 
 template<typename K, typename V>
@@ -12,32 +12,34 @@ BSTree<K, V>::~BSTree() {
 }
 
 template<typename K, typename V>
-bool BSTree<K, V>::insert(V value, K key) {
-  Node<K, V> *tmp = nullptr;
-
+bool BSTree<K, V>::insert(K key, V value) {
+  cout << "inserting\n";
   if (isEmpty()) {
-    root = new Node<K, V>(value, key);
+    root = new Node<K, V>(key, value);
+    size++;
     return true;
   }
-  tmp = root;
+  Node<K, V> *tmp = root;
   while (tmp) {
-    if (value > tmp->value) {
+    cout << "tmp.val = " << tmp->value << " tmp.key = " << tmp->key << "\n";
+    if (key > tmp->key) {
       if (tmp->right) {
         tmp = tmp->right;
       } else {
-        tmp->right = new Node<K, V>(value, key);
+        tmp->right = new Node<K, V>(key, value);
+        size++;
         return true;
       }
-    } else if (value < tmp->value) {
+    } else if (key < tmp->key) {
       if (tmp->left) {
         tmp = tmp->left;
       } else {
-        tmp->left = new Node<K, V>(value, key);
+        tmp->left = new Node<K, V>(key, value);
+        size++;
         return true;
       }
     }
   }
-
   return false;
 }
 
@@ -84,7 +86,7 @@ V BSTree<K, V>::get(K key) {
 }
 
 template<typename K, typename V>
-bool BSTree<K, V>::set(V value, K key) {
+bool BSTree<K, V>::set(K key, V value) {
   Node<K, V> *tmp = root;
   while (tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
@@ -116,12 +118,13 @@ bool BSTree<K, V>::clear() {
 }
 template<typename K, typename V>
 void BSTree<K, V>::printTree() {
+  cout << "printing\n";
   printPreorder(root);
 }
 
 template<typename K, typename V>
 void BSTree<K, V>::printPreorder(Node<K, V> *node) {
-  if (isEmpty())
+  if (isEmpty() || !node)
     return;
   cout << node->value << " ";
   printPreorder(node->left);

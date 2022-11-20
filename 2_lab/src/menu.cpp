@@ -41,10 +41,6 @@ void ShowMainMenu() {
           "===================\n";
 }
 
-void ShowTree(BSTree<int, int> tree) {
-  tree.printTree();
-}
-
 
 void MainMenu() {
   int choice;
@@ -62,12 +58,12 @@ void MainMenu() {
     cout <<"huy";
     tree.printTree();
     ShowMainMenu();
-    choice = GetNumber(0, 13, "");
+    choice = GetNumber(0, 9, "");
     switch (choice) {
       case 1: { // add element
         val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.insert(val, key);
+        tree.insert(key, val);
         break;
       }
       case 2: { // remove element
@@ -105,7 +101,9 @@ void MainMenu() {
         cin.get();
         break;
       }
-
+      case 9: { // test iterators
+        break;
+      }
       case 0:
         flag = false;
         break;

@@ -15,9 +15,11 @@ struct Node {
     K key;
     Node* left;
     Node* right;
-    Node(V value, K key) {
+    Node(K key, V value) {
         this->value = value;
         this->key = key;
+        left = NULL;
+        right = NULL;
     }
 };
 
@@ -35,8 +37,8 @@ class BSTree {
         bool clear();
         bool isEmpty();
         V get(K key);
-        bool set(V value, K key);
-        bool insert(V value, K key);
+        bool set(K key, V value);
+        bool insert(K key, V value);
         bool remove(K key);
         string printKeys();
         void printTree();
