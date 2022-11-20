@@ -18,7 +18,7 @@
     printTree ☑ (изменить если будет время)
   badblues list:
     size ☑
-    clear
+    clear ☑
     isEmpty ☑
     get ☑
     set ☑

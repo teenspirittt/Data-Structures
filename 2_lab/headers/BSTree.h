@@ -35,7 +35,7 @@ class BSTree {
         //Iterator end();
         //RIterator rend();
         uint getSize();
-        bool clear();
+        void clear();
         bool isEmpty();
         V get(K key);
         bool set(K key, V value);

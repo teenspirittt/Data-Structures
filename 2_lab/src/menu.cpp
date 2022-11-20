@@ -84,6 +84,7 @@ void MainMenu() {
       }
       case 5: { // clear
         tree.clear();
+        cin.get();
         break;
       }
       case 6: { //  print keys

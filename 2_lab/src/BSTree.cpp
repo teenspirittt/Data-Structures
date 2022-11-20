@@ -102,20 +102,28 @@ bool BSTree<K, V>::set(K key, V value) {
 }
 
 template<typename K, typename V>
-bool BSTree<K, V>::clear() {
-  Node<K, V> *tmp = root;
+void BSTree<K, V>::clear() {
+  Node<K, V>* lnp = NULL;
+  Node<K, V>* peekn = NULL;
+  Node<K, V>* tmp = root;
   stack<Node<K, V> *> st;
-  st.push(tmp);
-  while (!st.empty()) {
-    tmp = st.top();
-    st.pop();
-    if (tmp->left != NULL)
-      st.push(tmp->left);
-    if (tmp->right != NULL)
-      st.push(tmp->right);
-    delete tmp;
+  while(!st.empty() || tmp) {
+    if(tmp) {
+      st.push(tmp);
+      tmp = tmp->left;
+    } else {
+      peekn = st.top();
+      if (peekn->right && lnp != peekn->right) {
+        tmp = peekn->right;
+      } else {
+        st.pop();
+        lnp = peekn;
+        delete(peekn);
+      }
+    }
   }
-  return true;
+  root = NULL;
+  size = 0;
 }
 
 template<typename K, typename V>
@@ -154,7 +162,7 @@ void BSTree<K, V>::printTree(Node<K, V> *tree, int depth, char *path, int right)
       else
           printf(" ");
 
-      for(int j=1; j<space; j++)
+      for(int j=1; j<3; j++)
       if(i < depth-2)
           printf(" ");
       else
@@ -171,7 +179,7 @@ void BSTree<K, V>::printTree(Node<K, V> *tree, int depth, char *path, int right)
       else
           printf(" ");
 
-      for(int j=1; j<space; j++)
+      for(int j=1; j<3; j++)
           printf(" ");
     }
 
