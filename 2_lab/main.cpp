@@ -11,18 +11,18 @@
 относительно родителей. Трудоёмкость операции – O (n).
 
   teenspirit list:
-    конструкторы
+    конструкторы 
     денструнткоры
-    insert (первым делом)
+    insert ☑
     remove
-    printTree
+    printTree ☑ (изменить если будет время)
   badblues list:
     size ☑
     clear
     isEmpty ☑
     get ☑
     set ☑
-    printKeys
+    printKeys ☑
     итероторы :)
     меню
  */

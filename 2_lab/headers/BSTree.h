@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <stack>
+#include <queue>
 
 
 typedef unsigned int uint;
@@ -42,7 +43,7 @@ class BSTree {
         bool remove(K key);
         string printKeys();
         void printTree();
-        void printPreorder(Node<K,V>* node);
+        void printTree(Node<K, V> *tree, int depth, char *path, int right);
         int getLookedElemCount();
 
     private:

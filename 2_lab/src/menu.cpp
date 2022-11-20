@@ -55,7 +55,6 @@ void MainMenu() {
 
   while (flag) {
     system(clear_console_);
-    cout <<"huy";
     tree.printTree();
     ShowMainMenu();
     choice = GetNumber(0, 9, "");
@@ -88,7 +87,8 @@ void MainMenu() {
         break;
       }
       case 6: { //  print keys
-        tree.printKeys();
+        cout << tree.printKeys();
+        cin.get();
         break;
       }
       case 7: { // get size
