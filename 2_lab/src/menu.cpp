@@ -37,6 +37,7 @@ void ShowMainMenu() {
           "  6 PRINT KEYS\n"
           "  7 GET SIZE\n"
           "  8 IS EMPTY\n"
+          "  9 print tree\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -60,7 +61,6 @@ void MainMenu() {
   while (flag) {
     system(clear_console_);
     cout <<"huy";
-    tree.printTree();
     ShowMainMenu();
     choice = GetNumber(0, 13, "");
     switch (choice) {
@@ -104,6 +104,10 @@ void MainMenu() {
         cout << tree.isEmpty();
         cin.get();
         break;
+      }
+
+      case 9: {
+        tree.printTree();
       }
 
       case 0:
