@@ -17,7 +17,7 @@ BSTree<K, V>::~BSTree() {
 
 template<typename K, typename V>
 bool BSTree<K, V>::insert(K key, V value) {
-  cout << "inserting\n";
+  nodes_counter = 0;
   if (isEmpty()) {
     root = new Node<K, V>(key, value);
     size++;
@@ -25,6 +25,7 @@ bool BSTree<K, V>::insert(K key, V value) {
   }
   Node<K, V> *tmp = root;
   while (tmp) {
+    nodes_counter++;
     if (key > tmp->key) {
       if (tmp->right) {
         tmp = tmp->right;
@@ -50,16 +51,19 @@ bool BSTree<K, V>::insert(K key, V value) {
 
 template<typename K, typename V>
 bool BSTree<K, V>::isEmpty() {
+  nodes_counter = 0;
   return size == 0;
 }
 
 template<typename K, typename V>
 uint BSTree<K, V>::getSize() {
+  nodes_counter = 0;
   return size;
 }
 
 template<typename K, typename V>
 string BSTree<K, V>::printKeys() {
+  nodes_counter = 0;
   stringstream *sstr = new stringstream;
   Node<K, V> *tmp = root;
   stack<Node<K, V> *> st;
@@ -73,18 +77,21 @@ string BSTree<K, V>::printKeys() {
       *sstr << " " << tmp->key;
       tmp = tmp->right;
     }
+    nodes_counter++;
   }
   return sstr->str();
 }
 
 template<typename K, typename V>
 V BSTree<K, V>::get(K key) {
+  nodes_counter = 0;
   Node<K, V> *tmp = root;
   while (tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
     else
       tmp = tmp->right;
+    nodes_counter++;
   }
   if (tmp == NULL)
     return (V)0;
@@ -93,12 +100,14 @@ V BSTree<K, V>::get(K key) {
 
 template<typename K, typename V>
 bool BSTree<K, V>::set(K key, V value) {
+  nodes_counter = 0;
   Node<K, V> *tmp = root;
   while (tmp != NULL && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
     else
       tmp = tmp->right;
+    nodes_counter++;
   }
   if (tmp == NULL)
     return false;
@@ -108,6 +117,7 @@ bool BSTree<K, V>::set(K key, V value) {
 
 template<typename K, typename V>
 void BSTree<K, V>::clear() {
+  nodes_counter = 0;
   Node<K, V>* lnp = NULL;
   Node<K, V>* peekn = NULL;
   Node<K, V>* tmp = root;
@@ -126,6 +136,7 @@ void BSTree<K, V>::clear() {
         delete(peekn);
       }
     }
+    nodes_counter++;
   }
   root = NULL;
   size = 0;
@@ -219,6 +230,11 @@ Iterator<K, V> BSTree<K, V>::end() {
 template<typename K, typename V>
 RIterator<K, V> BSTree<K, V>::rend(){ 
   return RIterator<K, V>(root, 0);
+}
+
+template<typename K, typename V>
+int BSTree<K, V>::CountNodes() {
+  return nodes_counter;
 }
 
 template

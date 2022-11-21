@@ -27,9 +27,10 @@ class BSTree {
         string printKeys();
         void printTree();
         void printTree(Node<K, V> *tree, int depth, char *path, int right);
-        int getLookedElemCount();
+        int CountNodes();
         
     private:
+        int nodes_counter = 0;
         uint size;
         int l_elem_c = 0;
         Node<K, V>* root;

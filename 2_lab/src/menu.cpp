@@ -37,8 +37,9 @@ void ShowMainMenu() {
           "  6 PRINT KEYS\n"
           "  7 GET SIZE\n"
           "  8 IS EMPTY\n"
-          "  9 TEST ITERATOR\n"
-          " 10 TEST REVERSED ITERATOR\n"
+          "  9 COUNT NODES\n"
+          " 10 TEST ITERATOR\n"
+          " 11 TEST REVERSED ITERATOR\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -60,7 +61,7 @@ void MainMenu() {
     system(clear_console_);
     tree.printTree();
     ShowMainMenu();
-    choice = GetNumber(0, 10, "");
+    choice = GetNumber(0, 11, "");
     switch (choice) {
       case 1: { // add element
         val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
@@ -82,7 +83,11 @@ void MainMenu() {
       case 4: { // set by key
         val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.set(val, key);
+        if (tree.set(key, val))
+          cout << "DONE!\n";
+        else 
+          cout << "FAIL!\n";
+        cin.get();
         break;
       }
       case 5: { // clear
@@ -105,7 +110,12 @@ void MainMenu() {
         cin.get();
         break;
       }
-      case 9: { // iterator
+      case 9: { // count nodes
+        cout << tree.CountNodes();
+        cin.get();
+        break;
+      }
+      case 10: { // iterator
         iterator_flag = true;
         Iterator<int, int> iter = tree.begin();
         while(iterator_flag) {
@@ -144,7 +154,7 @@ void MainMenu() {
         }
         break;
       }
-      case 10: { // reversed iterator
+      case 11: { // reversed iterator
         iterator_flag = true;
         RIterator<int, int> iter = tree.rbegin();
         while(iterator_flag) {
