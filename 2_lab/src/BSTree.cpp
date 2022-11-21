@@ -1,4 +1,9 @@
 #include "../headers/BSTree.h"
+#include <iostream>
+#include <stack>
+#include <sstream>
+
+
 template<typename K, typename V>
 BSTree<K, V>::BSTree() {
   root = NULL;
@@ -82,7 +87,7 @@ V BSTree<K, V>::get(K key) {
       tmp = tmp->right;
   }
   if (tmp == NULL)
-    return NULL;
+    return (V)0;
   return tmp->value;
 }
 
@@ -195,6 +200,25 @@ void BSTree<K, V>::printTree()
 
     //initial depth is 0
     printTree(this->root, 0, path, 0);
+}
+template<typename K, typename V>
+Iterator<K, V> BSTree<K, V>::begin() {
+  return Iterator<K, V>(root, 0, size);
+}
+
+template<typename K, typename V>
+RIterator<K, V> BSTree<K, V>::rbegin() {
+  return RIterator<K, V>(root, size-1, size);
+}
+
+template<typename K, typename V>
+Iterator<K, V> BSTree<K, V>::end() {
+  return Iterator<K, V>(root, -1, size);
+}
+
+template<typename K, typename V>
+RIterator<K, V> BSTree<K, V>::rend(){ 
+  return RIterator<K, V>(root, -1, size);
 }
 
 template
