@@ -8,6 +8,12 @@ template<typename K, typename V>
 class RIterator {
     public:
 
+        RIterator() {
+            count = 0;
+            index = -1;
+            root = nullptr;
+        }
+
         RIterator (Node<K, V>* root, int index, uint count) {
             this->root = root;
             this->count = count;
@@ -18,14 +24,14 @@ class RIterator {
 
         RIterator& operator++() {
              index--;
-             return this;
+             return *this;
         }
         
         RIterator& operator--() {
             index++;
             if (index == count)
                 index = -1;
-            return this;
+            return *this;
         }
 
         bool operator==(const RIterator& iterator) {

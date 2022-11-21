@@ -213,12 +213,12 @@ RIterator<K, V> BSTree<K, V>::rbegin() {
 
 template<typename K, typename V>
 Iterator<K, V> BSTree<K, V>::end() {
-  return Iterator<K, V>(root, -1, size);
+  return Iterator<K, V>(root, size-1, size);
 }
 
 template<typename K, typename V>
 RIterator<K, V> BSTree<K, V>::rend(){ 
-  return RIterator<K, V>(root, -1, size);
+  return RIterator<K, V>(root, 0, size);
 }
 
 template

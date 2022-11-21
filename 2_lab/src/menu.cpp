@@ -37,6 +37,8 @@ void ShowMainMenu() {
           "  6 PRINT KEYS\n"
           "  7 GET SIZE\n"
           "  8 IS EMPTY\n"
+          "  9 TEST ITERATOR\n"
+          " 10 TEST REVERSED ITERATOR\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -47,6 +49,7 @@ void MainMenu() {
   int pos;
   uint list_size;
   bool flag = true;
+  bool iterator_flag = false;
   string str;
   int val;
   int key;
@@ -102,7 +105,46 @@ void MainMenu() {
         cin.get();
         break;
       }
-      case 9: { // test iterators
+      case 9: { // iterator
+        iterator_flag = true;
+        Iterator<int, int> iter = tree.begin();
+        while(iterator_flag) {
+          system(clear_console_);
+          cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
+          choice = GetNumber(0, 5, "");
+          switch(choice) {
+            case 1: {
+              iter = tree.begin();
+              break;
+            }
+            case 2: {
+              iter = tree.end();
+              break;
+            }
+            case 3: {
+              if (iter != tree.end())
+                ++iter;
+              break;
+            }
+            case 4: {
+              if (iter != tree.begin())
+              --iter;
+              break;
+            }
+            case 5: {
+              cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
+        break;
+      }
+      case 10: { // reversed iterator
         break;
       }
       case 0:

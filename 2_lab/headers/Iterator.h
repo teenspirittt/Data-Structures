@@ -8,25 +8,30 @@ template <typename K, typename V>
 class Iterator {
     public:
 
+        Iterator() {
+            count = 0;
+            index = -1;
+            root = nullptr;
+        }
+
         Iterator (Node<K, V>* root, int index, uint count) {
             this->root = root;
             this->count = count;
             this->index = index;
-            if (root) {
+            if (root)
                 fill();
-            }
         }
 
         Iterator& operator++() {
              index++;
              if (index == count)
                 index = -1;
-             return this;
+             return *this;
         }
         
         Iterator& operator--() {
             index--;
-            return this;
+            return *this;
         }
 
         bool operator==(const Iterator& iterator) {
@@ -37,9 +42,11 @@ class Iterator {
             return this->index != iterator.index;
         }
 
-        V operator*() {
+        Node<K, V>* operator*() {
             return vc[index];
         }
+
+
 
     private:
 
