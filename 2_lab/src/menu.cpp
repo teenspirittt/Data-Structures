@@ -41,6 +41,10 @@ void ShowMainMenu() {
           "===================\n";
 }
 
+void ShowTree(BSTree<int, int> tree) {
+  tree.printTree();
+}
+
 
 void MainMenu() {
   int choice;
@@ -55,6 +59,8 @@ void MainMenu() {
 
   while (flag) {
     system(clear_console_);
+    cout <<"huy";
+    tree.printTree();
     ShowMainMenu();
     choice = GetNumber(0, 13, "");
     switch (choice) {

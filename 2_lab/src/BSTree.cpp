@@ -2,8 +2,7 @@
 
 template<typename K, typename V>
 BSTree<K, V>::BSTree() {
-  root = 0;
-  size++;
+  root = nullptr;
 }
 
 template<typename K, typename V>
@@ -26,6 +25,7 @@ bool BSTree<K, V>::insert(V value, K key) {
         tmp = tmp->right;
       } else {
         tmp->right = new Node<K, V>(value, key);
+        size++;
         return true;
       }
     } else if (value < tmp->value) {
@@ -33,6 +33,7 @@ bool BSTree<K, V>::insert(V value, K key) {
         tmp = tmp->left;
       } else {
         tmp->left = new Node<K, V>(value, key);
+        size++;
         return true;
       }
     }
@@ -121,7 +122,7 @@ void BSTree<K, V>::printTree() {
 
 template<typename K, typename V>
 void BSTree<K, V>::printPreorder(Node<K, V> *node) {
-  if (isEmpty())
+  if (!isEmpty())
     return;
   cout << node->value << " ";
   printPreorder(node->left);
