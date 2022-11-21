@@ -1,25 +1,11 @@
 #pragma once
-
+#include "Node.h"
+#include "Iterator.h"
+#include "RIterator.h"
 #include <string>
-#include <iostream>
-#include <sstream>
-#include <stack>
 
 
-typedef unsigned int uint;
-using namespace std;
 
-template <typename K, typename V>
-struct Node {
-    V value;
-    K key;
-    Node* left;
-    Node* right;
-    Node(V value, K key) {
-        this->value = value;
-        this->key = key;
-    }
-};
 
 template <typename K, typename V>
 class BSTree {
@@ -27,23 +13,24 @@ class BSTree {
         BSTree();
         BSTree(const BSTree& copy);
         ~BSTree();
-        //Iterator begin();
-        //RIterator rbegin();
-        //Iterator end();
-        //RIterator rend();
+        Iterator<K, V> begin();
+        RIterator<K, V> rbegin();
+        Iterator<K, V> end();
+        RIterator<K, V> rend();
         uint getSize();
-        bool clear();
+        void clear();
         bool isEmpty();
         V get(K key);
-        bool set(V value, K key);
-        bool insert(V value, K key);
+        bool set(K key, V value);
+        bool insert(K key, V value);
         bool remove(K key);
         string printKeys();
         void printTree();
-        void printPreorder(Node<K,V>* node);
-        int getLookedElemCount();
-
+        void printTree(Node<K, V> *tree, int depth, char *path, int right);
+        int CountNodes();
+        
     private:
+        int nodes_counter = 0;
         uint size;
         int l_elem_c = 0;
         Node<K, V>* root;
