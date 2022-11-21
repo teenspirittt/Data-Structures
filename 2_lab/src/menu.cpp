@@ -60,7 +60,7 @@ void MainMenu() {
     system(clear_console_);
     tree.printTree();
     ShowMainMenu();
-    choice = GetNumber(0, 9, "");
+    choice = GetNumber(0, 10, "");
     switch (choice) {
       case 1: { // add element
         val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
@@ -122,7 +122,7 @@ void MainMenu() {
               break;
             }
             case 3: {
-              if (iter != tree.end())
+              if (iter!= tree.end())
                 ++iter;
               break;
             }
@@ -145,6 +145,42 @@ void MainMenu() {
         break;
       }
       case 10: { // reversed iterator
+        iterator_flag = true;
+        RIterator<int, int> iter = tree.rbegin();
+        while(iterator_flag) {
+          system(clear_console_);
+          cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
+          choice = GetNumber(0, 5, "");
+          switch(choice) {
+            case 1: {
+              iter = tree.rbegin();
+              break;
+            }
+            case 2: {
+              iter = tree.rend();
+              break;
+            }
+            case 3: {
+              if (iter!= tree.rend())
+                ++iter;
+              break;
+            }
+            case 4: {
+              if (iter != tree.rbegin())
+              --iter;
+              break;
+            }
+            case 5: {
+              cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
         break;
       }
       case 0:
