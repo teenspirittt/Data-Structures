@@ -70,8 +70,8 @@ void MainMenu() {
         break;
       }
       case 2: { // remove element
-       /* key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.remove(key);*/
+        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        tree.remove(key);
         break;
       }
       case 3: { // get by key
