@@ -11,20 +11,24 @@
 относительно родителей. Трудоёмкость операции – O (n).
 
   teenspirit list:
-    конструкторы
-    денструнткоры
-    insert (первым делом)
-    remove
-    printTree
+    конструктор
+    конструктор копирования ☑//todo
+    деструктор
+    insert ☑
+    remove //todo
+    printTree ☑ (изменить если будет время) //fixme
   badblues list:
     size ☑
-    clear
+    clear ☑
     isEmpty ☑
     get ☑
     set ☑
-    printKeys
-    итероторы :)
-    меню
+    printKeys ☑
+    итероторы 
+    меню ☑
+    меню для итераторов ☑
+    предусмотреть запрет на дупликацию ключей ☑
+    CountNodes 
  */
 
 int main() {
