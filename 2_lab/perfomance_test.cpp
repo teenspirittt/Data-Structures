@@ -160,6 +160,7 @@ void test_ord(int n) {
 
 
 int main() {
+    
     test_ord(100);
     test_rand(100);
     return 0;
