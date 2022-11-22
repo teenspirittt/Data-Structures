@@ -253,22 +253,22 @@ void BSTree<K, V>::printTree() {
 
 template<typename K, typename V>
 Iterator<K, V> BSTree<K, V>::begin() {
-  return Iterator<K, V>(root, 0);
+  return Iterator<K, V>(root, 0, size);
 }
 
 template<typename K, typename V>
 RIterator<K, V> BSTree<K, V>::rbegin() {
-  return RIterator<K, V>(root, size - 1);
+  return RIterator<K, V>(root, size - 1, size);
 }
 
 template<typename K, typename V>
 Iterator<K, V> BSTree<K, V>::end() {
-  return Iterator<K, V>(root, size - 1);
+  return Iterator<K, V>(root, -1, size);
 }
 
 template<typename K, typename V>
 RIterator<K, V> BSTree<K, V>::rend() {
-  return RIterator<K, V>(root, 0);
+  return RIterator<K, V>(root, -1, size);
 }
 
 template<typename K, typename V>

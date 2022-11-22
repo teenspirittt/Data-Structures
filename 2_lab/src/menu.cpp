@@ -124,29 +124,27 @@ void MainMenu() {
         while(iterator_flag) {
           system(clear_console_);
           tree.printTree();
-          cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
-          choice = GetNumber(0, 5, "");
+          cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
+          choice = GetNumber(0, 4, "");
           switch(choice) {
             case 1: {
               iter = tree.begin();
               break;
             }
             case 2: {
-              iter = tree.end();
+              ++iter;
               break;
             }
             case 3: {
-              if (iter!= tree.end())
-                ++iter;
-              break;
-            }
-            case 4: {
               if (iter != tree.begin())
               --iter;
               break;
             }
-            case 5: {
-              cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+            case 4: {
+              if (iter != tree.end())
+                cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
               cin.get();
               break;
             }
@@ -164,29 +162,27 @@ void MainMenu() {
         while(iterator_flag) {
           system(clear_console_);
           tree.printTree();
-          cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
-          choice = GetNumber(0, 5, "");
+          cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
+          choice = GetNumber(0, 4, "");
           switch(choice) {
             case 1: {
               iter = tree.rbegin();
               break;
             }
             case 2: {
-              iter = tree.rend();
+              ++iter;
               break;
             }
             case 3: {
-              if (iter!= tree.rend())
-                ++iter;
-              break;
-            }
-            case 4: {
               if (iter != tree.rbegin())
               --iter;
               break;
             }
-            case 5: {
-              cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+            case 4: {
+              if (iter != tree.rend())
+                cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
               cin.get();
               break;
             }

@@ -9,11 +9,13 @@ class RIterator {
     public:
 
         RIterator() {
+            size = 0;
             index = -1;
             root = nullptr;
         }
 
-        RIterator (Node<K, V>* root, int index) {
+        RIterator (Node<K, V>* root, int index, uint size) {
+            this->size = size;
             this->root = root;
             this->index = index;
             if (root)
@@ -27,6 +29,7 @@ class RIterator {
         
         RIterator& operator--() {
             index++;
+            if (index == size) index = -1;
             return *this;
         }
 
@@ -59,6 +62,7 @@ class RIterator {
                 }
             }
         }
+        uint size;
         int index;
         vector<Node<K, V> *> vc;
         Node<K, V>* root;
