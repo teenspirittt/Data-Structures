@@ -44,8 +44,8 @@ void test_rand(int n) {
     //генерация потока операций, 10% - промахи операций
     for(int i=0;i<n/2;i++)
         if(i%10==0) { //10% промахов
-            //tree.remove(LineRand ());
-            //D+=tree.CountNodes();
+            tree.remove(LineRand ());
+            D+=tree.CountNodes();
             tree.insert(m[rand()%n],1);
             I+=tree.CountNodes();
             try {
@@ -57,8 +57,8 @@ void test_rand(int n) {
         }
     else { //90% успешных операций
         int ind=rand()%n;
-        //tree.remove(m[ind]);
-        //D+=tree.CountNodes();
+        tree.remove(m[ind]);
+        D+=tree.CountNodes();
         INT_64 key=LineRand ();
         tree.insert(key,1);
         I+=tree.CountNodes();
@@ -112,8 +112,8 @@ void test_ord(int n) {
         if(i%10==0) { //10% промахов
             int k=LineRand()%(10000*n);
             k=k+!(k%2); //случайный нечётный ключ
-            //tree.remove(k);
-            //D+=tree.CountNodes();
+            tree.remove(k);
+            D+=tree.CountNodes();
             tree.insert(m[rand()%n],1);
             I+=tree.CountNodes();
             k=LineRand()%(10000*n);
@@ -128,8 +128,8 @@ void test_ord(int n) {
         else //90% успешных операций
         {
             int ind=rand()%n;
-            //tree.remove(m[ind]);
-            //D+=tree.CountNodes();;
+            tree.remove(m[ind]);
+            D+=tree.CountNodes();;
             int k=LineRand()%(10000*n);
             k=k+k%2; // случайный чётный ключ
             tree.insert(k,1);
@@ -160,8 +160,87 @@ void test_ord(int n) {
 
 
 int main() {
-    
+    cout << "ВЫРОЖДЕННЫЕ ДЕРЕВЬЯ\n";
+    test_ord(10);
+    cout << "\n";
     test_ord(100);
+    cout << "\n";
+    test_ord(500);
+    cout << "\n";
+    test_ord(1000);
+    cout << "\n";
+    test_ord(2000);
+    cout << "\n";
+    test_ord(3000);
+    cout << "\n";
+    test_ord(4000);
+    cout << "\n";
+    test_ord(5000);
+    cout << "\n";
+    test_ord(10000);
+    cout << "\n";
+    test_ord(15000);
+    cout << "\n";
+    test_ord(20000);
+    cout << "\n";
+    test_ord(25000);
+    cout << "\n";
+    test_ord(30000);
+    cout << "\n";
+    test_ord(35000);
+    cout << "\n";
+    test_ord(40000);
+    cout << "\n";
+    test_ord(45000);
+    cout << "\n";
+    test_ord(50000);
+    cout << "\n";
+    test_ord(55000);
+    cout << "\n";
+    test_ord(75000);
+    cout << "\n";
+    test_ord(100000);
+    cout << "\n";
+    cout << "СЛУЧАЙНЫЕ ДЕРЕВЬЯ\n";
+    test_rand(10);
+    cout << "\n";
     test_rand(100);
+    cout << "\n";
+    test_rand(500);
+    cout << "\n";
+    test_rand(1000);
+    cout << "\n";
+    test_rand(2000);
+    cout << "\n";
+    test_rand(3000);
+    cout << "\n";
+    test_rand(4000);
+    cout << "\n";
+    test_rand(5000);
+    cout << "\n";
+    test_rand(10000);
+    cout << "\n";
+    test_rand(15000);
+    cout << "\n";
+    test_rand(20000);
+    cout << "\n";
+    test_rand(25000);
+    cout << "\n";
+    test_rand(30000);
+    cout << "\n";
+    test_rand(35000);
+    cout << "\n";
+    test_rand(40000);
+    cout << "\n";
+    test_rand(45000);
+    cout << "\n";
+    test_rand(50000);
+    cout << "\n";
+    test_rand(55000);
+    cout << "\n";
+    test_rand(75000);
+    cout << "\n";
+    test_rand(100000);
+    cout << "\n";
     return 0;
 }

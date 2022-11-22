@@ -71,7 +71,10 @@ void MainMenu() {
       }
       case 2: { // remove element
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.remove(key);
+        if (tree.remove(key, val))
+          cout << "DONE!\n";
+        else 
+          cout << "FAIL!\n";
         break;
       }
       case 3: { // get by key

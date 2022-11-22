@@ -20,6 +20,7 @@ bool BSTree<K, V>::insert(K key, V value) {
   if (isEmpty()) {
     root = new Node<K, V>(key, value);
     size++;
+    nodes_counter++;
     return true;
   }
   Node<K, V> *tmp = root;
