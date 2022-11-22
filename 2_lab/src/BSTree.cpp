@@ -1,11 +1,8 @@
 #include "../headers/BSTree.h"
-#include <iostream>
-#include <stack>
-#include <sstream>
 
 template<typename K, typename V>
 BSTree<K, V>::BSTree() {
-  root = NULL;
+  root = nullptr;
   size = 0;
 }
 
@@ -13,6 +10,27 @@ template<typename K, typename V>
 BSTree<K, V>::~BSTree() {
   clear();
 }
+
+/*template<typename K, typename V>
+BSTree<K, V>::BSTree(const BSTree &copy) {
+  root = nullptr;
+  nodes_counter = 0;
+  size = 0;
+  auto nodeList = new list<Node<K, V> *>();
+  Node<K, V> *top = copy.root;
+  while (root != nullptr) {
+    if (!nodeList->empty()) {
+      top = nodeList->front();
+      nodeList->pop_front();
+    }
+    while (top != nullptr) {
+      insert(top->key, top->value);
+      if (top->right != nullptr)
+        nodeList->push_front(top->right);
+      top = top->left;
+    }
+  }
+}*/
 
 template<typename K, typename V>
 bool BSTree<K, V>::insert(K key, V value) {
@@ -159,14 +177,14 @@ template<typename K, typename V>
 V BSTree<K, V>::get(K key) {
   nodes_counter = 0;
   Node<K, V> *tmp = root;
-  while (tmp != NULL && tmp->key != key) {
+  while (tmp != nullptr && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
     else
       tmp = tmp->right;
     nodes_counter++;
   }
-  if (tmp == NULL)
+  if (tmp == nullptr)
     return (V) 0;
   return tmp->value;
 }
@@ -175,14 +193,14 @@ template<typename K, typename V>
 bool BSTree<K, V>::set(K key, V value) {
   nodes_counter = 0;
   Node<K, V> *tmp = root;
-  while (tmp != NULL && tmp->key != key) {
+  while (tmp != nullptr && tmp->key != key) {
     if (key < tmp->key)
       tmp = tmp->left;
     else
       tmp = tmp->right;
     nodes_counter++;
   }
-  if (tmp == NULL)
+  if (tmp == nullptr)
     return false;
   tmp->value = value;
   return true;
@@ -191,8 +209,8 @@ bool BSTree<K, V>::set(K key, V value) {
 template<typename K, typename V>
 void BSTree<K, V>::clear() {
   nodes_counter = 0;
-  Node<K, V> *lnp = NULL;
-  Node<K, V> *peekn = NULL;
+  Node<K, V> *lnp = nullptr;
+  Node<K, V> *peekn = nullptr;
   Node<K, V> *tmp = root;
   stack<Node<K, V> *> st;
   while (!st.empty() || tmp) {
@@ -211,76 +229,28 @@ void BSTree<K, V>::clear() {
     }
     nodes_counter++;
   }
-  root = NULL;
+  root = nullptr;
   size = 0;
 }
 
 template<typename K, typename V>
-void BSTree<K, V>::printTree(Node<K, V> *tree, int depth, char *path, int right) {
-  // stopping condition
-  if (!tree)
+void BSTree<K, V>::printTree(Node<K, V> *_root, int space) {
+  if (_root == nullptr) {
     return;
-
-  // increase spacing
-  depth++;
-
-  // start with right node
-  printTree(tree->right, depth, path, 1);
-
-  if (depth > 1) {
-    // set | draw map
-    path[depth - 2] = 0;
-
-    if (right)
-      path[depth - 2] = 1;
   }
-
-  if (tree->left)
-    path[depth - 1] = 1;
-
-  // print root after spacing
-  printf("\n");
-
-  for (int i = 0; i < depth - 1; i++) {
-    if (i == depth - 2)
-      printf("+");
-    else if (path[i])
-      printf("|");
-    else
-      printf(" ");
-
-    for (int j = 1; j < 3; j++)
-      if (i < depth - 2)
-        printf(" ");
-      else
-        printf("-");
-  }
-
-  printf("%ld\n", tree->value);
-
-  // vertical spacers below
-  for (int i = 0; i < depth; i++) {
-    if (path[i])
-      printf("|");
-    else
-      printf(" ");
-
-    for (int j = 1; j < 3; j++)
-      printf(" ");
-  }
-
-  // go to left node
-  printTree(tree->left, depth, path, 0);
+  space += COUNT;
+  printTree(_root->right, space);
+  for (int i = COUNT; i < space; i++)
+    cout << " ";
+  cout << _root->value << "\n";
+  printTree(_root->left, space);
 }
 
 template<typename K, typename V>
 void BSTree<K, V>::printTree() {
-  // should check if we don't exceed this somehow..
-  char path[255] = {};
-
-  //initial depth is 0
-  printTree(this->root, 0, path, 0);
+  printTree(root, 0);
 }
+
 template<typename K, typename V>
 Iterator<K, V> BSTree<K, V>::begin() {
   return Iterator<K, V>(root, 0);
