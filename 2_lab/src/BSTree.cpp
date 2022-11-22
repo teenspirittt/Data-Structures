@@ -51,6 +51,7 @@ bool BSTree<K, V>::insert(K key, V value) {
 
 template<typename K, typename V>
 bool BSTree<K, V>::remove(K key) {
+  nodes_counter = 0;
   Node<K, V> *curr = root;
   Node<K, V> *prev = nullptr;
   // check if the key is actually present int tree
@@ -60,6 +61,7 @@ bool BSTree<K, V>::remove(K key) {
       curr = curr->left;
     else
       curr = curr->right;
+    nodes_counter++;
   }
   if (curr == nullptr)
     return false;
@@ -78,10 +80,13 @@ bool BSTree<K, V>::remove(K key) {
       return true;
     }
     // check is the removing node is prevs left or right child
-    if (curr == prev->left)
+    if (curr == prev->left) {
       prev->left = newCurr;
-    else
+      nodes_counter++;
+    } else {
       prev->right = newCurr;
+      nodes_counter++;
+    }
     size--;
     free(curr);
     return true;
@@ -90,17 +95,24 @@ bool BSTree<K, V>::remove(K key) {
     Node<K, V> *tmp;
 
     tmp = curr->right;
+    nodes_counter++;
     while (tmp->left != nullptr) {
       p = tmp;
       tmp = tmp->left;
+      nodes_counter++;
     }
 
-    if (p != nullptr)
+    if (p != nullptr) {
       p->left = tmp->right;
-    else
+      nodes_counter++;
+    } else {
       curr->right = tmp->right;
+      nodes_counter++;
+    }
+
     curr->key = tmp->key;
     curr->value = tmp->value;
+    nodes_counter += 2;
     size--;
     free(tmp);
   }
