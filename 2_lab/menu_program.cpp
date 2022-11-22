@@ -11,11 +11,11 @@
 относительно родителей. Трудоёмкость операции – O (n).
 
   teenspirit list:
-    конструктор
-    конструктор копирования ☑//todo
-    деструктор
-    insert ☑
-    remove //todo
+    конструктор !done
+    конструктор копирования ☑
+    деструктор !done
+    insert ☑!done
+    remove !done
     printTree ☑ (изменить если будет время) //fixme
   badblues list:
     size ☑
