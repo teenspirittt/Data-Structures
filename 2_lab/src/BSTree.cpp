@@ -242,7 +242,7 @@ void BSTree<K, V>::printTree(Node<K, V> *_root, int space) {
   printTree(_root->right, space);
   for (int i = COUNT; i < space; i++)
     cout << " ";
-  cout << _root->value << "\n";
+  cout << _root->key << " " << _root->value << "\n";
   printTree(_root->left, space);
 }
 

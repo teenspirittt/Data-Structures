@@ -64,14 +64,14 @@ void MainMenu() {
     choice = GetNumber(0, 11, "");
     switch (choice) {
       case 1: { // add element
-        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         tree.insert(key, val);
         break;
       }
       case 2: { // remove element
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        if (tree.remove(key, val))
+        if (tree.remove(key))
           cout << "DONE!\n";
         else 
           cout << "FAIL!\n";
@@ -84,8 +84,8 @@ void MainMenu() {
         break;
       }
       case 4: { // set by key
-        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
         if (tree.set(key, val))
           cout << "DONE!\n";
         else 
@@ -123,6 +123,7 @@ void MainMenu() {
         Iterator<int, int> iter = tree.begin();
         while(iterator_flag) {
           system(clear_console_);
+          tree.printTree();
           cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
           choice = GetNumber(0, 5, "");
           switch(choice) {
@@ -162,6 +163,7 @@ void MainMenu() {
         RIterator<int, int> iter = tree.rbegin();
         while(iterator_flag) {
           system(clear_console_);
+          tree.printTree();
           cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
           choice = GetNumber(0, 5, "");
           switch(choice) {
