@@ -64,6 +64,8 @@ uint BSTree<K, V>::getSize() {
 template<typename K, typename V>
 string BSTree<K, V>::printKeys() {
   nodes_counter = 0;
+  if (!root)
+    return "";
   stringstream *sstr = new stringstream;
   Node<K, V> *tmp = root;
   stack<Node<K, V> *> st;
@@ -260,3 +262,6 @@ class BSTree<int, short>;
 
 template
 class BSTree<int, string>;
+
+template
+class BSTree<unsigned long long, int>;
