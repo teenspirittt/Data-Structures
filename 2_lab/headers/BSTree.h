@@ -35,6 +35,5 @@ class BSTree {
  private:
   int nodes_counter = 0;
   uint size;
-  int l_elem_c = 0;
   Node<K, V> *root;
 };
