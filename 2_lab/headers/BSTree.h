@@ -14,7 +14,7 @@ template<typename K, typename V>
 class BSTree {
  public:
   BSTree();
-  [[maybe_unused]] BSTree(const BSTree &copy);
+  BSTree(const BSTree &copy);
   ~BSTree();
   Iterator<K, V> begin();
   RIterator<K, V> rbegin();

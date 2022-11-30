@@ -64,13 +64,13 @@ void MainMenu() {
     choice = GetNumber(0, 11, "");
     switch (choice) {
       case 1: { // add element
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
         tree.insert(key, val);
         break;
       }
       case 2: { // remove element
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
         if (tree.remove(key))
           cout << "DONE!\n";
         else 
@@ -78,14 +78,14 @@ void MainMenu() {
         break;
       }
       case 3: { // get by key
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
         cout << tree.get(key) << "\n";
         cin.get();
         break;
       }
       case 4: { // set by key
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
         if (tree.set(key, val))
           cout << "DONE!\n";
         else 
@@ -175,7 +175,7 @@ void MainMenu() {
             }
             case 3: {
               if (iter != tree.rbegin())
-              --iter;
+                --iter;
               break;
             }
             case 4: {

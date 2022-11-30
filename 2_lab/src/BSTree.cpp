@@ -11,12 +11,12 @@ BSTree<K, V>::~BSTree() {
   clear();
 }
 
-/*template<typename K, typename V>
+template<typename K, typename V>
 BSTree<K, V>::BSTree(const BSTree &copy) {
   root = nullptr;
   nodes_counter = 0;
   size = 0;
-  auto nodeList = new list<Node<K, V> *>();
+  auto nodeList = new list<Node<K, V>*>();
   Node<K, V> *top = copy.root;
   while (root != nullptr) {
     if (!nodeList->empty()) {
@@ -30,7 +30,7 @@ BSTree<K, V>::BSTree(const BSTree &copy) {
       top = top->left;
     }
   }
-}*/
+}
 
 template<typename K, typename V>
 bool BSTree<K, V>::insert(K key, V value) {
