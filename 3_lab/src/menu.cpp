@@ -58,14 +58,15 @@ void MainMenu() {
 
   while (flag) {
     system(clear_console_);
-    //tree.ToString();
+    cout << tree.ToString();
     ShowMainMenu();
     choice = GetNumber(0, 11, "");
     switch (choice) {
       case 1: { // add element
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        // tree.Insert(key, val);
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
+        tree.Insert(key, val);
+        cin.get();
         break;
       }
       case 2: { // remove element
@@ -77,34 +78,34 @@ void MainMenu() {
         break;
       }
       case 3: { // get by key
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // cout << tree.Get(key) << "\n";
-        // cin.get();
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        cout << tree.Get(key) << "\n";
+        cin.get();
         break;
       }
       case 4: { // set by key
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        // if (tree.Set(key, val))
-        //   cout << "DONE!\n";
-        // else 
-        //   cout << "FAIL!\n";
-        // cin.get();
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
+        if (tree.Set(key, val))
+          cout << "DONE!\n";
+        else 
+          cout << "FAIL!\n";
+        cin.get();
         break;
       }
       case 5: { // clear
-        // tree.Clear();
-        // cin.get();
+        tree.Clear();
+        cin.get();
         break;
       }
       case 6: { // get size
-        // cout << tree.GetSize();
-        // cin.get();
+        cout << tree.GetSize();
+        cin.get();
         break;
       }
       case 7: { // isempty
-        // cout << tree.IsEmpty();
-        // cin.get();
+        cout << tree.IsEmpty();
+        cin.get();
         break;
       }
       case 8: { // count nodes

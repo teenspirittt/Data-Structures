@@ -12,6 +12,7 @@ class Node {
 };
 
 template<typename K, typename V>
+
 class Internal: public Node<K,V> {
 	public:
 		Node<K,V> *son1, *son2, *son3; 
@@ -22,8 +23,6 @@ class Internal: public Node<K,V> {
 			key1 = key2 = INT_MAX;
 		}
 };
-
-
 
 template<typename K, typename V>
 class Leaf: public Node<K,V> {

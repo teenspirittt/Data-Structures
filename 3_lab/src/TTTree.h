@@ -50,7 +50,7 @@ class TTTree {
         bool Remove(K key);
         string ToString();
         int CountNodes();
-
+        bool Insert(Node<K, V> *t, Node<K, V> *lt, Node<K, V> *&tup, K &lup);
     private:
         Leaf<K,V>* Get(Internal<K,V>*, K);
         void Clear(Internal<K,V> *node);
@@ -58,4 +58,5 @@ class TTTree {
         int nodes_counter = 0;
         uint size;
         Internal<K, V> *root;
+
 };
