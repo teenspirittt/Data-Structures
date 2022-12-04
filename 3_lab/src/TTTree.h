@@ -38,22 +38,16 @@ class TTTree {
         TTTree();
         TTTree(const TTTree &copy);
         ~TTTree();
-        Iterator<K, V> begin();
-        RIterator<K, V> rbegin();
-        Iterator<K, V> end();
-        RIterator<K, V> rend();
-        uint getSize();
-        void clear();
-        bool isEmpty();
-        V get(K key);
-        bool set(K key, V value);
-        bool insert(K key, V value);
-        bool remove(K key);
-        void printTree();
-        void printTree(Node <K, V> *_root, int space);
+        uint GetSize();
+        void Clear();
+        bool IsEmpty();
+        V Get(K key);
+        bool Set(K key, V value);
+        bool Insert(K key, V value);
+        bool Remove(K key);
         int CountNodes();
-
     private:
+        T GetData(Internal*, K);
         int nodes_counter = 0;
         uint size;
         Node<K, V> *root;

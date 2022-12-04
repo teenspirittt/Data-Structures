@@ -18,61 +18,12 @@ public:
 template<class K, class T> 
 class T23
 {
-	class Node	//Абстрактный класс "Узел"
-	{
-	public:
-		virtual bool type() = 0;	//Тип узла
-		virtual void Show(int level) = 0;	//Распечатка
-	};
-	class Leaf : public Node  //Лист
-	{
-	public:
-		K key; // значение ключа
-		T data; // данные
-		bool type() { return 0; }
-		void Show(int level)
-		{
-			for (int i = 0; i<6 * level; i++) cout << " ";
-			cout << key << endl;
-		}
-		Leaf(K _key, T _data) { key=_key; data=_data; }
-	};
-	class Internal : public Node	//Внутренний узел 
-	{
-	public:
-		Node *son1,*son2,*son3; // указатели на сыновей 
-		K key1,key2; // дубликаты наименьших ключей во 2 и 3 поддеревьях 
-		bool type(){ return 1; }
-		Internal()  //конструктор "внутреннего" класса
-		{
-			son1=son2=son3=NULL; 
-			key1=key2=INT_MAX;
-		}
-		void Show (int level)
-		{
-			if(son3 != NULL)
-				son3->Show(level+1);
-			if(son2 != NULL) 
-				son2->Show(level+1);
-			for(int i=0;i<6*level;i++) cout<<" ";
-			if(son2 == NULL) 
-				cout<<"-";
-			else
-				cout << key1;
-			if(son3==NULL)
-				cout<<"," << "-";
-			else 
-				cout<< "," <<key2;
-			cout<<endl;
-			son1->Show(level+1);			
-		}
-	};
 	Internal* root; //указатель на корень
 	int size; //текущий размер дерева
 	void _Clear(Internal*); //рекурсивная очистка дерева
 	bool _Insert(Node*, Node* , Node*& ,K&); //рекурсивная функция вставки
 	bool _Delete(Internal*,K,Leaf*&,bool &one_sone); //рекурсивная функция удаления
-	T _GetData(Internal*,K); //рекурсивная функция поиска
+	T _Get(Internal*,K); //рекурсивная функция поиска
 	void _Copy(Internal*);
 	int cnt; //счетчик количества просомтренных операцией узлов дерева
 public:
@@ -84,7 +35,7 @@ public:
 	bool IsEmpty();     //проверка дерева на пустоту
 	bool Insert(K,T); //включение нового элемента с заданным ключом
 	bool Delete(K);   //удаление элемента с заданным ключом
-	T GetData(K);    //поиск элемента с заданным ключом
+	T Get(K);    //поиск элемента с заданным ключом
     void Show();
 	int getCountNodesView() 
 	{
@@ -610,13 +561,13 @@ bool T23<K,T>::_Delete(Internal *t,K k, Leaf *&tlow1, bool &one_son) //функ�
 }
 
 template<class K, class T> 
-T T23<K,T>::GetData(K k) //поиск листа с заданным ключом
+T T23<K,T>::Get(K k) //поиск листа с заданным ключом
 {
-	return _GetData(root,k);
+	return _Get(root,k);
 }
 
 template<class K, class T> 
-T T23<K,T>::_GetData(Internal *t,K k) //рекурсивная функция поиска листа с заданным ключом
+T T23<K,T>::_Get(Internal *t,K k) //рекурсивная функция поиска листа с заданным ключом
 {
 	cnt++;
 	if(t==NULL)
@@ -634,10 +585,10 @@ T T23<K,T>::_GetData(Internal *t,K k) //рекурсивная функция п
 		throw TreeException();
 	}
 	if(t->key1>k) 
-		return _GetData(((Internal *)t->son1),k); //поиск в 1-ом поддереве
+		return _Get(((Internal *)t->son1),k); //поиск в 1-ом поддереве
 	if(t->key2>k) 
-		return _GetData(((Internal *)t->son2),k); //поиск во 2-ом поддереве
-	return _GetData(((Internal *)t->son3),k); //поиск в 3-ем поддереве
+		return _Get(((Internal *)t->son2),k); //поиск во 2-ом поддереве
+	return _Get(((Internal *)t->son3),k); //поиск в 3-ем поддереве
 }
 
 template <class K, class T>
