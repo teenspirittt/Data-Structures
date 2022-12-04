@@ -21,16 +21,18 @@ teenspirit:
 badblues:
     меню
     тестирование трудоемкости
-    size
-    clear
-    isEmpty
-    get
-    set
+    size ☑
+    clear ☑
+    isEmpty ☑
+    get ☑
+    set ☑
     итероторы
     меню
     меню для итераторов
     CountNodes 
 */
+
+using namespace std;
 
 template<typename K, typename V>
 class TTTree {
@@ -47,8 +49,9 @@ class TTTree {
         bool Remove(K key);
         int CountNodes();
     private:
-        T Get(Internal*, K);
+        Leaf<K,V>* Get(Internal<K,V>*, K);
+        void Clear(Internal<K,V> *node);
         int nodes_counter = 0;
         uint size;
-        Node<K, V> *root;
+        Internal<K, V> *root;
 };

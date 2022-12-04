@@ -1,20 +1,6 @@
 #include <string>
 using namespace std;
 
-class TreeException
-{
-	string code;
-public:
-	TreeException() 
-	{
-		code = "Исключение";
-	}
-	string What() 
-	{
-		return code;
-	}
-};
-
 template<class K, class T> 
 class T23
 {
@@ -30,9 +16,6 @@ public:
 	T23();  //конструктор
 	T23(T23<K, T>& t); //Конструктор копирования
 	~T23(); //деструктор
-	int GetSize();       //опрос размера дерева
-	void Clear();     //очистка дерева
-	bool IsEmpty();     //проверка дерева на пустоту
 	bool Insert(K,T); //включение нового элемента с заданным ключом
 	bool Delete(K);   //удаление элемента с заданным ключом
 	void Show();
@@ -80,37 +63,6 @@ T23<K,T>::T23(T23<K,T>& t)
 template<class K, class T> T23<K, T>::~T23() { Clear(); }
 template<class K, class T> int T23<K,T>::GetSize(){ return size; } //опрос размера дерева
 
-template<class K, class T> 
-void T23<K,T>::Clear() //функция очистки дерева
-{
-	_Clear(root);  //вызов функции рекурсивной очистки дерева
-	delete root;    //удалили корень
-	root=NULL;    //сбросили указатель на корень в NULL
-	size=0;     //размер дерева 0
-}
-
-template<class K, class T> 
-void T23<K,T>::_Clear(Internal *t)  //функция рекурсивной очистки дерева
-{
-	if(t==NULL) return; //если дерево и так пустое
-	if(t->son1->type() == 0) 
-	{
-		if(t->son1) delete t->son1; //удаление 1-го листа
-		if(t->son2) delete t->son2; //удаление 2-го листа
-		if(t->son3) delete t->son3; //удаление 3-его листа
-		return;
-	}
-	_Clear(((Internal*)t->son1)); //идем  удалять из 1-го поддерева 
-	delete t->son1; //удаление 1-го поддерева
-	_Clear(((Internal*)t->son2)); //идем удалять из 2-го поддерева
-	delete t->son2; //удаление 2-го поддерева 
-	if(t->son3) //идем удалять из 3-го поддерева
-	{
-		_Clear(((Internal*)t->son3));
-		delete t->son3; //удаление 3-го поддерева
-	}
-}
-
 template<class K, class T>
 void T23<K, T>::_Copy(Internal *t) 
 {
@@ -133,11 +85,6 @@ void T23<K, T>::_Copy(Internal *t)
 	}
 }
 
-template<class K, class T> 
-bool T23<K,T>::IsEmpty() //функция проверки дерева на пустоту
-{
-	return (size == 0);
-}
 
 template<class K, class T> 
 void T23<K,T>::Show() //функция распечатки дерева

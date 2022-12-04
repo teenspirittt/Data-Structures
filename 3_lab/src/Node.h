@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 using namespace std;
 typedef unsigned int uint;
 
@@ -11,9 +13,9 @@ class Node {
 };
 
 template<typename K, typename V>
-class Internal: public Node {
+class Internal: public Node<K,V> {
 	public:
-		Node *son1, *son2, *son3; 
+		Node<K,V> *son1, *son2, *son3; 
 		K key1, low3; 
 		bool inner(){ return 1; }
 		Internal() {
@@ -42,7 +44,7 @@ class Internal: public Node {
 
 
 template<typename K, typename V>
-class Leaf: public Node {
+class Leaf: public Node<K,V> {
 	public:
 		K key;
 		V value;
@@ -51,5 +53,5 @@ class Leaf: public Node {
 			for (int i = 0; i < 6 * level; i++) cout << " ";
 			cout << key << endl;
 		}
-		Leaf(K key_, T data_) { key = key_; value = data_; }
+		Leaf(K key_, V value_) { key = key_; value = value_; }
 };
