@@ -35,8 +35,7 @@ public:
 	bool IsEmpty();     //проверка дерева на пустоту
 	bool Insert(K,T); //включение нового элемента с заданным ключом
 	bool Delete(K);   //удаление элемента с заданным ключом
-	T Get(K);    //поиск элемента с заданным ключом
-    void Show();
+	void Show();
 	int getCountNodesView() 
 	{
 		int temp = cnt;
@@ -118,19 +117,19 @@ void T23<K, T>::_Copy(Internal *t)
 	if (t == NULL) return; 
 	if (t->son1->type() == 0)
 	{
-		if (t->son1) Insert(t->son1->key, t->son1->data); 
-		if (t->son2) Insert(t->son2->key, t->son2->data);
-		if (t->son3) Insert(t->son3->key, t->son3->data);
+		if (t->son1) Insert(t->son1->key, t->son1->value); 
+		if (t->son2) Insert(t->son2->key, t->son2->value);
+		if (t->son3) Insert(t->son3->key, t->son3->value);
 		return;
 	}
 	_Copy(((Internal*)t->son1, tree)); 
-	Insert(t->son1->key, t->son1->data);
+	Insert(t->son1->key, t->son1->value);
 	_Copy(((Internal*)t->son2, tree)); 
-	Insert(t->son2->key, t->son2->data);
+	Insert(t->son2->key, t->son2->value);
 	if (t->son3) 
 	{
 		_Copy(((Internal*)t->son3, tree));
-		Insert(t->son3->key, t->son3->data);
+		Insert(t->son3->key, t->son3->value);
 	}
 }
 
@@ -149,9 +148,9 @@ void T23<K,T>::Show() //функция распечатки дерева
 }
 
 template<class K, class T> 
-bool T23<K,T>::Insert(K k, T data) //функция вставки в дерево
+bool T23<K,T>::Insert(K k, T value) //функция вставки в дерево
 {
-	Node *lt = new Leaf(k,data);  //создали листок
+	Node *lt = new Leaf(k,value);  //создали листок
 	if(root == NULL)      //если дерево пустое
 		{
 		root = new Internal;   //создаем дерево
@@ -233,9 +232,9 @@ bool T23<K,T>::_Insert(Node *t,Node *lt,Node *&tup,K &lup) //функция ре
 				 temp1=((Leaf*)t)->key;
 				 ((Leaf*)t)->key=((Leaf*)lt)->key;
 				 ((Leaf*)lt)->key=temp1;
-				 temp2=((Leaf*)t)->data;
-				 ((Leaf*)t)->data=((Leaf*)lt)->data;
-				 ((Leaf*)lt)->data=temp2;
+				 temp2=((Leaf*)t)->value;
+				 ((Leaf*)t)->value=((Leaf*)lt)->value;
+				 ((Leaf*)lt)->value=temp2;
 				}			
 			}
 		 size++;
@@ -560,37 +559,6 @@ bool T23<K,T>::_Delete(Internal *t,K k, Leaf *&tlow1, bool &one_son) //функ�
 	return true;
 }
 
-template<class K, class T> 
-T T23<K,T>::Get(K k) //поиск листа с заданным ключом
-{
-	return _Get(root,k);
-}
-
-template<class K, class T> 
-T T23<K,T>::_Get(Internal *t,K k) //рекурсивная функция поиска листа с заданным ключом
-{
-	cnt++;
-	if(t==NULL)
-		throw TreeException(); //если дерево пустое
-	if(t->son1->type()==0) 
-	{
-		if(((Leaf *)t->son1)->key==k)
-			return ((Leaf *)t->son1)->data;
-		if(t->son2) 
-			if(((Leaf *)t->son2)->key==k)
-				return ((Leaf *)t->son2)->data;
-		if(t->son3) 
-			if(((Leaf *)t->son3)->key==k)
-				return ((Leaf *)t->son3)->data;
-		throw TreeException();
-	}
-	if(t->key1>k) 
-		return _Get(((Internal *)t->son1),k); //поиск в 1-ом поддереве
-	if(t->key2>k) 
-		return _Get(((Internal *)t->son2),k); //поиск во 2-ом поддереве
-	return _Get(((Internal *)t->son3),k); //поиск в 3-ем поддереве
-}
-
 template <class K, class T>
 T23<K,T>::Iterator::Iterator(T23<K, T>* t)  //конструктор 
 {
@@ -650,7 +618,7 @@ template <class K, class T>
 T& T23<K, T>::Iterator::operator*()  //доступ по чтению и записи к текущему узлу
 {
 	if (!cur) throw TreeException();
-	return cur->data;
+	return cur->value;
 }
 
 template <class K, class T>

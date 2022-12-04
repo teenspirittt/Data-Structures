@@ -47,7 +47,7 @@ class TTTree {
         bool Remove(K key);
         int CountNodes();
     private:
-        T GetData(Internal*, K);
+        T Get(Internal*, K);
         int nodes_counter = 0;
         uint size;
         Node<K, V> *root;
