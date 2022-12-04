@@ -14,7 +14,7 @@ template<typename K, typename V>
 class BSTree {
  public:
   BSTree();
-  [[maybe_unused]] BSTree(const BSTree &copy);
+  BSTree(const BSTree &copy);
   ~BSTree();
   Iterator<K, V> begin();
   RIterator<K, V> rbegin();
@@ -34,6 +34,5 @@ class BSTree {
  private:
   int nodes_counter = 0;
   uint size;
-  int l_elem_c = 0;
   Node<K, V> *root;
 };

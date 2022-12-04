@@ -11,12 +11,12 @@ BSTree<K, V>::~BSTree() {
   clear();
 }
 
-/*template<typename K, typename V>
+template<typename K, typename V>
 BSTree<K, V>::BSTree(const BSTree &copy) {
   root = nullptr;
   nodes_counter = 0;
   size = 0;
-  auto nodeList = new list<Node<K, V> *>();
+  auto nodeList = new list<Node<K, V>*>();
   Node<K, V> *top = copy.root;
   while (root != nullptr) {
     if (!nodeList->empty()) {
@@ -30,7 +30,7 @@ BSTree<K, V>::BSTree(const BSTree &copy) {
       top = top->left;
     }
   }
-}*/
+}
 
 template<typename K, typename V>
 bool BSTree<K, V>::insert(K key, V value) {
@@ -38,6 +38,7 @@ bool BSTree<K, V>::insert(K key, V value) {
   if (isEmpty()) {
     root = new Node<K, V>(key, value);
     size++;
+    nodes_counter++;
     return true;
   }
   Node<K, V> *tmp = root;
@@ -152,7 +153,9 @@ uint BSTree<K, V>::getSize() {
 template<typename K, typename V>
 string BSTree<K, V>::printKeys() {
   nodes_counter = 0;
-  auto *sstr = new stringstream;
+  if (!root)
+    return "";
+  stringstream *sstr = new stringstream;
   Node<K, V> *tmp = root;
   stack<Node<K, V> *> st;
   while (!st.empty() || tmp) {
@@ -239,7 +242,7 @@ void BSTree<K, V>::printTree(Node<K, V> *_root, int space) {
   printTree(_root->right, space);
   for (int i = COUNT; i < space; i++)
     cout << " ";
-  cout << _root->value << "\n";
+  cout << _root->key << " " << _root->value << "\n";
   printTree(_root->left, space);
 }
 
@@ -250,22 +253,22 @@ void BSTree<K, V>::printTree() {
 
 template<typename K, typename V>
 Iterator<K, V> BSTree<K, V>::begin() {
-  return Iterator<K, V>(root, 0);
+  return Iterator<K, V>(root, 0, size);
 }
 
 template<typename K, typename V>
 RIterator<K, V> BSTree<K, V>::rbegin() {
-  return RIterator<K, V>(root, size - 1);
+  return RIterator<K, V>(root, size - 1, size);
 }
 
 template<typename K, typename V>
 Iterator<K, V> BSTree<K, V>::end() {
-  return Iterator<K, V>(root, size - 1);
+  return Iterator<K, V>(root, -1, size);
 }
 
 template<typename K, typename V>
 RIterator<K, V> BSTree<K, V>::rend() {
-  return RIterator<K, V>(root, 0);
+  return RIterator<K, V>(root, -1, size);
 }
 
 template<typename K, typename V>
@@ -297,3 +300,9 @@ class BSTree<int, short>;
 
 template
 class BSTree<int, string>;
+<<<<<<< HEAD
+=======
+
+template
+class BSTree<unsigned long long, int>;
+>>>>>>> badblues

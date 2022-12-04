@@ -63,25 +63,28 @@ void MainMenu() {
     choice = GetNumber(0, 11, "");
     switch (choice) {
       case 1: { // add element
-        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
         tree.insert(key, val);
         break;
       }
       case 2: { // remove element
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
-        tree.remove(key);
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        if (tree.remove(key))
+          cout << "DONE!\n";
+        else 
+          cout << "FAIL!\n";
         break;
       }
       case 3: { // get by key
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
         cout << tree.get(key) << "\n";
         cin.get();
         break;
       }
       case 4: { // set by key
-        val = GetNumber(INT16_MIN, INT16_MAX, "ENTER VALUE:\n");
-        key = GetNumber(INT16_MIN, INT16_MAX, "ENTER KEY:\n");
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
         if (tree.set(key, val))
           cout << "DONE!\n";
         else
@@ -119,29 +122,42 @@ void MainMenu() {
         Iterator<int, int> iter = tree.begin();
         while (iterator_flag) {
           system(clear_console_);
+<<<<<<< HEAD
           cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
           choice = GetNumber(0, 5, "");
           switch (choice) {
+=======
+          tree.printTree();
+          cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
+          choice = GetNumber(0, 4, "");
+          switch(choice) {
+>>>>>>> badblues
             case 1: {
               iter = tree.begin();
               break;
             }
             case 2: {
-              iter = tree.end();
+              ++iter;
               break;
             }
             case 3: {
+<<<<<<< HEAD
               if (iter != tree.end())
                 ++iter;
               break;
             }
             case 4: {
+=======
+>>>>>>> badblues
               if (iter != tree.begin())
                 --iter;
               break;
             }
-            case 5: {
-              cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+            case 4: {
+              if (iter != tree.end())
+                cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
               cin.get();
               break;
             }
@@ -158,18 +174,26 @@ void MainMenu() {
         RIterator<int, int> iter = tree.rbegin();
         while (iterator_flag) {
           system(clear_console_);
+<<<<<<< HEAD
           cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
           choice = GetNumber(0, 5, "");
           switch (choice) {
+=======
+          tree.printTree();
+          cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
+          choice = GetNumber(0, 4, "");
+          switch(choice) {
+>>>>>>> badblues
             case 1: {
               iter = tree.rbegin();
               break;
             }
             case 2: {
-              iter = tree.rend();
+              ++iter;
               break;
             }
             case 3: {
+<<<<<<< HEAD
               if (iter != tree.rend())
                 ++iter;
               break;
@@ -181,6 +205,17 @@ void MainMenu() {
             }
             case 5: {
               cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+=======
+              if (iter != tree.rbegin())
+                --iter;
+              break;
+            }
+            case 4: {
+              if (iter != tree.rend())
+                cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
+>>>>>>> badblues
               cin.get();
               break;
             }

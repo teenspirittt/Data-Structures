@@ -9,11 +9,13 @@ class Iterator {
     public:
 
         Iterator() {
+            size = 0;
             index = -1;
             root = nullptr;
         }
 
-        Iterator (Node<K, V>* root, int index) {
+        Iterator (Node<K, V>* root, int index, uint size) {
+            this->size = size;
             this->root = root;
             this->index = index;
             if (root)
@@ -22,6 +24,8 @@ class Iterator {
 
         Iterator& operator++() {
              index++;
+             if (index == size)
+                index = -1;
              return *this;
         }
         
@@ -61,7 +65,7 @@ class Iterator {
                 }
             }
         }
-        
+        uint size;
         int index;
         vector<Node<K, V> *> vc;
         Node<K, V>* root;
