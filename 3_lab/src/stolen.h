@@ -62,12 +62,6 @@ public:
 	};
 };
 
-template<class K, class T>
-T23<K,T>::T23() 
-{
-	root=NULL; //указатель на корень дерева
-	cnt = size = 0; //сброс счетчика и размера дерева в 0
-}
 
 template<class K, class T>
 T23<K,T>::T23(T23<K,T>& t)
@@ -77,7 +71,28 @@ T23<K,T>::T23(T23<K,T>& t)
 	_Copy(t.root);
 }
 
-template<class K, class T> T23<K, T>::~T23() { Clear(); }
+template<class K, class T>
+void T23<K, T>::_Copy(Internal *t)
+{
+  if (t == NULL) return;
+  if (t->son1->type() == 0)
+  {
+    if (t->son1) Insert(t->son1->key, t->son1->value);
+    if (t->son2) Insert(t->son2->key, t->son2->value);
+    if (t->son3) Insert(t->son3->key, t->son3->value);
+    return;
+  }
+  _Copy(((Internal*)t->son1, tree));
+  Insert(t->son1->key, t->son1->value);
+  _Copy(((Internal*)t->son2, tree));
+  Insert(t->son2->key, t->son2->value);
+  if (t->son3)
+  {
+    _Copy(((Internal*)t->son3, tree));
+    Insert(t->son3->key, t->son3->value);
+  }
+}
+
 template<class K, class T> int T23<K,T>::GetSize(){ return size; } //опрос размера дерева
 
 template<class K, class T> 
@@ -111,27 +126,7 @@ void T23<K,T>::_Clear(Internal *t)  //функция рекурсивной оч
 	}
 }
 
-template<class K, class T>
-void T23<K, T>::_Copy(Internal *t) 
-{
-	if (t == NULL) return; 
-	if (t->son1->type() == 0)
-	{
-		if (t->son1) Insert(t->son1->key, t->son1->value); 
-		if (t->son2) Insert(t->son2->key, t->son2->value);
-		if (t->son3) Insert(t->son3->key, t->son3->value);
-		return;
-	}
-	_Copy(((Internal*)t->son1, tree)); 
-	Insert(t->son1->key, t->son1->value);
-	_Copy(((Internal*)t->son2, tree)); 
-	Insert(t->son2->key, t->son2->value);
-	if (t->son3) 
-	{
-		_Copy(((Internal*)t->son3, tree));
-		Insert(t->son3->key, t->son3->value);
-	}
-}
+
 
 template<class K, class T> 
 bool T23<K,T>::IsEmpty() //функция проверки дерева на пустоту
