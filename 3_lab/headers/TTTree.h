@@ -28,11 +28,11 @@ badblues:
 */
 
 template<typename K, typename V>
-class BalancedTree {
+class TTTree {
     public:
-        BSTree();
-        BSTree(const BSTree &copy);
-        ~BSTree();
+        TTTree();
+        TTTree(const TTTree &copy);
+        ~TTTree();
         Iterator<K, V> begin();
         RIterator<K, V> rbegin();
         Iterator<K, V> end();
