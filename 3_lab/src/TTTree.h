@@ -3,6 +3,7 @@
 #include "Node.h"
 #include "Iterator.h"
 #include "RIterator.h"
+#include <sstream>
 
 /*
 2-3-дерево. Алгоритмы операций вставки, удаления и поиска реа-
@@ -14,12 +15,11 @@ teenspirit:
     деструктор
     insert
     remove
-    printTree
     предусмотреть запрет на дупликацию ключей
 
 
 badblues:
-    меню
+    меню ☑
     тестирование трудоемкости
     size ☑
     clear ☑
@@ -48,10 +48,13 @@ class TTTree {
         bool Insert(K key, V value);
         void Split();
         bool Remove(K key);
+        string ToString();
         int CountNodes();
+
     private:
         Leaf<K,V>* Get(Internal<K,V>*, K);
         void Clear(Internal<K,V> *node);
+        void ToString(Node<K,V>* t, int level, stringstream* ss);
         int nodes_counter = 0;
         uint size;
         Internal<K, V> *root;

@@ -58,7 +58,7 @@ void MainMenu() {
 
   while (flag) {
     system(clear_console_);
-    //tree.printTree();
+    //tree.ToString();
     ShowMainMenu();
     choice = GetNumber(0, 11, "");
     switch (choice) {
@@ -117,7 +117,7 @@ void MainMenu() {
         // Iterator<int, int> iter = tree.Begin();
         // while(iterator_flag) {
         //   system(clear_console_);
-        //   tree.PrintTree();
+        //   tree.ToString();
         //   cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
         //   choice = GetNumber(0, 4, "");
         //   switch(choice) {
@@ -155,7 +155,7 @@ void MainMenu() {
         // RIterator<int, int> iter = tree.Rbegin();
         // while(iterator_flag) {
         //   system(clear_console_);
-        //   tree.PrintTree();
+        //   tree.ToString();
         //   cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
         //   choice = GetNumber(0, 4, "");
         //   switch(choice) {
