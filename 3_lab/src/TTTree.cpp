@@ -192,7 +192,10 @@ bool TTTree<K, V>::Insert(K key, V value) {
 }
 
 template<class K, class V>
-bool TTTree<K, V>::Insert(Node<K, V> *t, Node<K, V> *lt, Node<K, V> *&tup, K &lup) {  //функция рекурсивной вставки в дерево
+bool TTTree<K, V>::Insert(Node<K, V> *t,
+                          Node<K, V> *lt,
+                          Node<K, V> *&tup,
+                          K &lup) {  //функция рекурсивной вставки в дерево
   nodes_counter++;
   int child = 0;
   tup = nullptr;
@@ -278,6 +281,219 @@ bool TTTree<K, V>::Insert(Node<K, V> *t, Node<K, V> *lt, Node<K, V> *&tup, K &lu
 
   }
   return inserted;
+}
+
+template<class K, class V>
+bool TTTree<K, V>::Remove(K key) // функция удаления
+{
+  Internal<K, V> *t;
+  Leaf<K, V> *tmin;
+  bool one;
+  int fl = size;
+  if (root == nullptr)
+    return false;
+  if (root->son2 == nullptr) {
+    if (((Leaf<K, V> *) root->son1)->key == key) {
+      delete root->son1;
+      root->son1 = nullptr;
+      delete root;
+      root = nullptr;
+      size = 0;
+      return true;
+    } else {
+      return false;
+    }
+  }
+  bool deleted;
+  deleted = Remove(root, key, tmin, one);
+  if (deleted) {
+    if (one) {
+      if (root->son1->inner() == true) {
+        t = ((Internal<K, V> *) root->son1);
+        delete root;
+        root = t;
+      }
+    }
+  }
+  return deleted;
+}
+
+template<typename K, typename V>
+bool TTTree<K, V>::Remove(Internal<K, V> *t,K k, Leaf<K, V> *&tlow1, bool &one_son) {
+  Internal<K, V> *w, *y, *z;
+  int child;
+  nodes_counter++;
+  tlow1 = nullptr;
+  one_son = false;
+  if (t->son1->inner() == false) {
+    if (((Leaf<K, V> *) t->son1)->key == k) {
+      delete t->son1;
+      t->son1 = t->son2;
+      t->son2 = t->son3;
+      t->son3 = nullptr;
+      t->key1 = t->key2;
+      t->key2 = INT32_MAX;
+      size--;
+    } else {
+      if (((Leaf<K, V> *) t->son2)->key == k) {
+        delete t->son2;
+        t->son2 = t->son3;
+        t->son3 = nullptr;
+        t->key1 = t->key2;
+        t->key2 = INT32_MAX;
+        size--;
+      } else {
+        if ((t->son3 != nullptr) && (((Leaf<K, V> *) t->son3)->key == k)) {
+          delete t->son3;;
+          t->son3 = nullptr;
+          size--;
+        } else {
+          return false;
+        }
+      }
+    }
+    tlow1 = ((Leaf<K, V> *) t->son1);
+    if (t->son2 == nullptr) {
+      one_son = true;
+    }
+    return true;
+  }
+  if (k < t->key1) {
+    child = 1;
+    w = ((Internal<K, V> *) t->son1);
+  } else {
+    if ((t->son3 == nullptr) || (k < t->key2)) {
+      child = 2;
+      w = ((Internal<K, V> *) t->son2);
+    } else {
+      child = 3;
+      w = ((Internal<K, V> *) t->son3);
+    }
+  }
+  bool one_son_bk;
+  Leaf<K, V> *tlow1_bk;
+  if ((Remove(w, k, tlow1_bk, one_son_bk)) == false) {
+    return false;
+  }
+
+  tlow1 = tlow1_bk;
+  //one_son=false;
+  if (tlow1_bk != nullptr) {
+    if (child == 2) {
+      t->key1 = ((Leaf<K, V> *) tlow1_bk)->key;
+      tlow1 = nullptr;
+    }
+    if (child == 3) {
+      t->key2 = ((Leaf<K, V> *) tlow1_bk)->key;
+      tlow1 = nullptr;
+    }
+  }
+  if (!one_son_bk)
+    return true;
+  if (child == 1) {
+    y = ((Internal<K, V> *) t->son2);
+    if (y->son3 != nullptr) {
+      w->son2 = y->son1;
+      w->key1 = t->key1;
+      t->key1 = y->key1;
+      y->son1 = y->son2;
+      y->son2 = y->son3;
+      y->key1 = y->key2;
+      y->son3 = nullptr;
+      y->key2 = INT32_MAX;
+    } else {
+      y->son3 = y->son2;
+      y->key2 = y->key1;
+      y->son2 = y->son1;
+      y->key1 = t->key1;
+      y->son1 = w->son1;
+      delete w;
+      t->son1 = t->son2;
+      t->son2 = t->son3;
+      t->key1 = t->key2;
+      t->son3 = nullptr;
+      t->key2 = INT32_MAX;
+      //one_son=true;
+      if (t->son2 == nullptr) {
+        one_son = true;
+      }
+    }
+    return true;
+  }
+  if (child == 2) {
+    y = ((Internal<K, V> *) t->son1);
+    if (y->son3 != nullptr) {
+      w->son2 = w->son1;
+      w->key1 = t->key1;
+      w->son1 = y->son3;
+      y->son3 = nullptr;
+      t->key1 = y->key2;
+      y->key2 = INT32_MAX;
+      //one_son=false;
+      return true;
+    } else {
+      z = ((Internal<K, V> *) t->son3);
+      if ((z != nullptr) && (z->son3 != nullptr)) {
+        w->son2 = z->son1;
+        w->key1 = t->key2;
+        t->key2 = z->key1;
+        z->son1 = z->son2;
+        z->son2 = z->son3;
+        z->key1 = z->key2;
+        z->son3 = nullptr;
+        z->key2 = INT32_MAX;
+        //one_son=false;
+        return true;
+      }
+    }
+    y->son3 = w->son1;
+    y->key2 = t->key1;
+    delete w;
+    t->son2 = t->son3;
+    t->key1 = t->key2;
+    t->son3 = nullptr;
+    t->key2 = INT32_MAX;
+    if (t->son2 == nullptr) {
+      one_son = true;
+    }
+    return true;
+  }
+  y = ((Internal<K, V> *) t->son2);
+  if (y->son3 != nullptr) {
+    w->son2 = w->son1;
+    w->key1 = t->key2;
+    w->son1 = y->son3;
+    t->key2 = y->key2;
+    y->son3 = nullptr;
+    y->key2 = INT32_MAX;
+  } else {
+    y->son3 = w->son1;
+    y->key2 = t->key2;
+    t->son3 = nullptr;
+    t->key2 = INT32_MAX;
+    delete w;
+  }
+  return true;
+}
+
+template<typename K, typename V>
+Iterator<K, V> TTTree<K, V>::Begin() {
+  return Iterator<K, V>(root, 0, size);
+}
+
+template<typename K, typename V>
+RIterator<K, V> TTTree<K, V>::RBegin() {
+  return RIterator<K, V>(root, size - 1, size);
+}
+
+template<typename K, typename V>
+Iterator<K, V> TTTree<K, V>::End() {
+  return Iterator<K, V>(root, -1, size);
+}
+
+template<typename K, typename V>
+RIterator<K, V> TTTree<K, V>::REnd() {
+  return RIterator<K, V>(root, -1, size);
 }
 
 template

@@ -1,7 +1,6 @@
 #pragma once
 #include "Node.h"
 #include <vector>
-#include <stack>
 
 
 template <typename K, typename V>
@@ -18,8 +17,7 @@ class Iterator {
             this->size = size;
             this->root = root;
             this->index = index;
-            if (root)
-                fill(root);
+            fill(root);
         }
 
         Iterator& operator++() {
@@ -42,31 +40,90 @@ class Iterator {
             return this->index != iterator.index;
         }
 
-        Node<K, V>* operator*() {
+        Leaf<K, V>* operator*() {
             return vc[index];
         }
 
+    protected:
+
+        void fill(Node<K,V>* node) {
+            if (!node)
+                return;
+            if (!(node->inner())) {
+                vc.push_back(((Leaf<K, V>*)node));
+            } else if (((Internal<K,V>*)node)->son3 != nullptr) {
+                fill(((Internal<K,V>*)node)->son1);
+                fill(((Internal<K,V>*)node)->son2);
+            } else  {
+                fill(((Internal<K,V>*)node)->son1);
+                fill(((Internal<K,V>*)node)->son2);
+                fill(((Internal<K,V>*)node)->son3);
+            }
+        }
+
+        uint size;
+        int index;
+        vector<Leaf<K, V>*> vc;
+        Internal<K, V>* root;
+};
+
+template<typename K, typename V>
+class RIterator {
+    public:
+
+        RIterator() {
+            size = 0;
+            index = -1;
+            root = nullptr;
+        }
+
+        RIterator (Internal<K, V>* root, int index, uint size) {
+            this->size = size;
+            this->root = root;
+            this->index = index;
+            fill(root);
+        }
+
+        RIterator& operator++() {
+             index--;
+             return *this;
+        }
+        
+        RIterator& operator--() {
+            index++;
+            if (index == size) index = -1;
+            return *this;
+        }
 
 
-    private:
+        bool operator==(const RIterator& iterator) {
+            return this->index == iterator.index;
+        }
 
-        // void fill(Internal<K,V>* node) {
-        //     if (!node)
-        //         return;
-            
-        //     if N is a leaf
-        //         visit (e.g. print) the key(s) stored in N
-        //     else if N is a 2-node
-        //         traverse(N.left)
-        //         visit key
-        //         traverse(N.right)
-        //     else N is a 3-node
-        //         traverse(N.left)
-        //         visit small key
-        //         traverse(N.middle)
-        //         visit large key
-        //         traverse(N.right)
-        // }
+        bool operator!=(const RIterator& iterator) {
+            return this->index != iterator.index;
+        }
+
+        Leaf<K, V>* operator*() {
+            return vc[index];
+        }
+
+    protected:
+
+        void fill(Node<K,V>* node) {
+            if (!node)
+                return;
+            if (!(node->inner())) {
+                vc.push_back(((Leaf<K, V>*)node));
+            } else if (((Internal<K,V>*)node)->son3 != nullptr) {
+                fill(((Internal<K,V>*)node)->son1);
+                fill(((Internal<K,V>*)node)->son2);
+            } else  {
+                fill(((Internal<K,V>*)node)->son1);
+                fill(((Internal<K,V>*)node)->son2);
+                fill(((Internal<K,V>*)node)->son3);
+            }
+        }
 
         uint size;
         int index;

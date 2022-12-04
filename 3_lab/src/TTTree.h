@@ -2,7 +2,6 @@
 
 #include "Node.h"
 #include "Iterator.h"
-#include "RIterator.h"
 #include <sstream>
 
 /*
@@ -10,11 +9,12 @@
 лизуются в рекурсивной форме.
 
 teenspirit:
-    конструктор
+    конструктор [ok]
     конструктор копирования
-    деструктор
-    insert
+    деструктор [ok]
+    insert [ok]
     remove
+    printTree [ok]
     предусмотреть запрет на дупликацию ключей
 
 
@@ -27,9 +27,7 @@ badblues:
     get ☑
     set ☑
     итероторы
-    меню
     меню для итераторов
-    CountNodes 
 */
 
 using namespace std;
@@ -40,6 +38,10 @@ class TTTree {
         TTTree();
         TTTree(const TTTree &copy);
         ~TTTree();
+        Iterator<K, V> Begin();
+        RIterator<K, V> RBegin();
+        Iterator<K, V> End();
+        RIterator<K, V> REnd();
         uint GetSize();
         void Clear();
         bool IsEmpty();
@@ -49,8 +51,10 @@ class TTTree {
         void Split();
         bool Remove(K key);
         string ToString();
+        bool Remove(Internal<K, V> *t, K k, Leaf<K, V> *&tlow1, bool &one_son);
         int CountNodes();
         bool Insert(Node<K, V> *t, Node<K, V> *lt, Node<K, V> *&tup, K &lup);
+
     private:
         Leaf<K,V>* Get(Internal<K,V>*, K);
         void Clear(Internal<K,V> *node);
@@ -58,5 +62,6 @@ class TTTree {
         int nodes_counter = 0;
         uint size;
         Internal<K, V> *root;
+
 
 };
