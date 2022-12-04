@@ -8,7 +8,7 @@
 #include <sstream>
 #include <list>
 
-#define COUNT 10
+#define COUNT 5
 
 template<typename K, typename V>
 class BSTree {
@@ -31,7 +31,6 @@ class BSTree {
   void printTree();
   void printTree(Node <K, V> *_root, int space);
   int CountNodes();
-
  private:
   int nodes_counter = 0;
   uint size;

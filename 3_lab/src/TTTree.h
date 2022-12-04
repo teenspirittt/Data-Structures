@@ -46,6 +46,7 @@ class TTTree {
         V Get(K key);
         bool Set(K key, V value);
         bool Insert(K key, V value);
+        void Split();
         bool Remove(K key);
         int CountNodes();
     private:

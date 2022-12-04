@@ -8,22 +8,22 @@
 
 using namespace std;
 
-int GetNumber(int l_gap, int h_gap, const char* msg) {
-    int number;
-    cout << msg;
-    while (true) {
-        cin >> number;
-        if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n')) 
-            break;
-        else {
-            cout << "INVALID INPUT\n";
-            cin.clear();
-            while (cin.get() != '\n') {
-            }
-        }
+int GetNumber(int l_gap, int h_gap, const char *msg) {
+  int number;
+  cout << msg;
+  while (true) {
+    cin >> number;
+    if ((number >= l_gap) && (number <= h_gap) && (cin.peek() == '\n'))
+      break;
+    else {
+      cout << "INVALID INPUT\n";
+      cin.clear();
+      while (cin.get() != '\n') {
+      }
     }
-    cin.get();
-    return number;
+  }
+  cin.get();
+  return number;
 }
 
 void ShowMainMenu() {
@@ -43,7 +43,6 @@ void ShowMainMenu() {
           "  0 EXIT\n"
           "===================\n";
 }
-
 
 void MainMenu() {
   int choice;
@@ -88,7 +87,7 @@ void MainMenu() {
         val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
         if (tree.set(key, val))
           cout << "DONE!\n";
-        else 
+        else
           cout << "FAIL!\n";
         cin.get();
         break;
@@ -121,12 +120,18 @@ void MainMenu() {
       case 10: { // iterator
         iterator_flag = true;
         Iterator<int, int> iter = tree.begin();
-        while(iterator_flag) {
+        while (iterator_flag) {
           system(clear_console_);
+<<<<<<< HEAD
+          cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
+          choice = GetNumber(0, 5, "");
+          switch (choice) {
+=======
           tree.printTree();
           cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
           choice = GetNumber(0, 4, "");
           switch(choice) {
+>>>>>>> badblues
             case 1: {
               iter = tree.begin();
               break;
@@ -136,8 +141,16 @@ void MainMenu() {
               break;
             }
             case 3: {
+<<<<<<< HEAD
+              if (iter != tree.end())
+                ++iter;
+              break;
+            }
+            case 4: {
+=======
+>>>>>>> badblues
               if (iter != tree.begin())
-              --iter;
+                --iter;
               break;
             }
             case 4: {
@@ -159,12 +172,18 @@ void MainMenu() {
       case 11: { // reversed iterator
         iterator_flag = true;
         RIterator<int, int> iter = tree.rbegin();
-        while(iterator_flag) {
+        while (iterator_flag) {
           system(clear_console_);
+<<<<<<< HEAD
+          cout << "  1 BEGIN\n  2 END\n  3 ++\n  4 --\n  5 *\n  0 EXIT\n";
+          choice = GetNumber(0, 5, "");
+          switch (choice) {
+=======
           tree.printTree();
           cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
           choice = GetNumber(0, 4, "");
           switch(choice) {
+>>>>>>> badblues
             case 1: {
               iter = tree.rbegin();
               break;
@@ -174,6 +193,19 @@ void MainMenu() {
               break;
             }
             case 3: {
+<<<<<<< HEAD
+              if (iter != tree.rend())
+                ++iter;
+              break;
+            }
+            case 4: {
+              if (iter != tree.rbegin())
+                --iter;
+              break;
+            }
+            case 5: {
+              cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+=======
               if (iter != tree.rbegin())
                 --iter;
               break;
@@ -183,6 +215,7 @@ void MainMenu() {
                 cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
               else
                 cout << "LOST ITERATOR\n";
+>>>>>>> badblues
               cin.get();
               break;
             }
@@ -194,8 +227,7 @@ void MainMenu() {
         }
         break;
       }
-      case 0:
-        flag = false;
+      case 0:flag = false;
         break;
     }
   }

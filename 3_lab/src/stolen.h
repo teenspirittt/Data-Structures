@@ -45,12 +45,6 @@ public:
 	};
 };
 
-template<class K, class T>
-T23<K,T>::T23() 
-{
-	root=NULL; //указатель на корень дерева
-	cnt = size = 0; //сброс счетчика и размера дерева в 0
-}
 
 template<class K, class T>
 T23<K,T>::T23(T23<K,T>& t)
@@ -60,30 +54,62 @@ T23<K,T>::T23(T23<K,T>& t)
 	_Copy(t.root);
 }
 
-template<class K, class T> T23<K, T>::~T23() { Clear(); }
+template<class K, class T>
+void T23<K, T>::_Copy(Internal *t)
+{
+  if (t == NULL) return;
+  if (t->son1->type() == 0)
+  {
+    if (t->son1) Insert(t->son1->key, t->son1->value);
+    if (t->son2) Insert(t->son2->key, t->son2->value);
+    if (t->son3) Insert(t->son3->key, t->son3->value);
+    return;
+  }
+  _Copy(((Internal*)t->son1, tree));
+  Insert(t->son1->key, t->son1->value);
+  _Copy(((Internal*)t->son2, tree));
+  Insert(t->son2->key, t->son2->value);
+  if (t->son3)
+  {
+    _Copy(((Internal*)t->son3, tree));
+    Insert(t->son3->key, t->son3->value);
+  }
+}
+
 template<class K, class T> int T23<K,T>::GetSize(){ return size; } //опрос размера дерева
 
-template<class K, class T>
-void T23<K, T>::_Copy(Internal *t) 
+template<class K, class T> 
+void T23<K,T>::Clear() //функция очистки дерева
 {
-	if (t == NULL) return; 
-	if (t->son1->type() == 0)
+	_Clear(root);  //вызов функции рекурсивной очистки дерева
+	delete root;    //удалили корень
+	root=NULL;    //сбросили указатель на корень в NULL
+	size=0;     //размер дерева 0
+}
+
+template<class K, class T> 
+void T23<K,T>::_Clear(Internal *t)  //функция рекурсивной очистки дерева
+{
+	if(t==NULL) return; //если дерево и так пустое
+	if(t->son1->type() == 0) 
 	{
-		if (t->son1) Insert(t->son1->key, t->son1->value); 
-		if (t->son2) Insert(t->son2->key, t->son2->value);
-		if (t->son3) Insert(t->son3->key, t->son3->value);
+		if(t->son1) delete t->son1; //удаление 1-го листа
+		if(t->son2) delete t->son2; //удаление 2-го листа
+		if(t->son3) delete t->son3; //удаление 3-его листа
 		return;
 	}
-	_Copy(((Internal*)t->son1, tree)); 
-	Insert(t->son1->key, t->son1->value);
-	_Copy(((Internal*)t->son2, tree)); 
-	Insert(t->son2->key, t->son2->value);
-	if (t->son3) 
+	_Clear(((Internal*)t->son1)); //идем  удалять из 1-го поддерева 
+	delete t->son1; //удаление 1-го поддерева
+	_Clear(((Internal*)t->son2)); //идем удалять из 2-го поддерева
+	delete t->son2; //удаление 2-го поддерева 
+	if(t->son3) //идем удалять из 3-го поддерева
 	{
-		_Copy(((Internal*)t->son3, tree));
-		Insert(t->son3->key, t->son3->value);
+		_Clear(((Internal*)t->son3));
+		delete t->son3; //удаление 3-го поддерева
 	}
 }
+
+
 
 
 template<class K, class T> 

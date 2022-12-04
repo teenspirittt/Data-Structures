@@ -16,11 +16,11 @@ template<typename K, typename V>
 class Internal: public Node<K,V> {
 	public:
 		Node<K,V> *son1, *son2, *son3; 
-		K key1, low3; 
+		K key1, key2; 
 		bool inner(){ return 1; }
 		Internal() {
 			son1 = son2 = son3 = NULL; 
-			key1 = low3 = INT_MAX;
+			key1 = key2 = INT_MAX;
 		}
 		void Show (int level) {
 			if(son3 != NULL)
@@ -35,7 +35,7 @@ class Internal: public Node<K,V> {
 			if(son3==NULL)
 				cout<<"," << "-";
 			else 
-				cout<< "," <<low3;
+				cout<< "," <<key2;
 			cout<<endl;
 			son1->Show(level+1);			
 		}
