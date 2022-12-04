@@ -45,11 +45,11 @@ template<typename K, typename V>
 class Leaf: public Node {
 	public:
 		K key;
-		V data;
+		V value;
 		bool inner() { return 0; }
 		void Show(int level) {
 			for (int i = 0; i < 6 * level; i++) cout << " ";
 			cout << key << endl;
 		}
-		Leaf(K key_, T data_) { key = key_; data = data_; }
+		Leaf(K key_, T data_) { key = key_; value = data_; }
 };
