@@ -18,3 +18,8 @@ template<typename K, typename V>
 V TTTree<K,V>::get(K key) {
     //TODO:
 }
+
+template<typename K, typename V>
+bool TTTree<K,V>::get(K key) {
+    //TODO:
+}
