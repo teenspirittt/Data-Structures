@@ -1,20 +1,6 @@
 #include <string>
 using namespace std;
 
-class TreeException
-{
-	string code;
-public:
-	TreeException() 
-	{
-		code = "Исключение";
-	}
-	string What() 
-	{
-		return code;
-	}
-};
-
 template<class K, class T> 
 class T23
 {
@@ -30,9 +16,6 @@ public:
 	T23();  //конструктор
 	T23(T23<K, T>& t); //Конструктор копирования
 	~T23(); //деструктор
-	int GetSize();       //опрос размера дерева
-	void Clear();     //очистка дерева
-	bool IsEmpty();     //проверка дерева на пустоту
 	bool Insert(K,T); //включение нового элемента с заданным ключом
 	bool Delete(K);   //удаление элемента с заданным ключом
 	void Show();
@@ -128,11 +111,6 @@ void T23<K,T>::_Clear(Internal *t)  //функция рекурсивной оч
 
 
 
-template<class K, class T> 
-bool T23<K,T>::IsEmpty() //функция проверки дерева на пустоту
-{
-	return (size == 0);
-}
 
 template<class K, class T> 
 void T23<K,T>::Show() //функция распечатки дерева
@@ -142,68 +120,7 @@ void T23<K,T>::Show() //функция распечатки дерева
 	root->Show(0);
 }
 
-template<class K, class T> 
-bool T23<K,T>::Insert(K k, T value) //функция вставки в дерево
-{
-	Node *lt = new Leaf(k,value);  //создали листок
-	if(root == NULL)      //если дерево пустое
-		{
-		root = new Internal;   //создаем дерево
-		root->son1=lt;  //создали листок
-		root->son2 = root->son3 = NULL;
-		size++; //увеличили счетчик размера дерева
-		
-		return true;
-		}
-	if (root->son2 == NULL)
-		{
-		 if (((Leaf*)root->son1)->key < k) 
-			{
-			root->son2=lt;
-			root->key1 = k;
-			size++; //увеличили счетчик размера дерева
-			return true;
-			}
-		 else 
-			{
-			 if (((Leaf*)root->son1)->key > k)
-				{
-				 root->son2=root->son1;
-				 root->key1=((Leaf*)root->son1)->key;
-				 root->son1=lt;
-				 size++; //увеличили счетчик размера дерева
-				 
-				 return true;
-				}
-			 else
-				{
-				 delete lt;
-				 return false;
-				}
-			}
 
-		}
-	Node *tbk = new Internal;
-	K lbk;
-	bool inserted=_Insert(root,lt,tbk,lbk); //вызов функции рекурсивной вставки в дерево
-	if (inserted == false) 
-	{
-		delete lt;
-		return false;
-	}
-	if (tbk != NULL) //если появилось новое поддерево (произошло расщепление)
-	{
-		Node *temp;
-		temp=root; //то формируем итоговое дерево,
-		root=new Internal;   //создаем дерево
-		root->son1=temp;	//1-ым сыном которого будет корень "старого" дерева,
-		root->son2=tbk;    //а 2-ым сыном будет "новое" поддерево
-		root->key1=lbk;
-		root->son3=NULL;
-		
-	}
-	return true;
-}
 													
 template<class K, class T> 
 bool T23<K,T>::_Insert(Node *t,Node *lt,Node *&tup,K &lup) //функция рекурсивной вставки в дерево

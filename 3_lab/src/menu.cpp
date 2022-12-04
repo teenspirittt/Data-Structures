@@ -65,12 +65,12 @@ void MainMenu() {
       case 1: { // add element
         // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
         // val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        // tree.insert(key, val);
+        // tree.Insert(key, val);
         break;
       }
       case 2: { // remove element
         // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // if (tree.remove(key))
+        // if (tree.Remove(key))
         //   cout << "DONE!\n";
         // else 
         //   cout << "FAIL!\n";
@@ -78,14 +78,14 @@ void MainMenu() {
       }
       case 3: { // get by key
         // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // cout << tree.get(key) << "\n";
+        // cout << tree.Get(key) << "\n";
         // cin.get();
         break;
       }
       case 4: { // set by key
         // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
         // val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        // if (tree.set(key, val))
+        // if (tree.Set(key, val))
         //   cout << "DONE!\n";
         // else 
         //   cout << "FAIL!\n";
@@ -93,17 +93,17 @@ void MainMenu() {
         break;
       }
       case 5: { // clear
-        // tree.clear();
+        // tree.Clear();
         // cin.get();
         break;
       }
       case 6: { // get size
-        // cout << tree.getSize();
+        // cout << tree.GetSize();
         // cin.get();
         break;
       }
       case 7: { // isempty
-        // cout << tree.isEmpty();
+        // cout << tree.IsEmpty();
         // cin.get();
         break;
       }
@@ -114,15 +114,15 @@ void MainMenu() {
       }
       case 9: { // iterator
         // iterator_flag = true;
-        // Iterator<int, int> iter = tree.begin();
+        // Iterator<int, int> iter = tree.Begin();
         // while(iterator_flag) {
         //   system(clear_console_);
-        //   tree.printTree();
+        //   tree.PrintTree();
         //   cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
         //   choice = GetNumber(0, 4, "");
         //   switch(choice) {
         //     case 1: {
-        //       iter = tree.begin();
+        //       iter = tree.Begin();
         //       break;
         //     }
         //     case 2: {
@@ -130,12 +130,12 @@ void MainMenu() {
         //       break;
         //     }
         //     case 3: {
-        //       if (iter != tree.begin())
+        //       if (iter != tree.Begin())
         //       --iter;
         //       break;
         //     }
         //     case 4: {
-        //       if (iter != tree.end())
+        //       if (iter != tree.End())
         //         cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
         //       else
         //         cout << "LOST ITERATOR\n";
@@ -152,15 +152,15 @@ void MainMenu() {
       }
       case 10: { // reversed iterator
         // iterator_flag = true;
-        // RIterator<int, int> iter = tree.rbegin();
+        // RIterator<int, int> iter = tree.Rbegin();
         // while(iterator_flag) {
         //   system(clear_console_);
-        //   tree.printTree();
+        //   tree.PrintTree();
         //   cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
         //   choice = GetNumber(0, 4, "");
         //   switch(choice) {
         //     case 1: {
-        //       iter = tree.rbegin();
+        //       iter = tree.Rbegin();
         //       break;
         //     }
         //     case 2: {
@@ -168,12 +168,12 @@ void MainMenu() {
         //       break;
         //     }
         //     case 3: {
-        //       if (iter != tree.rbegin())
+        //       if (iter != tree.Rbegin())
         //         --iter;
         //       break;
         //     }
         //     case 4: {
-        //       if (iter != tree.rend())
+        //       if (iter != tree.Rend())
         //         cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
         //       else
         //         cout << "LOST ITERATOR\n";
