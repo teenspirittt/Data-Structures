@@ -14,12 +14,12 @@ class Iterator {
             root = nullptr;
         }
 
-        Iterator (Node<K, V>* root, int index, uint size) {
+        Iterator (Internal<K, V>* root, int index, uint size) {
             this->size = size;
             this->root = root;
             this->index = index;
             if (root)
-                fill();
+                fill(root);
         }
 
         Iterator& operator++() {
@@ -50,11 +50,26 @@ class Iterator {
 
     private:
 
-        void fill() {
+        // void fill(Internal<K,V>* node) {
+        //     if (!node)
+        //         return;
+            
+        //     if N is a leaf
+        //         visit (e.g. print) the key(s) stored in N
+        //     else if N is a 2-node
+        //         traverse(N.left)
+        //         visit key
+        //         traverse(N.right)
+        //     else N is a 3-node
+        //         traverse(N.left)
+        //         visit small key
+        //         traverse(N.middle)
+        //         visit large key
+        //         traverse(N.right)
+        // }
 
-        }
         uint size;
         int index;
-        vector<Node<K, V> *> vc;
-        Node<K, V>* root;
+        vector<Leaf<K, V>*> vc;
+        Internal<K, V>* root;
 };

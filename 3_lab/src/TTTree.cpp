@@ -70,7 +70,6 @@ Leaf<K, V> *TTTree<K, V>::Get(Internal<K, V> *node, K key) {
   nodes_counter++;
   if (node == nullptr)
     return nullptr;
-  //throw TreeException();
   if (node->son1->inner() == 0) {
     if (((Leaf<K, V> *) node->son1)->key == key)
       return ((Leaf<K, V> *) node->son1);
@@ -80,8 +79,7 @@ Leaf<K, V> *TTTree<K, V>::Get(Internal<K, V> *node, K key) {
     if (node->son3)
       if (((Leaf<K, V> *) node->son3)->key == key)
         return ((Leaf<K, V> *) node->son3);
-    return V(0);
-    //throw TreeException();
+    return nullptr;
   }
   if (node->key1 > key)
     return Get(((Internal<K, V> *) node->son1), key);
@@ -89,6 +87,7 @@ Leaf<K, V> *TTTree<K, V>::Get(Internal<K, V> *node, K key) {
     return Get(((Internal<K, V> *) node->son2), key);
   return Get(((Internal<K, V> *) node->son3), key);
 }
+
 template<typename K, typename V>
 void TTTree<K, V>::Clear() {
   Clear(root);

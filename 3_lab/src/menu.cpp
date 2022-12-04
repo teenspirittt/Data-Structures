@@ -109,8 +109,8 @@ void MainMenu() {
         break;
       }
       case 8: { // count nodes
-        // cout << tree.CountNodes();
-        // cin.get();
+        cout << tree.CountNodes();
+        cin.get();
         break;
       }
       case 9: { // iterator
