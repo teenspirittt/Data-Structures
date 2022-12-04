@@ -1,3 +1,8 @@
+#pragma once
+
+#include "Node.h"
+#include "Iterator.h"
+#include "RIterator.h"
 
 /*
 2-3-дерево. Алгоритмы операций вставки, удаления и поиска реа-
@@ -52,4 +57,4 @@ class TTTree {
         int nodes_counter = 0;
         uint size;
         Node<K, V> *root;
-}
+};
