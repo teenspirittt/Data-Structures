@@ -62,7 +62,8 @@ TTTree<K, V>::TTTree() {
   root = nullptr;
   nodes_counter = 0;
   size = 0;
-}f
+}
+f
 
 template<typename K, typename V>
 TTTree<K, V>::TTTree(const TTTree &copy) {
@@ -73,41 +74,55 @@ TTTree<K, V>::~TTTree() {
   Clear();
 }
 
-
 template<typename K, typename V>
 bool TTTree<K, V>::Insert(K key, V value) {
-  if(candidate == nullptr) {
-    root = new node(key);
-    return false;
+  nodes_counter = 0;
+  if (IsEmpty()) {
+    root = new Node<K, V>(key, value);
+    size++;
+    nodes_counter++;
+    return true;
   }
-  if(candidate->isleaf()) {
-    candidate->store(key);
-  }else {
-    if(*candidate->firstkey > *key) {
-      insert(candidate->less, key); //Insert to left subtree.
-    }else if(*candidate->firstkey <= *key && candidate->is2node()) {
-      insert(candidate->btwn, key); //Insert to mid-subtree.
-    }else {
-      if(*candidate->secondkey > *key) {
-        insert(candidate->btwn, key); //Insert to mid-subtree.
-      }else {
-        insert(candidate->great, key); //Insert to right subtree.
+  Node<K, V> *tmp = root;
+
+  if (!tmp->inner()) {
+    tmp->store(key);
+  } else {
+    if (*tmp->firstkey > *key) {
+      insert(tmp->less, key); //Insert to left subtree.
+    } else if (*tmp->firstkey <= *key && tmp->is2node()) {
+      insert(tmp->btwn, key); //Insert to mid-subtree.
+    } else {
+      if (*tmp->secondkey > *key) {
+        insert(tmp->btwn, key); //Insert to mid-subtree.
+      } else {
+        insert(tmp->great, key); //Insert to right subtree.
       }
     }
   }
-  split(candidate);
+  split(tmp);
   return false;
 }
 
 template<typename K, typename V>
-void split(Node<K,V> *root) {
+void split(Node<K, V> *root) {
   if (root->size < 3) return root;
 
-  auto *x = new Node<K,V>(root->key[0], root->first, root->second, nullptr, nullptr, root->parent); // Создаем две новые вершины,
-  auto *y = new Node<K,V>(root->key[2], root->third, root->fourth, nullptr, nullptr, root->parent);  // которые имеют такого же родителя, как и разделяющийся элемент.
-  if (x->first)  x->first->parent = x;    // Правильно устанавливаем "родителя" "сыновей".
+  auto *x = new Node<K, V>(root->key[0],
+                           root->first,
+                           root->second,
+                           nullptr,
+                           nullptr,
+                           root->parent); // Создаем две новые вершины,
+  auto *y = new Node<K, V>(root->key[2],
+                           root->third,
+                           root->fourth,
+                           nullptr,
+                           nullptr,
+                           root->parent);  // которые имеют такого же родителя, как и разделяющийся элемент.
+  if (x->first) x->first->parent = x;    // Правильно устанавливаем "родителя" "сыновей".
   if (x->second) x->second->parent = x;   // После разделения, "родителем" "сыновей" является "дедушка",
-  if (y->first)  y->first->parent = y;    // Поэтому нужно правильно установить указатели.
+  if (y->first) y->first->parent = y;    // Поэтому нужно правильно установить указатели.
   if (y->second) y->second->parent = y;
 
   if (root->parent) {
@@ -132,7 +147,7 @@ void split(Node<K,V> *root) {
       root->parent->third = x;
     }
 
-    Node<K,V> *tmp = root->parent;
+    Node<K, V> *tmp = root->parent;
     delete root;
     return tmp;
   } else {
