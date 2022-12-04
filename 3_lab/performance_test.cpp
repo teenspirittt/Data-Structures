@@ -1,7 +1,7 @@
 #include <time.h>
 #include <math.h>
 #include <iostream>
-#include "headers/BSTree.h"
+#include "src/TTTree.h"
 using namespace std;
 typedef unsigned long long INT_64;
 
@@ -10,7 +10,7 @@ const INT_64 mRand =(1<<63) -1;
 const INT_64 aRand=6364136223846793005;
 const INT_64 cRand=1442695040888963407;
 
-void sRand () { srand(time(0)); RRand=(INT_64)rand();}
+void sRand () {srand(time(0)); RRand=(INT_64)rand();}
 
 INT_64 LineRand () {
     INT_64 y1,y2;
@@ -23,7 +23,7 @@ INT_64 LineRand () {
 
 void test_rand(int n) {
     //создание дерева для 64 – разрядных ключей типа INT_64
-    BSTree< INT_64,int > tree;
+    TTTree< INT_64,int > tree;
     //массив для ключей, которые присутствуют в дереве
     INT_64* m=new INT_64 [n];
     //установка первого случайного числа
@@ -88,7 +88,7 @@ void test_rand(int n) {
 
 void test_ord(int n) {
     //создание дерева для 64 – разрядных ключей типа INT_64
-    BSTree< INT_64,int > tree;
+    TTTree< INT_64,int > tree;
     //массив для ключей, которые присутствуют в дереве
     INT_64* m=new INT_64 [n];
     //заполнение дерева и массива элементами
