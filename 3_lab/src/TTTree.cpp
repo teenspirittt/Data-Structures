@@ -19,21 +19,21 @@ void TTTree<K,V>::ToString(Node<K,V>* t, int level, stringstream* ss) {
       ToString(i->son3, level+1, ss);
     if(i->son2 != NULL) 
       ToString(i->son2, level+1, ss);
-    for(int i=0;i<6*level;i++) *ss <<" ";
+    for(int i = 0; i < 6 * level; i++) *ss << " ";
     if(i->son2 == NULL)
-      *ss<<"-";
+      *ss << "-";
     else
       *ss << i->key1;
     if(i->son3==NULL)
-      *ss<<"," << "-";
+      *ss << "," << "-";
     else 
-      *ss<< "," << i->key2;
-    *ss<<endl;
+      *ss << "," << i->key2;
+    *ss << "\n";
     ToString(i->son1, level+1, ss);
   } else {
     Leaf<K,V>* l = (Leaf<K,V>*)t;
     for (int i = 0; i < 6 * level; i++) *ss << " ";
-			*ss << l->key << endl;
+			*ss << "[" << l->key << "," << l->value << "]\n";
   }
 }
 
@@ -49,6 +49,7 @@ bool TTTree<K, V>::IsEmpty() {
 
 template<typename K, typename V>
 V TTTree<K, V>::Get(K key) {
+  nodes_counter = 0;
   Leaf<K, V> *node = Get(root, key);
   if (node)
     return node->value;
@@ -139,7 +140,7 @@ TTTree<K, V>::~TTTree() {
 
 template<typename K, typename V>
 bool TTTree<K, V>::Insert(K key, V value) {
-  cout << "inserting\n";
+  nodes_counter = 0;
   Node<K, V> *lt = new Leaf<K, V>(key, value);  //создали листок
   if (root == nullptr)      //если дерево пустое
   {
@@ -284,8 +285,8 @@ bool TTTree<K, V>::Insert(Node<K, V> *t,
 }
 
 template<class K, class V>
-bool TTTree<K, V>::Remove(K key) // функция удаления
-{
+bool TTTree<K, V>::Remove(K key) {
+  nodes_counter = 0;
   Internal<K, V> *t;
   Leaf<K, V> *tmin;
   bool one;
@@ -498,3 +499,6 @@ RIterator<K, V> TTTree<K, V>::REnd() {
 
 template
 class TTTree<int, int>;
+
+template
+class TTTree<long long unsigned int, int>;

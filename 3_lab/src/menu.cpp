@@ -1,4 +1,6 @@
 #include "menu.h"
+#include <stdlib.h>
+#include <time.h> 
 
 #ifdef __linux__
 #define clear_console_ "clear"
@@ -36,9 +38,10 @@ void ShowMainMenu() {
           "  5 CLEAR\n"
           "  6 GET SIZE\n"
           "  7 IS EMPTY\n"
-          "  8 COUNT NODES\n"
+          "  8 NUMBER OF COUNTED NODES\n"
           "  9 TEST ITERATOR\n"
           " 10 TEST REVERSED ITERATOR\n"
+          " 11 INSERT 10 LEAFES\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -116,8 +119,8 @@ void MainMenu() {
         iterator_flag = true;
         Iterator<int, int> iter = tree.Begin();
         while(iterator_flag) {
-          system(clear_console_);
-          tree.ToString();
+          //system(clear_console_);
+          cout << tree.ToString();
           cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
           choice = GetNumber(0, 4, "");
           switch(choice) {
@@ -154,8 +157,8 @@ void MainMenu() {
         iterator_flag = true;
         RIterator<int, int> iter = tree.RBegin();
         while(iterator_flag) {
-          system(clear_console_);
-          tree.ToString();
+          //system(clear_console_);
+          cout << tree.ToString();
           cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
           choice = GetNumber(0, 4, "");
           switch(choice) {
@@ -174,10 +177,12 @@ void MainMenu() {
               break;
             }
             case 4: {
-              if (iter != tree.REnd())
+              if (iter != tree.REnd()) {
                 cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
-              else
+              } else {
                 cout << "LOST ITERATOR\n";
+                iter = tree.RBegin();
+              }
               cin.get();
               break;
             }
@@ -187,6 +192,16 @@ void MainMenu() {
             }
           }
         }
+        break;
+      }
+      case 11: {
+        srand (time(NULL));
+        for (int i = 0; i < 10; i++) {
+          if (!tree.Insert(rand() % 100, rand() % 100))
+            i--;
+        }
+        cout << "DONE!";
+        cin.get();
         break;
       }
       case 0:
