@@ -428,8 +428,8 @@ bool TTTree<K, V>::Remove(Internal<K, V> *t,K k, Leaf<K, V> *&tlow1, bool &one_s
   y = ((Internal<K, V> *) t->son2);
   if (y->son3 != nullptr) {
     w->son2 = w->son1;
-    w->key1 = t->key2;
     w->son1 = y->son3;
+    w->key1 = t->key2;
     t->key2 = y->key2;
     y->son3 = nullptr;
     y->key2 = INT32_MAX;
@@ -442,6 +442,7 @@ bool TTTree<K, V>::Remove(Internal<K, V> *t,K k, Leaf<K, V> *&tlow1, bool &one_s
   }
   return true;
 }
+
 
 template
 class TTTree<int, int>;
