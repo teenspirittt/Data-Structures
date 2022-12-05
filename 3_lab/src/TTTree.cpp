@@ -1,11 +1,45 @@
 #include "TTTree.h"
-#include "Node.h"
 
 using namespace std;
 
 template<typename K, typename V>
-uint TTTree<K, V>::GetSize() {
-  return size;
+string TTTree<K,V>::ToString() {  
+  stringstream* ss = new stringstream();
+  ToString(root, 0, ss);
+  return ss->str();
+}
+
+template<typename K, typename V>
+void TTTree<K,V>::ToString(Node<K,V>* t, int level, stringstream* ss) {  
+  if (!t)
+    return;
+  if (t->inner()) {
+    Internal<K,V>* i = (Internal<K,V>*)t;
+    if(i->son3 != NULL)
+      ToString(i->son3, level+1, ss);
+    if(i->son2 != NULL) 
+      ToString(i->son2, level+1, ss);
+    for(int i = 0; i < 6 * level; i++) *ss << " ";
+    if(i->son2 == NULL)
+      *ss << "-";
+    else
+      *ss << i->key1;
+    if(i->son3==NULL)
+      *ss << "," << "-";
+    else 
+      *ss << "," << i->key2;
+    *ss << "\n";
+    ToString(i->son1, level+1, ss);
+  } else {
+    Leaf<K,V>* l = (Leaf<K,V>*)t;
+    for (int i = 0; i < 6 * level; i++) *ss << " ";
+			*ss << "[" << l->key << "," << l->value << "]\n";
+  }
+}
+
+template<typename K, typename V>
+uint TTTree<K,V>::GetSize() {
+    return size;
 }
 
 template<typename K, typename V>
@@ -15,6 +49,7 @@ bool TTTree<K, V>::IsEmpty() {
 
 template<typename K, typename V>
 V TTTree<K, V>::Get(K key) {
+  nodes_counter = 0;
   Leaf<K, V> *node = Get(root, key);
   if (node)
     return node->value;
@@ -36,7 +71,6 @@ Leaf<K, V> *TTTree<K, V>::Get(Internal<K, V> *node, K key) {
   nodes_counter++;
   if (node == nullptr)
     return nullptr;
-  //throw TreeException();
   if (node->son1->inner() == 0) {
     if (((Leaf<K, V> *) node->son1)->key == key)
       return ((Leaf<K, V> *) node->son1);
@@ -46,8 +80,7 @@ Leaf<K, V> *TTTree<K, V>::Get(Internal<K, V> *node, K key) {
     if (node->son3)
       if (((Leaf<K, V> *) node->son3)->key == key)
         return ((Leaf<K, V> *) node->son3);
-    return V(0);
-    //throw TreeException();
+    return nullptr;
   }
   if (node->key1 > key)
     return Get(((Internal<K, V> *) node->son1), key);
@@ -97,7 +130,32 @@ TTTree<K, V>::TTTree() {
 
 template<typename K, typename V>
 TTTree<K, V>::TTTree(const TTTree &copy) {
+  root = nullptr;
+  nodes_counter = size = 0;
+  Copy(copy.root);
+}
 
+
+template<class K, class V>
+void TTTree<K, V>::Copy(Internal<K, V> *t)
+{
+  if (t == NULL) return;
+  if (t->son1->type() == 0)
+  {
+    if (t->son1) Insert(t->son1->key, t->son1->value);
+    if (t->son2) Insert(t->son2->key, t->son2->value);
+    if (t->son3) Insert(t->son3->key, t->son3->value);
+    return;
+  }
+  Copy(((Internal<K, V>*)t->son1, tree));
+  Insert(t->son1->key, t->son1->value);
+  Copy(((Internal<K, V>*)t->son2, tree));
+  Insert(t->son2->key, t->son2->value);
+  if (t->son3)
+  {
+    Copy(((Internal<K, V>*)t->son3, tree));
+    Insert(t->son3->key, t->son3->value);
+  }
 }
 
 template<typename K, typename V>
@@ -107,6 +165,7 @@ TTTree<K, V>::~TTTree() {
 
 template<typename K, typename V>
 bool TTTree<K, V>::Insert(K key, V value) {
+  nodes_counter = 0;
   Node<K, V> *lt = new Leaf<K, V>(key, value);  //создали листок
   if (root == nullptr)      //если дерево пустое
   {
@@ -251,8 +310,8 @@ bool TTTree<K, V>::Insert(Node<K, V> *t,
 }
 
 template<class K, class V>
-bool TTTree<K, V>::Remove(K key) // функция удаления
-{
+bool TTTree<K, V>::Remove(K key) {
+  nodes_counter = 0;
   Internal<K, V> *t;
   Leaf<K, V> *tmin;
   bool one;
@@ -444,5 +503,29 @@ bool TTTree<K, V>::Remove(Internal<K, V> *t,K k, Leaf<K, V> *&tlow1, bool &one_s
 }
 
 
+template<typename K, typename V>
+Iterator<K, V> TTTree<K, V>::Begin() {
+  return Iterator<K, V>(root, 0, size);
+}
+
+template<typename K, typename V>
+RIterator<K, V> TTTree<K, V>::RBegin() {
+  return RIterator<K, V>(root, size - 1, size);
+}
+
+template<typename K, typename V>
+Iterator<K, V> TTTree<K, V>::End() {
+  return Iterator<K, V>(root, -1, size);
+}
+
+template<typename K, typename V>
+RIterator<K, V> TTTree<K, V>::REnd() {
+  return RIterator<K, V>(root, -1, size);
+}
+
+
 template
 class TTTree<int, int>;
+
+template
+class TTTree<long long unsigned int, int>;

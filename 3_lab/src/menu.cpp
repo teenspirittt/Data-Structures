@@ -1,4 +1,6 @@
 #include "menu.h"
+#include <stdlib.h>
+#include <time.h> 
 
 #ifdef __linux__
 #define clear_console_ "clear"
@@ -36,9 +38,10 @@ void ShowMainMenu() {
           "  5 CLEAR\n"
           "  6 GET SIZE\n"
           "  7 IS EMPTY\n"
-          "  8 COUNT NODES\n"
+          "  8 NUMBER OF COUNTED NODES\n"
           "  9 TEST ITERATOR\n"
           " 10 TEST REVERSED ITERATOR\n"
+          " 11 INSERT 10 LEAFES\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -58,134 +61,147 @@ void MainMenu() {
 
   while (flag) {
     system(clear_console_);
-    //tree.printTree();
+    cout << tree.ToString();
     ShowMainMenu();
     choice = GetNumber(0, 11, "");
     switch (choice) {
       case 1: { // add element
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        // tree.Insert(key, val);
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
+        tree.Insert(key, val);
         break;
       }
       case 2: { // remove element
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // if (tree.Remove(key))
-        //   cout << "DONE!\n";
-        // else 
-        //   cout << "FAIL!\n";
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        if (tree.Remove(key))
+          cout << "DONE!\n";
+        else 
+          cout << "FAIL!\n";
         break;
       }
       case 3: { // get by key
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // cout << tree.Get(key) << "\n";
-        // cin.get();
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        cout << tree.Get(key) << "\n";
+        cin.get();
         break;
       }
       case 4: { // set by key
-        // key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
-        // val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        // if (tree.Set(key, val))
-        //   cout << "DONE!\n";
-        // else 
-        //   cout << "FAIL!\n";
-        // cin.get();
+        key = GetNumber(INT32_MIN, INT32_MAX, "ENTER KEY:\n");
+        val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
+        if (tree.Set(key, val))
+          cout << "DONE!\n";
+        else 
+          cout << "FAIL!\n";
+        cin.get();
         break;
       }
       case 5: { // clear
-        // tree.Clear();
-        // cin.get();
+        tree.Clear();
+        cin.get();
         break;
       }
       case 6: { // get size
-        // cout << tree.GetSize();
-        // cin.get();
+        cout << tree.GetSize();
+        cin.get();
         break;
       }
       case 7: { // isempty
-        // cout << tree.IsEmpty();
-        // cin.get();
+        cout << tree.IsEmpty();
+        cin.get();
         break;
       }
       case 8: { // count nodes
-        // cout << tree.CountNodes();
-        // cin.get();
+        cout << tree.CountNodes();
+        cin.get();
         break;
       }
       case 9: { // iterator
-        // iterator_flag = true;
-        // Iterator<int, int> iter = tree.Begin();
-        // while(iterator_flag) {
-        //   system(clear_console_);
-        //   tree.PrintTree();
-        //   cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
-        //   choice = GetNumber(0, 4, "");
-        //   switch(choice) {
-        //     case 1: {
-        //       iter = tree.Begin();
-        //       break;
-        //     }
-        //     case 2: {
-        //       ++iter;
-        //       break;
-        //     }
-        //     case 3: {
-        //       if (iter != tree.Begin())
-        //       --iter;
-        //       break;
-        //     }
-        //     case 4: {
-        //       if (iter != tree.End())
-        //         cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
-        //       else
-        //         cout << "LOST ITERATOR\n";
-        //       cin.get();
-        //       break;
-        //     }
-        //     case 0: {
-        //       iterator_flag = false;
-        //       break;
-        //     }
-        //   }
-        // }
+        iterator_flag = true;
+        Iterator<int, int> iter = tree.Begin();
+        while(iterator_flag) {
+          //system(clear_console_);
+          cout << tree.ToString();
+          cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
+          choice = GetNumber(0, 4, "");
+          switch(choice) {
+            case 1: {
+              iter = tree.Begin();
+              break;
+            }
+            case 2: {
+              ++iter;
+              break;
+            }
+            case 3: {
+              if (iter != tree.Begin())
+              --iter;
+              break;
+            }
+            case 4: {
+              if (iter != tree.End())
+                cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
         break;
       }
       case 10: { // reversed iterator
-        // iterator_flag = true;
-        // RIterator<int, int> iter = tree.Rbegin();
-        // while(iterator_flag) {
-        //   system(clear_console_);
-        //   tree.PrintTree();
-        //   cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
-        //   choice = GetNumber(0, 4, "");
-        //   switch(choice) {
-        //     case 1: {
-        //       iter = tree.Rbegin();
-        //       break;
-        //     }
-        //     case 2: {
-        //       ++iter;
-        //       break;
-        //     }
-        //     case 3: {
-        //       if (iter != tree.Rbegin())
-        //         --iter;
-        //       break;
-        //     }
-        //     case 4: {
-        //       if (iter != tree.Rend())
-        //         cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
-        //       else
-        //         cout << "LOST ITERATOR\n";
-        //       cin.get();
-        //       break;
-        //     }
-        //     case 0: {
-        //       iterator_flag = false;
-        //       break;
-        //     }
-        //   }
-        // }
+        iterator_flag = true;
+        RIterator<int, int> iter = tree.RBegin();
+        while(iterator_flag) {
+          //system(clear_console_);
+          cout << tree.ToString();
+          cout << "  1 BEGIN\n  2 ++\n  3 --\n  4 *\n  0 EXIT\n";
+          choice = GetNumber(0, 4, "");
+          switch(choice) {
+            case 1: {
+              iter = tree.RBegin();
+              break;
+            }
+            case 2: {
+              ++iter;
+              break;
+            }
+            case 3: {
+              if (iter != tree.RBegin())
+              
+                --iter;
+              break;
+            }
+            case 4: {
+              if (iter != tree.REnd()) {
+                cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
+              } else {
+                cout << "LOST ITERATOR\n";
+                iter = tree.RBegin();
+              }
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
+        break;
+      }
+      case 11: {
+        srand (time(NULL));
+        for (int i = 0; i < 10; i++) {
+          if (!tree.Insert(rand() % 100, rand() % 100))
+            i--;
+        }
+        cout << "DONE!";
+        cin.get();
         break;
       }
       case 0:
