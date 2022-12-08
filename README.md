@@ -1,7 +1,5 @@
 # Binary search tree
-1. Спроектировать, реализовать и провести тестовые испытания
-    АТД «BST-дерево» (Binary Search Tree – BST) для коллекции, содержащей ключи и данные произвольного типа. Тип ключа и тип данных задаются параметрами шаблона класса BST-дерева. В формате АТД BST-дерево представляется как упорядоченное,
-    иерархическое, ассоциативное множество элементов, между которыми
-    существуют структурные отношения «предки–левые потомки–правые
-    потомки»
+1. Folder 1_lab contains implementation of CycleList
+2. Folder 2_lab contains implementation of Binary-Search tree(non recursive search, insert and delete)
+3. Folder 3_lab constains implementation of 2-3 tree
     
