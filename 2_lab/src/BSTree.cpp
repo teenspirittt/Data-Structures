@@ -300,9 +300,6 @@ class BSTree<int, short>;
 
 template
 class BSTree<int, string>;
-<<<<<<< HEAD
-=======
 
 template
 class BSTree<unsigned long long, int>;
->>>>>>> badblues

@@ -148,13 +148,16 @@ void TTTree<K, V>::Copy(Internal<K, V> *t)
     return;
   }
   Copy(((Internal<K, V>*)t->son1, tree));
-  Insert(t->son1->key, t->son1->value);
+  i = (Internal<K,V>*) t->son1;
+  Insert(i->key, i->value);
   Copy(((Internal<K, V>*)t->son2, tree));
-  Insert(t->son2->key, t->son2->value);
+  i = (Internal<K,V>*) t->son2;
+  Insert(i->key, i->value);
   if (t->son3)
   {
     Copy(((Internal<K, V>*)t->son3, tree));
-    Insert(t->son3->key, t->son3->value);
+    i = (Internal<K,V>*) t->son3;
+    Insert(i->key, i->value);
   }
 }
 
@@ -439,7 +442,6 @@ bool TTTree<K, V>::Remove(Internal<K, V> *t,K k, Leaf<K, V> *&tlow1, bool &one_s
       t->key1 = t->key2;
       t->son3 = nullptr;
       t->key2 = INT32_MAX;
-      //one_son=true;
       if (t->son2 == nullptr) {
         one_son = true;
       }

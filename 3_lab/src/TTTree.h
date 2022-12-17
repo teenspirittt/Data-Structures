@@ -64,7 +64,5 @@ class TTTree {
         int nodes_counter = 0;
         uint size;
         Internal<K, V> *root;
-        TTTree<K,V>  tree;
-
-
+        TTTree<K,V>*  tree;
 };

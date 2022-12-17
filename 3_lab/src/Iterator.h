@@ -51,13 +51,11 @@ class Iterator {
                 return;
             if (!(node->inner())) {
                 vc.push_back(((Leaf<K, V>*)node));
-            } else if (((Internal<K,V>*)node)->son3 != nullptr) {
+            } else {
                 fill(((Internal<K,V>*)node)->son1);
                 fill(((Internal<K,V>*)node)->son2);
-            } else  {
-                fill(((Internal<K,V>*)node)->son1);
-                fill(((Internal<K,V>*)node)->son2);
-                fill(((Internal<K,V>*)node)->son3);
+                if (((Internal<K,V>*)node)->son3)
+                    fill(((Internal<K,V>*)node)->son3);
             }
         }
 
@@ -115,13 +113,11 @@ class RIterator {
                 return;
             if (!(node->inner())) {
                 vc.push_back(((Leaf<K, V>*)node));
-            } else if (((Internal<K,V>*)node)->son3 != nullptr) {
+            } else {
                 fill(((Internal<K,V>*)node)->son1);
                 fill(((Internal<K,V>*)node)->son2);
-            } else  {
-                fill(((Internal<K,V>*)node)->son1);
-                fill(((Internal<K,V>*)node)->son2);
-                fill(((Internal<K,V>*)node)->son3);
+                if (((Internal<K,V>*)node)->son3)
+                    fill(((Internal<K,V>*)node)->son3);
             }
         }
 
