@@ -45,42 +45,26 @@ public:
         int i;
     public:
         Iterator(OAHashTable *_p, bool begin = false) : ptr(_p), i(0) {
-            if (begin) {
-                if (ptr->GetSize() == 0)
-                    cur = nullptr;
-                else
-                    cur = ptr->arr[0];
-            } else {
+            if (!begin || ptr->GetSize() == 0) {
                 cur = nullptr;
+            } else {
+                for (i = 0; i < ptr->capacity; i++) {
+                    if (ptr->nodes[i]->state == states::busy_) {
+                        cur = ptr->nodes[i];
+                        break;
+                    }
+                }
             }
         }
 
         void next() {
-            //fixme
-            if (!cur || cur->state != states::busy_)
-                return;
-
-            while (i != ptr->capacity) {
-                cur = ptr->arr[++i];
-
-                if (i == ptr->capacity) {
-                    break;
+            for (i++; i < ptr->capacity; i++) {
+                if (ptr->IsBusy(i)) {
+                    cur = ptr->nodes[i];
+                    return;
                 }
-                if (cur->state == states::busy_) {
-                    break;
-                }
-
             }
-        }
-
-        void first() {
-            for (i = 0; i < ptr->capacity; i++) {
-                cur = ptr->arr[i];
-                if (cur->state == states::busy_)
-                    break;
-            }
-            if (i == ptr->capacity)
-                throw "empty";
+            cur = nullptr;
         }
 
         bool operator==(Iterator it) {
@@ -92,15 +76,13 @@ public:
         }
 
         bool is_off() {
-            if (!cur || cur->state != states::busy_)
-                return true;
-            return false;
+            return (!cur || cur->state != states::busy_);
         }
 
-        T operator*() {
+        T* operator*() {
             if (!cur || cur->state != states::busy_)
                 throw "iterator is not setted";
-            return cur->value;
+            return &(cur->value);
         }
 
         string showkey() {
@@ -111,18 +93,18 @@ public:
     };
 
 
-    Iterator begin() {
+    Iterator Begin() {
         return OAHashTable<T>::Iterator(this, true);
     }
 
-    Iterator end() {
+    Iterator End() {
         return OAHashTable<T>::Iterator(this, false);
     }
 
 private:
     int size;
     int capacity;
-    OANode<T> **arr;
+    OANode<T> **nodes;
 
     int nodes_counter = 0;
 

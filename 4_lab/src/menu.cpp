@@ -42,7 +42,7 @@ void ShowMainMenu() {
           "  9 TEST ITERATOR\n"
           " 10 FORM\n"
           " 11 CHANGE FORM\n"
-          " 12 INSERT 10 LEAFES\n"
+          " 12 INSERT 10\n"
           "  0 EXIT\n"
           "===================\n";
 }
@@ -139,44 +139,68 @@ void MainMenu() {
         break;
       }
       case 9: { // iterator
-        // iterator_flag = true;
-        // Iterator<int, int> iter = tree.Begin();
-        // while(iterator_flag) {
-        //   //system(clear_console_);
-        //   cout << tree.ToString();
-        //   cout << "  1 BEGIN\n  2 ++\n  3--\n  4 *\n  0 EXIT\n";
-        //   choice = GetNumber(0, 4, "");
-        //   switch(choice) {
-        //     case 1: {
-        //       iter = tree.Begin();
-        //       break;
-        //     }
-        //     case 2: {
-        //       ++iter;
-        //       break;
-        //     }
-        //     case 3: {
-        //       if (iter != tree.Begin())
-        //       --iter;
-        //       break;
-        //     }
-        //     case 4: {
-        //       if (iter != tree.End())
-        //         cout << "[" << (*iter)->key << "," << (*iter)->value << "]\n";
-        //       else
-        //         cout << "LOST ITERATOR\n";
-        //       cin.get();
-        //       break;
-        //     }
-        //     case 0: {
-        //       iterator_flag = false;
-        //       break;
-        //     }
-        //   }
-        // }
+        iterator_flag = true;
+        CLHashTable<int>::Iterator cliter = cltable.Begin();
+        OAHashTable<int>::Iterator oaiter = oatable.Begin();
+        while(cl_flag && iterator_flag) {
+          system(clear_console_);
+          cout << cltable.ToString();
+          cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
+          choice = GetNumber(0, 3, "");
+          switch(choice) {
+            case 1: {
+              cliter = cltable.Begin();
+              break;
+            }
+            case 2: {
+              cliter.next();
+              break;
+            }
+            case 3: {
+              if (cliter != cltable.End())
+                cout << "[" << **cliter << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
+        while(!cl_flag && iterator_flag) {
+          system(clear_console_);
+          cout << oatable.ToString();
+          cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
+          choice = GetNumber(0, 3, "");
+          switch(choice) {
+            case 1: {
+              oaiter = oatable.Begin();
+              break;
+            }
+            case 2: {
+              oaiter.next();
+              break;
+            }
+            case 3: {
+              if (oaiter != oatable.End())
+                cout << "[" << **oaiter << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
         break;
       }
-      case 10: { // reversed iterator
+      case 10: {
         if (cl_flag)
             cout << "FORM: COLLISION LIST\n";
         else
@@ -198,7 +222,6 @@ void MainMenu() {
         for (int i = 0; i < 10; i++) {
           for (int i = 0; i < 5; i++)
             str += 'A' + rand() % 26;
-          cout << "STRING: " << str << "\n";
           oatable.Insert(str, rand() % 100);
           cltable.Insert(str, rand() % 100);
           str = "";

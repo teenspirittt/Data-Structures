@@ -51,20 +51,14 @@ public:
                 return;
             }
             do {
-                cur = ptr->GetNodes()[++i];
+                cur = ptr->nodes[++i];
                 if (cur)
                     break;
             } while (i != ptr->GetCapacity());
-        }
-
-        void first() {
-            for (i = 0; i < ptr->GetCapacity(); i++) {
-                cur = ptr->GetNodes()[i];
-                if (cur)
-                    break;
+            if (!cur || i == ptr->GetCapacity()) {
+                cur = nullptr;
+                i = 0;
             }
-            if (!cur)
-                throw "empty table!";
         }
 
         bool operator==(Iterator it) {
@@ -76,28 +70,25 @@ public:
         }
 
         bool is_off() {
-            if (!cur || i == ptr->GetCapacity())
-                return true;
-            return false;
+            return (!cur || i == ptr->GetCapacity());
         }
 
-        T operator*() {
+        T* operator*() {
             if (!cur || i == ptr->GetCapacity())
                 throw "Iterator is not setted!";
-            return cur->value;
+            return &(cur->value);
         }
 
-        string showkey() {
+        string key() {
             if (!cur || i == ptr->GetCapacity())
                 throw "Iterator is not setted!";
-
             return cur->key;
         }
     };
 
 
 public:
-    Iterator begin() {
+    Iterator Begin() {
         CLNode<T> **test = this->nodes;
         CLNode<T> *_cur = nullptr;
         for (int i = 0; i < this->capacity; i++) {
@@ -108,13 +99,13 @@ public:
         return CLHashTable<T>::Iterator(this, _cur);
     }
 
-    Iterator end() {
+    Iterator End() {
         return CLHashTable<T>::Iterator(this, nullptr);
     }
 
-    CLNode<T> **GetNodes() const {
-        return nodes;
-    }
+    // CLNode<T> **GetNodes() const {
+    //     return nodes;
+    // }
 
 private:
     CLNode<T> **nodes;

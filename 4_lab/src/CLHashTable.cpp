@@ -23,22 +23,23 @@ CLHashTable<T>::~CLHashTable() {
 
 template<typename T>
 bool CLHashTable<T>::Insert(string k, T data) {
-    cout << "cltable insert\n";
+    nodes_counter = 0;
     for (int i = 0; i < k.size(); i++)
         if (k[i] < 'A' || k[i] > 'Z')
             k = k.substr(0, i);
     if (k.size() == 0)
         return false;
-        
     int j = HornerFunction(k);
     if (this->nodes[j] == nullptr) {
         this->nodes[j] = new CLNode<T>(k, data);
     } else {
         CLNode<T> *p = this->nodes[j];
+        nodes_counter++;
         if (p->key == k) {
             return false;
         }
         while (p->next != nullptr) {
+            nodes_counter++;
             p = p->next;
             if (p->key == k) {
                 return false;
@@ -52,10 +53,10 @@ bool CLHashTable<T>::Insert(string k, T data) {
 
 template<typename T>
 bool CLHashTable<T>::Remove(string k) {
-
+    nodes_counter = 0;
     int j = HornerFunction(k);
     CLNode<T> *p = this->nodes[j];
-
+    nodes_counter++;
     if (p == nullptr) {
         return false;
     }
@@ -67,6 +68,7 @@ bool CLHashTable<T>::Remove(string k) {
     }
 
     while (p->next != nullptr) {
+        nodes_counter++;
         if (p->next->key == k)
             break;
         p = p->next;
@@ -83,9 +85,11 @@ bool CLHashTable<T>::Remove(string k) {
 
 template<typename T>
 T CLHashTable<T>::Get(string k) {
+    nodes_counter = 0;
     int j = HornerFunction(k);
     CLNode<T> *t = this->nodes[j];
     while (t != nullptr) {
+        nodes_counter++;
         if (t->key == k) {
             break;
         }
@@ -136,8 +140,10 @@ bool CLHashTable<T>::Clear() {
         while (t != nullptr) {
             CLNode<T> *tmp = t->next;
             delete t;
+            size--;
             t = tmp;
         }
+        this->nodes[i] = nullptr;
     }
     return true;
 }
