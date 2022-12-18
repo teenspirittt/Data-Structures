@@ -93,10 +93,14 @@ void MainMenu() {
       case 3: { // get by key
         cout << "ENTER KEY (LATIN UPPERCASE STRING):\n";
         cin >> key;
-        if (cl_flag)
-            cout << cltable.Get(key) << "\n";
-        else
-            cout << oatable.Get(key) << "\n";
+        try {
+          if (cl_flag)
+              cout << cltable.Get(key) << "\n";
+          else
+              cout << oatable.Get(key) << "\n";
+        } catch (...) {
+          cout << "NOT FOUND\n";
+        }
         cin.get();
         break;
       }

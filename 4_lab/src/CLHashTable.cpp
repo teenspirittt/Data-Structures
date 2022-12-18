@@ -106,7 +106,7 @@ template<typename T>
 int CLHashTable<T>::HornerFunction(string str) {
     unsigned k = 0;
     for (unsigned i = 0; i < str.size(); ++i) {
-        k += pow(26, str.size() - 1 - i) * (str.at(i) - 'A' + 1);
+        k += pow(32, str.size() - 1 - i) * (str.at(i) - 'A' + 1);
     }
 
     double g_r = 0.6180339887;
@@ -114,7 +114,6 @@ int CLHashTable<T>::HornerFunction(string str) {
     double X = g_r * k;
     X = X - (unsigned) X;
     return (unsigned) (X * this->capacity);
-
 }
 
 template<typename T>
