@@ -31,6 +31,7 @@ bool CLHashTable<T>::Insert(string k, T data) {
         return false;
     int j = HornerFunction(k);
     if (this->nodes[j] == nullptr) {
+        nodes_counter++;
         this->nodes[j] = new CLNode<T>(k, data);
     } else {
         CLNode<T> *p = this->nodes[j];

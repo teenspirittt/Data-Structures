@@ -63,7 +63,7 @@ bool OAHashTable<T>::Insert(string k, T data) {
     if (pos == -1) {
         pos = j;
     }
-
+    nodes_counter++;
     this->nodes[pos]->key = k;
     this->nodes[pos]->value = data;
     this->nodes[pos]->state = states::busy_;
