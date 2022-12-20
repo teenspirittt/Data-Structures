@@ -1,7 +1,6 @@
 #pragma once
 
 #include "OANode.h"
-#include "HashTableForm.h"
 #include <algorithm>
 #include <cmath>
 #include <sstream>
@@ -124,6 +123,10 @@ public:
       }
     }
     return sstr->str();
+  }
+
+  OANode<T> **GetNodes() {
+    return nodes;
   }
 
   // class Iterator {

@@ -144,6 +144,10 @@ public:
     return sstr->str();
   }
 
+  CLNode<T> **GetNodes() {
+    return nodes;
+  }
+
   // class Iterator {
   //   CLHashTable<T> *ptr;
   //   CLNode<T> *cur;

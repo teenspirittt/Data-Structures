@@ -5,7 +5,6 @@
 #include "OAHashTable.h"
 #include <string>
 
-
 using namespace std;
 
 template <typename T> class HashTable {
@@ -35,7 +34,10 @@ public:
   void Clear() { table->Clear(); }
 
   void ChangeForm() {
-    // TODO:
+    if (clform)
+      ToOA();
+    else
+      ToCL();
   }
 
   bool IsCL() { return clform; }
@@ -45,6 +47,38 @@ public:
   int CountNodes() { return table->CountNodes(); }
 
 private:
+  void ToCL() {
+    OAHashTable<T> *oatable = (OAHashTable<T> *)table;
+    OANode<T> **nodes = oatable->GetNodes();
+    CLHashTable<T> *cltable = new CLHashTable<T>(GetCapacity());
+    for (int i = 0; i < GetCapacity(); i++) {
+      if (nodes[i]->state==states::busy_)
+        cltable->Insert(nodes[i]->key, nodes[i]->value);
+    }
+    table = cltable;
+    clform = true;
+    delete oatable;
+  }
+
+  void ToOA() {
+    CLHashTable<T> *cltable = (CLHashTable<T> *)table;
+    CLNode<T> **nodes = cltable->GetNodes();
+    OAHashTable<T> *oatable = new OAHashTable<T>(GetCapacity());
+    for (int i = 0; i < GetCapacity(); i++) {
+      if (nodes[i] != nullptr) {
+        oatable->Insert(nodes[i]->key, nodes[i]->value);
+        CLNode<T> *t = nodes[i]->next;
+        while (t != nullptr) {
+          oatable->Insert(t->key, t->value);
+          t = t->next;
+        }
+      }
+    }
+    table = oatable;
+    clform = false;
+    delete cltable;
+  }
+
   bool clform;
   HashTableForm<T> *table;
 };

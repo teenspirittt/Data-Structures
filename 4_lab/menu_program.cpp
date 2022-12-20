@@ -1,7 +1,7 @@
 #include "src/menu.h"
 
-//TODO: abstract hashtable class
 //TODO: change form
+//TODO: iterators
 
 int main() {
   MainMenu();
