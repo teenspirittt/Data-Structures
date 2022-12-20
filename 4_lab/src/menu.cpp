@@ -128,65 +128,36 @@ void MainMenu() {
         break;
       }
       case 9: { // iterator
-        // iterator_flag = true;
-        // CLHashTable<int>::Iterator cliter = cltable->Begin();
-        // OAHashTable<int>::Iterator oaiter = oatable->Begin();
-        // while(cl_flag && iterator_flag) {
-        //   system(clear_console_);
-        //   cout << cltable->ToString();
-        //   cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
-        //   choice = GetNumber(0, 3, "");
-        //   switch(choice) {
-        //     case 1: {
-        //       cliter = cltable->Begin();
-        //       break;
-        //     }
-        //     case 2: {
-        //       cliter.next();
-        //       break;
-        //     }
-        //     case 3: {
-        //       if (cliter != cltable->End())
-        //         cout << "[" << **cliter << "]\n";
-        //       else
-        //         cout << "LOST ITERATOR\n";
-        //       cin.get();
-        //       break;
-        //     }
-        //     case 0: {
-        //       iterator_flag = false;
-        //       break;
-        //     }
-        //   }
-        // }
-        // while(!cl_flag && iterator_flag) {
-        //   system(clear_console_);
-        //   cout << oatable->ToString();
-        //   cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
-        //   choice = GetNumber(0, 3, "");
-        //   switch(choice) {
-        //     case 1: {
-        //       oaiter = oatable->Begin();
-        //       break;
-        //     }
-        //     case 2: {
-        //       oaiter.next();
-        //       break;
-        //     }
-        //     case 3: {
-        //       if (oaiter != oatable->End())
-        //         cout << "[" << **oaiter << "]\n";
-        //       else
-        //         cout << "LOST ITERATOR\n";
-        //       cin.get();
-        //       break;
-        //     }
-        //     case 0: {
-        //       iterator_flag = false;
-        //       break;
-        //     }
-        //   }
-        // }
+        iterator_flag = true;
+        HashTable<int>::Iterator iter(table);
+        while(iterator_flag) {
+          system(clear_console_);
+          cout << table->ToString();
+          cout << "  1 BEGIN\n  2 ++\n  3 *\n  0 EXIT\n";
+          choice = GetNumber(0, 3, "");
+          switch(choice) {
+            case 1: {
+              iter = table->Begin();
+              break;
+            }
+            case 2: {
+              ++iter;
+              break;
+            }
+            case 3: {
+              if (iter != table->End())
+                cout << "[" << **iter << "]\n";
+              else
+                cout << "LOST ITERATOR\n";
+              cin.get();
+              break;
+            }
+            case 0: {
+              iterator_flag = false;
+              break;
+            }
+          }
+        }
         break;
       }
       case 10: {
