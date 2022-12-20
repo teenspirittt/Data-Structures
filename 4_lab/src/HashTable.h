@@ -1,64 +1,52 @@
 #pragma once
 
+#include "CLHashTable.h"
+#include "HashTableForm.h"
 #include "OAHashTable.h"
-#include "CCHashTable.h"
+#include <string>
 
-template<typename T>
-class HashTable {
 
-    public:
+using namespace std;
 
-        HashTable(int capacity) {
-            cc = true;
-            oatable = new OAHashTable<T>();
-            cctable = new CCHashTable<T>(capacity);
-        }
+template <typename T> class HashTable {
+public:
+  HashTable(unsigned int capacity_, int clform_) {
+    clform = clform_;
+    if (clform)
+      table = new CLHashTable<T>(capacity_);
+    else
+      table = new OAHashTable<T>(capacity_);
+  }
 
-        ~HashTable() {}
+  ~HashTable() {}
 
-        bool Insert(string k, T data) {
-            return cc ? cctable->Insert(k, data) : oatable->Insert(k, data);
-        }
+  bool Insert(string k, T data) { return table->Insert(k, data); }
 
-        bool Remove(string k) {
-            return cc ? cctable->Remove(k) : oatable->Remove(k);
-        }
+  bool Remove(string k) { return table->Remove(k); }
 
-        T Get(string k) {
-            return cc ? cctable->Get(k) : oatable->Get(k);
-        }
+  T Get(string k) { return table->Get(k); }
 
-        bool IsEmpty() {
-            return cc ? cctable->IsEmpty() : oatable->IsEmpty();
-        }
+  bool IsEmpty() { return table->IsEmpty(); }
 
-        int GetSize() const {
-            return cc ? cctable->GetSize() : oatable->GetSize();
-        }
+  int GetSize() { return table->GetSize(); }
 
-        int GetCapacity() const {
-            return cc ? cctable->GetCapacity() : oatable->GetCapacity();
-        }
+  int GetCapacity() { return table->GetCapacity(); }
 
-        void Clear() {
-            //return cc ? cctable->Clear() : oatable->Clear();
-        }
+  void Clear() { table->Clear(); }
 
-        void SetForm(bool cc) {
-            this->cc = cc;
-        } 
+  void ChangeForm() {
+    // TODO:
+  }
 
-        bool IsCC() {
-            return cc;
-        }
+  bool IsCL() { return clform; }
 
-        string ToString() {
-            return cc ? cctable->ToString() : oatable->ToString();
-        }
+  string ToString() { return table->ToString(); }
 
-    private:
+  int CountNodes() { return table->CountNodes(); }
 
-    OAHashTable<T>* oatable;
-    CCHashTable<T>* cctable;
-    bool cc;
+private:
+  bool clform;
+  HashTableForm<T> *table;
 };
+
+template class HashTable<int>;

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
-#include "CLHashTable.h"
-#include "OAHashTable.h"
+#include "HashTable.h"
 
 typedef unsigned int uint;
 

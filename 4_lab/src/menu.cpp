@@ -56,20 +56,22 @@ void MainMenu() {
   bool iterator_flag = false;
   bool cl_flag = true;
   string str;
-  int val;
+  int val, val2;
   string key;
+   HashTable<int>* table;
 
-  val = GetNumber(2, INT32_MAX, "ENTER COLLISION LIST SIZE:\n");
-  CLHashTable<int> cltable(val);
-  val = GetNumber(2, INT32_MAX, "ENTER OPEN ADDRESSING TABLE SIZE:\n");
-  OAHashTable<int> oatable(val);
+  cout << "1 - COLLISION LIST\n2 - OPEN ADDRESSING\n";
+  val = GetNumber(1, 2, "");
+  
+  val2 = GetNumber(2, INT32_MAX, "ENTER TABLE SIZE:\n");
+  if (val == 1)
+   table = new HashTable<int>(val2, true);
+  else
+    table = new HashTable<int>(val2, false);
 
   while (flag) {
     system(clear_console_);
-    if (cl_flag)
-        cout << cltable.ToString();
-    else
-        cout << oatable.ToString();
+    cout << table->ToString();
     ShowMainMenu();
     choice = GetNumber(0, 12, "");
     switch (choice) {
@@ -77,14 +79,13 @@ void MainMenu() {
         cout << "ENTER KEY (LATIN UPPERCASE STRING):\n";
         cin >> key;
         val = GetNumber(INT32_MIN, INT32_MAX, "ENTER VALUE:\n");
-        cltable.Insert(key, val);
-        oatable.Insert(key, val);
+        table->Insert(key, val);
         break;
       }
       case 2: { // remove element
         cout << "ENTER KEY (LATIN UPPERCASE STRING):\n";
         cin >> key;
-        if (cltable.Remove(key) && oatable.Remove(key))
+        if (table->Remove(key))
           cout << "DONE!\n";
         else 
           cout << "FAIL!\n";
@@ -94,10 +95,7 @@ void MainMenu() {
         cout << "ENTER KEY (LATIN UPPERCASE STRING):\n";
         cin >> key;
         try {
-          if (cl_flag)
-              cout << cltable.Get(key) << "\n";
-          else
-              cout << oatable.Get(key) << "\n";
+          cout << table->Get(key) << "\n";
         } catch (...) {
           cout << "NOT FOUND\n";
         }
@@ -105,107 +103,94 @@ void MainMenu() {
         break;
       }
       case 4: { // set by key
-        if (cl_flag)
-            cout << cltable.GetCapacity() << "\n";
-        else
-            cout << oatable.GetCapacity() << "\n";
+        cout << table->GetCapacity() << "\n";
         cin.get();
         break;
       }
       case 5: { // clear
-        oatable.Clear();
-        cltable.Clear();
+        table->Clear();
         cin.get();
         break;
       }
       case 6: { // get size
-        if (cl_flag)
-            cout << cltable.GetSize() << "\n";
-        else
-            cout << oatable.GetSize() << "\n";
+        cout << table->GetSize() << "\n";
         cin.get();
         break;
       }
       case 7: { // isempty
-        if (cl_flag)
-            cout << cltable.IsEmpty() << "\n";
-        else
-            cout << oatable.IsEmpty() << "\n";
+        cout << table->IsEmpty() << "\n";
         cin.get();
         break;
       }
       case 8: { // count nodes
-        if (cl_flag)
-            cout << cltable.CountNodes() << "\n";
-        else
-            cout << oatable.CountNodes() << "\n";
+        cout << table->CountNodes() << "\n";
         cin.get();
         break;
       }
       case 9: { // iterator
-        iterator_flag = true;
-        CLHashTable<int>::Iterator cliter = cltable.Begin();
-        OAHashTable<int>::Iterator oaiter = oatable.Begin();
-        while(cl_flag && iterator_flag) {
-          system(clear_console_);
-          cout << cltable.ToString();
-          cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
-          choice = GetNumber(0, 3, "");
-          switch(choice) {
-            case 1: {
-              cliter = cltable.Begin();
-              break;
-            }
-            case 2: {
-              cliter.next();
-              break;
-            }
-            case 3: {
-              if (cliter != cltable.End())
-                cout << "[" << **cliter << "]\n";
-              else
-                cout << "LOST ITERATOR\n";
-              cin.get();
-              break;
-            }
-            case 0: {
-              iterator_flag = false;
-              break;
-            }
-          }
-        }
-        while(!cl_flag && iterator_flag) {
-          system(clear_console_);
-          cout << oatable.ToString();
-          cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
-          choice = GetNumber(0, 3, "");
-          switch(choice) {
-            case 1: {
-              oaiter = oatable.Begin();
-              break;
-            }
-            case 2: {
-              oaiter.next();
-              break;
-            }
-            case 3: {
-              if (oaiter != oatable.End())
-                cout << "[" << **oaiter << "]\n";
-              else
-                cout << "LOST ITERATOR\n";
-              cin.get();
-              break;
-            }
-            case 0: {
-              iterator_flag = false;
-              break;
-            }
-          }
-        }
+        // iterator_flag = true;
+        // CLHashTable<int>::Iterator cliter = cltable->Begin();
+        // OAHashTable<int>::Iterator oaiter = oatable->Begin();
+        // while(cl_flag && iterator_flag) {
+        //   system(clear_console_);
+        //   cout << cltable->ToString();
+        //   cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
+        //   choice = GetNumber(0, 3, "");
+        //   switch(choice) {
+        //     case 1: {
+        //       cliter = cltable->Begin();
+        //       break;
+        //     }
+        //     case 2: {
+        //       cliter.next();
+        //       break;
+        //     }
+        //     case 3: {
+        //       if (cliter != cltable->End())
+        //         cout << "[" << **cliter << "]\n";
+        //       else
+        //         cout << "LOST ITERATOR\n";
+        //       cin.get();
+        //       break;
+        //     }
+        //     case 0: {
+        //       iterator_flag = false;
+        //       break;
+        //     }
+        //   }
+        // }
+        // while(!cl_flag && iterator_flag) {
+        //   system(clear_console_);
+        //   cout << oatable->ToString();
+        //   cout << "  1 BEGIN\n  2 Next\n  3 *\n  0 EXIT\n";
+        //   choice = GetNumber(0, 3, "");
+        //   switch(choice) {
+        //     case 1: {
+        //       oaiter = oatable->Begin();
+        //       break;
+        //     }
+        //     case 2: {
+        //       oaiter.next();
+        //       break;
+        //     }
+        //     case 3: {
+        //       if (oaiter != oatable->End())
+        //         cout << "[" << **oaiter << "]\n";
+        //       else
+        //         cout << "LOST ITERATOR\n";
+        //       cin.get();
+        //       break;
+        //     }
+        //     case 0: {
+        //       iterator_flag = false;
+        //       break;
+        //     }
+        //   }
+        // }
         break;
       }
       case 10: {
-        if (cl_flag)
+        if (table->IsCL())
             cout << "FORM: COLLISION LIST\n";
         else
             cout << "FORM: OPEN ADDRESSING TABLE\n";
@@ -213,11 +198,7 @@ void MainMenu() {
         break;
       }
       case 11: {
-        val = GetNumber(1, 2, "1 - COLLISION LIST\n2 - OPEN ADDRESSING\n");
-        if (val == 1)
-            cl_flag = true;
-        else
-            cl_flag = false;
+        table->ChangeForm();
         break;
       }
       case 12: {
@@ -226,8 +207,7 @@ void MainMenu() {
         for (int i = 0; i < 10; i++) {
           for (int i = 0; i < 5; i++)
             str += 'A' + rand() % 26;
-          oatable.Insert(str, rand() % 100);
-          cltable.Insert(str, rand() % 100);
+          table->Insert(str, rand() % 100);
           str = "";
         }
         cout << "DONE!";
